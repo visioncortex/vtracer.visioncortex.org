@@ -2,8 +2,12 @@ export const REPO = "https://github.com/visioncortex/vtracer";
 export const DOCS = "https://www.visioncortex.org/vtracer-docs";
 export const ORG = "https://www.visioncortex.org";
 
-// TODO: swap for per-platform direct download links once they exist.
-export const DOWNLOAD_URL = `${REPO}/releases`;
+/** Fallback when the manifest cannot be reached, or the platform is unknown. */
+export const DOWNLOAD_URL = `${REPO}/releases/latest`;
+
+/** Tauri update manifest, which carries the current per-platform artifacts. */
+export const MANIFEST_URL =
+  "https://raw.githubusercontent.com/visioncortex/vtracer/desktop-updates/latest.json";
 
 /** The trace we benchmark against. Shown by name on the comparator. */
 export const RIVAL_NAME = "Affinity Designer";

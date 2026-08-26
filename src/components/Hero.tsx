@@ -1,9 +1,11 @@
 import Comparator from "./Comparator";
-import { DOWNLOAD_URL, PLATFORMS } from "../site";
+import { PLATFORMS } from "../site";
+import { useDownloads } from "../useDownloads";
 import { useOS } from "../useOS";
 
 export default function Hero() {
   const os = useOS();
+  const download = useDownloads();
   const others = PLATFORMS.filter((p) => p.os !== os);
 
   return (
@@ -20,7 +22,7 @@ export default function Hero() {
         </p>
 
         <div className="hero-cta">
-          <a className="btn btn-primary" href={DOWNLOAD_URL}>
+          <a className="btn btn-primary" href={download(os)}>
             {os ? `Download for ${os}` : "Download the app"}
           </a>
           <a className="btn btn-ghost" href="#features">
@@ -36,7 +38,7 @@ export default function Hero() {
               {others.map((p, i) => (
                 <span key={p.os}>
                   {i > 0 && " and "}
-                  <a href={DOWNLOAD_URL}>{p.os}</a>
+                  <a href={download(p.os)}>{p.os}</a>
                 </span>
               ))}
             </>

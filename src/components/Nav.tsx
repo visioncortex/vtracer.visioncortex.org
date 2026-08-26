@@ -1,8 +1,11 @@
 import { useEffect, useState } from "react";
-import { DOWNLOAD_URL } from "../site";
+import { useDownloads } from "../useDownloads";
+import { useOS } from "../useOS";
 
 export default function Nav() {
   const [stuck, setStuck] = useState(false);
+  const os = useOS();
+  const download = useDownloads();
 
   useEffect(() => {
     const onScroll = () => setStuck(window.scrollY > 8);
@@ -22,7 +25,7 @@ export default function Nav() {
           <a href="#background">What&rsquo;s new</a>
           <a href="#open-source">VTracer 1</a>
         </nav>
-        <a className="btn btn-primary btn-sm" href={DOWNLOAD_URL}>
+        <a className="btn btn-primary btn-sm" href={download(os)}>
           Download
         </a>
       </div>

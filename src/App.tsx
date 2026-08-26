@@ -6,9 +6,14 @@ import Install from "./components/Install";
 import Marquee from "./components/Marquee";
 import Nav from "./components/Nav";
 import Platforms from "./components/Platforms";
-import { DOWNLOAD_URL, REPO } from "./site";
+import { REPO } from "./site";
+import { useDownloads } from "./useDownloads";
+import { useOS } from "./useOS";
 
 export default function App() {
+  const os = useOS();
+  const download = useDownloads();
+
   return (
     <>
       <Nav />
@@ -93,7 +98,7 @@ export default function App() {
               Stop redrawing. <span className="accent">Start tracing.</span>
             </h2>
             <div className="hero-cta">
-              <a className="btn btn-primary" href={DOWNLOAD_URL}>
+              <a className="btn btn-primary" href={download(os)}>
                 Download VTracer
               </a>
               <a className="btn btn-ghost" href={REPO}>

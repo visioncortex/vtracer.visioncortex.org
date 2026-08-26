@@ -3,12 +3,17 @@ import type { OS } from "./site";
 
 function detect(): OS | null {
   if (typeof navigator === "undefined") return null;
-  const ua = navigator.userAgent;
-  // Android also reports Linux, so it has to be ruled out first.
-  if (/Android/i.test(ua)) return null;
-  if (/Mac|iPhone|iPad|iPod/i.test(ua)) return "macOS";
-  if (/Win/i.test(ua)) return "Windows";
-  if (/Linux|X11|CrOS/i.test(ua)) return "Linux";
+
+  const ua = navigator.userAgent || "";
+  const uaData = (navigator as Navigator & { userAgentData?: { platform?: string } })
+    .userAgentData;
+  const haystack = `${uaData?.platform ?? navigator.platform ?? ""} ${ua}`;
+
+  if (/Windows/i.test(haystack)) return "Windows";
+  // Both of the remaining checks have a mobile cousin that has to be ruled out:
+  // iPadOS reports as Mac, and Android reports as Linux.
+  if (/Mac|Darwin/i.test(haystack) && !/iPhone|iPad|iPod/i.test(ua)) return "macOS";
+  if (/Linux|X11/i.test(haystack) && !/Android/i.test(ua)) return "Linux";
   return null;
 }
 
