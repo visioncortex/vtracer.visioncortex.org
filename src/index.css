@@ -584,6 +584,27 @@ body::after {
   font-size: 0.8125rem;
 }
 
+.cmp-note {
+  margin: 14px 0 0;
+  font-size: 0.8125rem;
+  line-height: 1.6;
+  color: var(--muted-2);
+  text-align: center;
+}
+
+.cmp-note a {
+  color: var(--muted);
+  border-bottom: 1px solid var(--line);
+  transition:
+    color 0.18s ease,
+    border-color 0.18s ease;
+}
+
+.cmp-note a:hover {
+  color: var(--fg);
+  border-bottom-color: var(--line-strong);
+}
+
 @media (max-width: 620px) {
   .cmp-stats {
     grid-template-columns: 1fr 1fr;

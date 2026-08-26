@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from "react";
-import { COMPARISONS, RIVAL_NAME, STAGE_ASPECT } from "../site";
+import { COMPARISONS, RIVAL_NAME, RIVAL_VERSION, STAGE_ASPECT } from "../site";
 
 type LeftSide = "original" | "rival";
 
@@ -157,6 +157,20 @@ export default function Comparator() {
           </dd>
         </div>
       </dl>
+
+      {/* Provenance, so the comparison can be checked rather than taken on
+          trust. Settings differ per sample because each was tuned rather than
+          left at whatever the default happened to be. */}
+      <p className="cmp-note">
+        {left === "rival" && (
+          <>
+            {RIVAL_NAME} {RIVAL_VERSION}
+            {pair.rival.settings ? ` — ${pair.rival.settings}` : ""}.{" "}
+          </>
+        )}
+        Check it yourself: <a href={pair.original.src}>source</a>,{" "}
+        <a href={pair.vtracer.src}>VTracer 2 SVG</a>, <a href={pair.rival.src}>{RIVAL_NAME} SVG</a>.
+      </p>
     </div>
   );
 }

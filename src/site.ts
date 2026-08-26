@@ -13,6 +13,13 @@ export const MANIFEST_URL =
 export const RIVAL_NAME = "Affinity Designer";
 
 /**
+ * Stated on the page so the comparison is reproducible. Settings were tuned
+ * per image rather than left at defaults, which is the first thing anyone
+ * doubting a competitor comparison will ask about.
+ */
+export const RIVAL_VERSION = "mid-June '26 (4557)";
+
+/**
  * Each side is served as what it actually is: the source stays a raster, and
  * both traces are the real SVG files, so the vector side is genuinely vector.
  *
@@ -28,7 +35,12 @@ export const COMPARISONS = [
     focus: { x: 0.485, y: 0.215, zoom: 1.4 },
     original: { src: "/compare/indian-girl.webp", note: "384 × 512 WebP" },
     vtracer: { src: "/compare/indian-girl_vtracer.svg", paths: 593, kb: 341 },
-    rival: { src: "/compare/indian-girl_affinity.svg", paths: 2361, kb: 764 },
+    rival: {
+      src: "/compare/indian-girl_affinity.svg",
+      paths: 2361,
+      kb: 764,
+      settings: "Edge Threshold 0%, Curve Fitting Tolerance 50%",
+    },
   },
   {
     id: "mascot",
@@ -37,7 +49,12 @@ export const COMPARISONS = [
     focus: { x: 0.51, y: 0.5, zoom: 1 },
     original: { src: "/compare/tiger-woman.webp", note: "512 × 512 WebP" },
     vtracer: { src: "/compare/tiger-woman_vtracer.svg", paths: 161, kb: 43 },
-    rival: { src: "/compare/tiger-woman-affinity.svg", paths: 114, kb: 75 },
+    rival: {
+      src: "/compare/tiger-woman_affinity.svg",
+      paths: 112,
+      kb: 45,
+      settings: "Edge Threshold 25%, Curve Fitting Tolerance 25%",
+    },
   },
 ];
 
