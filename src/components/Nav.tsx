@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { DOCS, RELEASES, REPO } from "../site";
+import { DOWNLOAD_URL } from "../site";
 
 export default function Nav() {
   const [stuck, setStuck] = useState(false);
@@ -15,18 +15,14 @@ export default function Nav() {
     <header className={stuck ? "nav stuck" : "nav"}>
       <div className="shell nav-inner">
         <a className="brand" href="/">
-          <img src="/icon.png" alt="" width={28} height={28} />
-          <span className="brand-name">VTracer</span>
-          <span className="brand-ver">2.0</span>
+          <span className="brand-name">VTracer 2</span>
         </a>
         <nav className="nav-links">
-          <a href="#compare">Compare</a>
           <a href="#features">Features</a>
-          <a href="#install">Install</a>
-          <a href={DOCS}>Docs</a>
-          <a href={REPO}>GitHub</a>
+          <a href="#background">What&rsquo;s new</a>
+          <a href="#open-source">VTracer 1</a>
         </nav>
-        <a className="btn btn-primary btn-sm" href={RELEASES}>
+        <a className="btn btn-primary btn-sm" href={DOWNLOAD_URL}>
           Download
         </a>
       </div>

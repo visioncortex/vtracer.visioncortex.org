@@ -1,42 +1,52 @@
-import { RELEASES, REPO } from "../site";
+import Comparator from "./Comparator";
+import { DOWNLOAD_URL, PLATFORMS } from "../site";
+import { useOS } from "../useOS";
 
 export default function Hero() {
+  const os = useOS();
+  const others = PLATFORMS.filter((p) => p.os !== os);
+
   return (
     <section className="hero">
       <div className="shell">
-        <p className="hero-badge">
-          <span className="dot" />
-          <span className="eyebrow">VTracer 2.0 — out now</span>
-        </p>
-
         <h1 className="display hero-title">
           The next-gen <span className="accent">VTracer</span> has arrived
         </h1>
 
         <p className="hero-sub">
-          <strong>The best vectorizer, at your fingertips.</strong> Turn any raster image into clean,
-          compact SVG — from gigapixel blueprints down to pixel art.
+          <strong>The best vectorizer, at your fingertips.</strong> A deep-learning engine cleans up
+          and sharpens your artwork first, then traces it — crisp edges, real gradients, and lines
+          you would have drawn yourself.
         </p>
 
         <div className="hero-cta">
-          <a className="btn btn-primary" href={RELEASES}>
-            Download for free
+          <a className="btn btn-primary" href={DOWNLOAD_URL}>
+            {os ? `Download for ${os}` : "Download the app"}
           </a>
-          <a className="btn btn-ghost" href={REPO}>
-            View source
+          <a className="btn btn-ghost" href="#features">
+            See what it does
           </a>
         </div>
 
-        <p className="hero-meta">Open source · macOS · Windows · Linux</p>
+        <p className="hero-meta">
+          Free to download ·{" "}
+          {os ? (
+            <>
+              also for{" "}
+              {others.map((p, i) => (
+                <span key={p.os}>
+                  {i > 0 && " and "}
+                  <a href={DOWNLOAD_URL}>{p.os}</a>
+                </span>
+              ))}
+            </>
+          ) : (
+            "macOS, Windows and Linux"
+          )}{" "}
+          · Runs entirely on your device
+        </p>
 
-        <figure className="shot">
-          <img
-            src="/desktop-app.png"
-            alt="The VTracer desktop app tracing a scanned locomotive blueprint, with the A/B comparator open and clustering, compositing and curve-fitting controls in the side panel."
-            width={1552}
-            height={922}
-          />
-        </figure>
+        <Comparator />
       </div>
     </section>
   );

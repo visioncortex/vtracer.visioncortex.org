@@ -1,16 +1,8 @@
-const ITEMS = [
-  "Rust",
-  "WebAssembly",
-  "Python",
-  "npm",
-  "Command line",
-  "Desktop app",
-  "MIT / Apache-2.0",
-];
+import { MARQUEE } from "../site";
 
 export default function Marquee() {
   // Rendered twice so the -50% translate loops without a visible seam.
-  const track = [...ITEMS, ...ITEMS];
+  const track = [...MARQUEE, ...MARQUEE];
 
   return (
     <div className="marquee" aria-hidden="true">

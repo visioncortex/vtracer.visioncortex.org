@@ -5,13 +5,14 @@ export default function Footer() {
     <footer className="footer">
       <div className="shell footer-inner">
         <span>© {new Date().getFullYear()} Vision Cortex</span>
-        <span>MIT / Apache-2.0</span>
+        <span className="footer-note">
+          The app is free. VTracer 2 is a paid add-in. VTracer 1 is MIT-licensed.
+        </span>
         <nav className="footer-links">
+          <a href="#download">Download</a>
+          <a href="#open-source">VTracer 1</a>
           <a href={REPO}>GitHub</a>
           <a href={DOCS}>Algorithm docs</a>
-          <a href="https://crates.io/crates/vtracer">crates.io</a>
-          <a href="https://pypi.org/project/vtracer/">PyPI</a>
-          <a href="https://www.npmjs.com/package/@visioncortex/vtracer">npm</a>
           <a href={ORG}>Vision Cortex</a>
         </nav>
       </div>
