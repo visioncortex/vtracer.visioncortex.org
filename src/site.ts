@@ -43,8 +43,8 @@ export const COMPARISONS = [
     },
   },
   {
-    id: "mascot",
-    label: "Mascot",
+    id: "graphic",
+    label: "Graphic",
     aspect: 1,
     focus: { x: 0.51, y: 0.5, zoom: 1 },
     original: { src: "/compare/tiger-woman.webp", note: "512 × 512 WebP" },
@@ -66,15 +66,19 @@ export const SHOWCASE = [
     blurb:
       "A sky that fades stays a fade — emitted as a gradient rather than sliced into a hundred flat steps.",
     aspect: 1400 / 976,
-    focus: { x: 0.5, y: 0.46, zoom: 1.1 },
+    // Landscape art in a 4:3 stage barely covers it; the extra zoom gives the
+    // vertical crop something to work with.
+    focus: { x: 0.5, y: 0.48, zoom: 1.2 },
+    // Re-encoded from the 1400x976 source VTracer actually traced, at 4:4:4 so
+    // JPEG banding does not spoil the very gradient this sample is showing.
     original: "/compare/cityscape-sunset.jpg",
     vtracer: "/compare/cityscape-sunset.svg",
   },
   {
     id: "denoise",
-    title: "Through the compression",
+    title: "JPEG compression? No problem",
     blurb:
-      "The source has been round-tripped until its edges crawl. Cropped to the face, where the noise shows.",
+      "Got only heavily degraded JPEG? VTracer 2 removes noises and recovers detail, leaving artifacts behind.",
     aspect: 496 / 512,
     focus: { x: 0.465, y: 0.19, zoom: 1.9 },
     original: "/compare/corgi-noise.webp",
@@ -107,11 +111,11 @@ export const FEATURES = [
   },
   {
     title: "No hallucination",
-    body: "Upscaling models love to invent. Ours does not. Every detail in the output traces back to something that was genuinely in your input — that constraint is engineered in, not hoped for.",
+    body: "Upscaling models love to invent. Ours does not. Every detail in the output traces back to something that was genuinely in your input — that constraint is engineered in.",
   },
   {
     title: "Runs on your device",
-    body: "A 4.5M-parameter model: small enough to be quick and entirely local, Metal-accelerated on macOS. Nothing is uploaded, and there is no queue to wait in.",
+    body: "A 4.5M-parameter model: small enough to be quick and entirely local, Metal-accelerated on macOS. Nothing is uploaded, your artwork stays private.",
   },
   {
     title: "Survives real JPEGs",
@@ -123,7 +127,7 @@ export const FEATURES = [
   },
   {
     title: "Stacked mode",
-    body: "VTracer's signature output: shapes layered rather than cut against one another. Fewer nodes, smaller files, and a document that is actually pleasant to open and edit.",
+    body: "VTracer's unique feature: shapes layered rather than cut against one another. Fewer nodes, smaller files, and a document that is actually pleasant to open and edit.",
   },
 ];
 

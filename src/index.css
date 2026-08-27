@@ -827,7 +827,50 @@ body::after {
   line-height: 1.6;
 }
 
-/* ---------------------------------------------------------- early access */
+/* -------------------------------------------------------------- download */
+
+.scarcity {
+  display: flex;
+  /* Sits level with the first line, rather than floating mid-paragraph when
+     the text wraps on narrow screens. */
+  align-items: flex-start;
+  gap: 14px;
+  margin: 0 0 18px;
+  padding: 16px 22px;
+  border: 1px solid rgba(0, 136, 247, 0.28);
+  background: var(--brand-soft);
+  border-radius: 12px;
+  font-size: 0.9375rem;
+  line-height: 1.55;
+  color: var(--fg);
+}
+
+.scarcity b {
+  font-weight: 500;
+}
+
+.scarcity-dot {
+  flex: none;
+  margin-top: 8px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--brand);
+  box-shadow: 0 0 0 4px rgba(0, 136, 247, 0.2);
+  animation: pulse 2.4s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  50% {
+    opacity: 0.4;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scarcity-dot {
+    animation: none;
+  }
+}
 
 .platform-strip {
   display: grid;
@@ -918,30 +961,56 @@ body::after {
 }
 
 .footer-inner {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 20px 32px;
   font-size: 0.875rem;
-  color: var(--muted);
-}
-
-.footer-note {
   color: var(--muted-2);
 }
 
-.footer-links {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 24px;
-  margin-left: auto;
-}
-
-.footer-links a {
+.footer-inner a {
   color: var(--muted);
   transition: color 0.18s ease;
 }
 
-.footer-links a:hover {
+.footer-inner a:hover {
   color: var(--fg);
+}
+
+.star-btn {
+  display: inline-flex;
+  align-items: stretch;
+  margin-top: 22px;
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
+  overflow: hidden;
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition:
+    border-color 0.18s ease,
+    background-color 0.18s ease;
+}
+
+.star-btn:hover {
+  border-color: var(--fg);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.star-btn-main {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  padding: 10px 18px;
+}
+
+.star-btn-main svg {
+  color: var(--gold);
+}
+
+.star-btn-count {
+  display: inline-flex;
+  align-items: center;
+  padding: 10px 18px;
+  border-left: 1px solid var(--line-strong);
+  background: rgba(255, 255, 255, 0.04);
+  font-family: var(--mono);
+  font-size: 0.8125rem;
+  color: var(--muted);
 }

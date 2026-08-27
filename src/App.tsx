@@ -1,4 +1,5 @@
 import Showcase from "./components/Showcase";
+import StarButton from "./components/StarButton";
 import Features from "./components/Features";
 import Footer from "./components/Footer";
 import Hero from "./components/Hero";
@@ -61,15 +62,21 @@ export default function App() {
               <span className="section-num">03</span>
               <div>
                 <h2 className="display section-title">
-                  The app is <span className="accent">free</span>. VTracer 2 is the add‑in.
+                  Start with the <span className="accent">free</span> app
                 </h2>
                 <p className="section-note">
-                  Download the app and it is yours, no strings. VTracer 2 switches on from inside it
-                  — and while we tune the engine we are handing trial activations to a limited number
-                  of designers at a time.
+                  Download the app and it is yours, no strings. VTracer 2 switches on from inside
+                  it — a free trial, no card required.
                 </p>
               </div>
             </div>
+            <p className="scarcity">
+              <span className="scarcity-dot" aria-hidden="true" />
+              <span>
+                <b>We invite professional designers and illustrators to shape our product.</b> Seats
+                are limited — create an account in the app to request one.
+              </span>
+            </p>
             <Platforms />
           </div>
         </section>
@@ -86,6 +93,7 @@ export default function App() {
                   The original engine is MIT-licensed, recently revamped, and free to use in anything
                   you build. That is not changing.
                 </p>
+                <StarButton />
               </div>
             </div>
             <Install />
