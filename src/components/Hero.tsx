@@ -17,7 +17,7 @@ export default function Hero() {
 
         <p className="hero-sub">
           <strong>The best vectorizer, at your fingertips.</strong> A deep-learning engine cleans up
-          and sharpens your artwork first, then traces it — crisp edges, real gradients, and lines
+          and sharpens your artwork first, then traces it — crisp edges, smooth gradients, and curves
           you would have drawn yourself.
         </p>
 

@@ -70,6 +70,15 @@ export default function App() {
                 </p>
               </div>
             </div>
+            <figure className="shot">
+              <img
+                src="/vtracer2-app-dark.png"
+                alt="The VTracer 2 desktop app comparing a traced tiger mascot against its source, with model, clustering, compositing and curve-fitting controls in the side panel."
+                width={1552}
+                height={922}
+              />
+            </figure>
+
             <p className="scarcity">
               <span className="scarcity-dot" aria-hidden="true" />
               <span>

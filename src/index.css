@@ -342,22 +342,20 @@ body::after {
 }
 
 /* App screenshot in a window frame, tipped slightly into the page. */
+/* The screenshot arrives already framed — window chrome, rounded corners and
+   its own shadow, on transparency. Anything here would be a second frame, so
+   this only sizes it and adds a bloom that follows the window's alpha rather
+   than its bounding box. */
 .shot {
-  margin: clamp(48px, 7vw, 88px) auto 0;
+  margin: 0 auto clamp(24px, 3vw, 34px);
   max-width: 1180px;
-  border: 1px solid var(--line);
-  border-radius: 16px;
-  background: var(--surface-2);
-  padding: 10px;
-  box-shadow:
-    0 0 0 1px rgba(0, 0, 0, 0.6),
-    0 40px 120px -30px rgba(0, 136, 247, 0.28),
-    0 30px 90px -40px rgba(0, 0, 0, 0.9);
+  filter: drop-shadow(0 30px 90px rgba(0, 136, 247, 0.22));
 }
 
 .shot img {
   width: 100%;
-  border-radius: 8px;
+  /* Without this the height attribute on the tag wins and the shot stretches. */
+  height: auto;
 }
 
 /* --------------------------------------------------------------- marquee */
