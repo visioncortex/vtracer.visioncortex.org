@@ -58,6 +58,45 @@ export const COMPARISONS = [
   },
 ];
 
+/** The three capabilities that are new in 2, one column each. */
+export const SHOWCASE = [
+  {
+    id: "gradients",
+    title: "Gradients, not bands",
+    blurb:
+      "A sky that fades stays a fade — emitted as a gradient rather than sliced into a hundred flat steps.",
+    aspect: 1400 / 976,
+    focus: { x: 0.5, y: 0.46, zoom: 1.1 },
+    original: "/compare/cityscape-sunset.jpg",
+    vtracer: "/compare/cityscape-sunset.svg",
+  },
+  {
+    id: "denoise",
+    title: "Through the compression",
+    blurb:
+      "The source has been round-tripped until its edges crawl. Cropped to the face, where the noise shows.",
+    aspect: 496 / 512,
+    focus: { x: 0.465, y: 0.19, zoom: 1.9 },
+    original: "/compare/corgi-noise.webp",
+    vtracer: "/compare/corgi-noise_vtracer.svg",
+  },
+  {
+    id: "background",
+    title: "Backgrounds, gone",
+    blurb:
+      "Clip art arrives on a solid plate. One checkbox and the trace lands on transparency instead.",
+    aspect: 1,
+    focus: { x: 0.5, y: 0.5, zoom: 1 },
+    original: "/compare/ginger-cat.jpg",
+    vtracer: "/compare/ginger-cat_vtracer.svg",
+    /** Right of the divider is genuinely transparent, so show the checker. */
+    transparent: true,
+  },
+];
+
+/** Showcase stages are 4:3; the hero comparator is 16:9. */
+export const SHOWCASE_ASPECT = 4 / 3;
+
 /** Every stage is framed 16:9, whatever shape the source art is. */
 export const STAGE_ASPECT = 16 / 9;
 

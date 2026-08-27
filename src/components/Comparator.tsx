@@ -1,27 +1,12 @@
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
+import Wipe from "./Wipe";
 import { COMPARISONS, RIVAL_NAME, RIVAL_VERSION, STAGE_ASPECT } from "../site";
 
 type LeftSide = "original" | "rival";
 
-/**
- * Places the source art inside a 16:9 stage so that `focus` sits dead centre,
- * scaled by `focus.zoom`. Returned as percentages of the stage box, which lets
- * both layers use the identical framing without measuring anything.
- */
-function frame(aspect: number, focus: { x: number; y: number; zoom: number }) {
-  const z = focus.zoom;
-  return {
-    width: `${z * 100}%`,
-    left: `${50 - focus.x * z * 100}%`,
-    top: `${50 - focus.y * z * (STAGE_ASPECT / aspect) * 100}%`,
-  };
-}
-
 export default function Comparator() {
-  const stageRef = useRef<HTMLDivElement>(null);
   const [pairIdx, setPairIdx] = useState(0);
   const [left, setLeft] = useState<LeftSide>("original");
-  const [split, setSplit] = useState(48);
 
   // Warm the sides that are not on screen yet, so flipping a tab never flashes
   // an empty stage. Deferred to idle time — together these run to a few hundred
@@ -29,8 +14,8 @@ export default function Comparator() {
   useEffect(() => {
     const warm = () => {
       for (const c of COMPARISONS) {
-        for (const side of [c.original, c.vtracer, c.rival]) {
-          new Image().src = side.src;
+        for (const each of [c.original, c.vtracer, c.rival]) {
+          if (each) new Image().src = each.src;
         }
       }
     };
@@ -44,30 +29,9 @@ export default function Comparator() {
   }, []);
 
   const pair = COMPARISONS[pairIdx];
-  const leftImage = left === "original" ? pair.original : pair.rival;
+  const rival = pair.rival;
+  const leftImage = left === "original" ? pair.original : rival;
   const leftLabel = left === "original" ? "Original" : RIVAL_NAME;
-  const framing = frame(pair.aspect, pair.focus);
-
-  const moveSplit = useCallback((clientX: number) => {
-    const stage = stageRef.current;
-    if (!stage) return;
-    const rect = stage.getBoundingClientRect();
-    setSplit(Math.min(100, Math.max(0, ((clientX - rect.left) / rect.width) * 100)));
-  }, []);
-
-  const onPointerDown = (e: React.PointerEvent<HTMLDivElement>) => {
-    e.currentTarget.setPointerCapture(e.pointerId);
-    moveSplit(e.clientX);
-  };
-
-  const onPointerMove = (e: React.PointerEvent<HTMLDivElement>) => {
-    if (e.currentTarget.hasPointerCapture(e.pointerId)) moveSplit(e.clientX);
-  };
-
-  const onKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
-    if (e.key === "ArrowLeft") setSplit((v) => Math.max(0, v - 4));
-    if (e.key === "ArrowRight") setSplit((v) => Math.min(100, v + 4));
-  };
 
   return (
     <div className="cmp">
@@ -98,44 +62,19 @@ export default function Comparator() {
         </div>
       </div>
 
-      <div
-        ref={stageRef}
-        className="cmp-stage"
-        style={{ aspectRatio: String(STAGE_ASPECT) }}
-        role="slider"
-        tabIndex={0}
-        aria-label={`Comparison position between ${leftLabel} and VTracer 2`}
-        aria-valuemin={0}
-        aria-valuemax={100}
-        aria-valuenow={Math.round(split)}
-        onPointerDown={onPointerDown}
-        onPointerMove={onPointerMove}
-        onKeyDown={onKeyDown}
-      >
-        {/* Right of the divider: the genuine SVG the engine emitted. */}
-        <div className="cmp-layer">
-          <img src={pair.vtracer.src} alt={`${pair.label} traced by VTracer 2`} style={framing} />
-        </div>
-        <div className="cmp-layer" style={{ clipPath: `inset(0 ${100 - split}% 0 0)` }}>
-          <img
-            className={left === "original" ? "raster" : undefined}
-            src={leftImage.src}
-            alt={`${pair.label}, ${leftLabel}`}
-            style={framing}
-          />
-        </div>
-        <span className="cmp-tag left">{leftLabel}</span>
-        <span className="cmp-tag right">VTracer 2</span>
-        <div className="cmp-handle" style={{ left: `${split}%` }}>
-          <span className="cmp-knob" aria-hidden="true">
-            <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor"
-                 strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M10 6 L5 12 L10 18" />
-              <path d="M14 6 L19 12 L14 18" />
-            </svg>
-          </span>
-        </div>
-      </div>
+      <Wipe
+        key={pair.id}
+        leftSrc={leftImage.src}
+        rightSrc={pair.vtracer.src}
+        leftLabel={leftLabel}
+        rightLabel="VTracer 2"
+        leftAlt={`${pair.label}, ${leftLabel}`}
+        rightAlt={`${pair.label} traced by VTracer 2`}
+        stageAspect={STAGE_ASPECT}
+        aspect={pair.aspect}
+        focus={pair.focus}
+        pixelatedLeft={left === "original"}
+      />
 
       <dl className="cmp-stats">
         <div>
@@ -143,7 +82,7 @@ export default function Comparator() {
           <dd>
             {left === "original"
               ? pair.original.note
-              : `${pair.rival.paths.toLocaleString()} paths · ${pair.rival.kb} KB`}
+              : `${rival.paths.toLocaleString()} paths · ${rival.kb} KB`}
           </dd>
         </div>
         <div>
@@ -164,12 +103,11 @@ export default function Comparator() {
       <p className="cmp-note">
         {left === "rival" && (
           <>
-            {RIVAL_NAME} {RIVAL_VERSION}
-            {pair.rival.settings ? ` — ${pair.rival.settings}` : ""}.{" "}
+            {RIVAL_NAME} {RIVAL_VERSION} — {rival.settings}.{" "}
           </>
         )}
-        Check it yourself: <a href={pair.original.src}>source</a>,{" "}
-        <a href={pair.vtracer.src}>VTracer 2 SVG</a>, <a href={pair.rival.src}>{RIVAL_NAME} SVG</a>.
+        Compare the traces yourself: <a href={pair.vtracer.src}>VTracer 2 SVG</a>,{" "}
+        <a href={rival.src}>{RIVAL_NAME} SVG</a>.
       </p>
     </div>
   );

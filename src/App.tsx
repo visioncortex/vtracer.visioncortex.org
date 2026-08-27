@@ -1,4 +1,4 @@
-import BackgroundDemo from "./components/BackgroundDemo";
+import Showcase from "./components/Showcase";
 import Features from "./components/Features";
 import Footer from "./components/Footer";
 import Hero from "./components/Hero";
@@ -46,12 +46,12 @@ export default function App() {
               <div>
                 <h2 className="display section-title">New in VTracer 2</h2>
                 <p className="section-note">
-                  Tick the box below to see it. The plate the artwork sits on comes off, and the SVG
-                  lands on transparency.
+                  Three things the old engine could not do. Drag any of them — the right-hand side of
+                  each is the real SVG.
                 </p>
               </div>
             </div>
-            <BackgroundDemo />
+            <Showcase />
           </div>
         </section>
 
