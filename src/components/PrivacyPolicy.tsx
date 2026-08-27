@@ -70,7 +70,7 @@ export default function PrivacyPolicy() {
         <h3>Product analytics</h3>
         <p>
           Coarse counters about how the App is used — how many traces are run, which features and
-          presets are reached for, and errors the App runs into. These are aggregate numbers that
+          parameters are reached for, and errors the App runs into. These are aggregate numbers that
           tell us which parts of the product are worth the work. They are never joined to your
           artwork, because we do not have your artwork.
         </p>

@@ -65,8 +65,7 @@ export default function App() {
                   Start with the <span className="accent">free</span> app
                 </h2>
                 <p className="section-note">
-                  Download the app and it is yours, no strings. VTracer 2 switches on from inside
-                  it — a free trial, no card required.
+                  Download the app and start tracing. Activate VTracer 2 inside the app to start a free trial, no credit card required.
                 </p>
               </div>
             </div>
@@ -82,8 +81,7 @@ export default function App() {
             <p className="scarcity">
               <span className="scarcity-dot" aria-hidden="true" />
               <span>
-                <b>We invite professional designers and illustrators to shape our product.</b> Seats
-                are limited — create an account in the app to request one.
+                <b>We invite professional designers and illustrators to shape our product.</b> Seats are limited — register in the app to request early access!
               </span>
             </p>
             <Platforms />
