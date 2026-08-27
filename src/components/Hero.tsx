@@ -45,7 +45,7 @@ export default function Hero() {
           ) : (
             "macOS, Windows and Linux"
           )}{" "}
-          · Runs entirely on your device
+          · Tracing runs entirely on your device
         </p>
 
         <Comparator />

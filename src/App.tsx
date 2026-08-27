@@ -4,7 +4,6 @@ import Features from "./components/Features";
 import Footer from "./components/Footer";
 import Hero from "./components/Hero";
 import Install from "./components/Install";
-import Marquee from "./components/Marquee";
 import Nav from "./components/Nav";
 import Platforms from "./components/Platforms";
 import { REPO } from "./site";
@@ -20,7 +19,6 @@ export default function App() {
       <Nav />
       <main>
         <Hero />
-        <Marquee />
 
         <section className="section" id="features" style={{ borderTop: 0 }}>
           <div className="shell">

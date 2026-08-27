@@ -119,7 +119,7 @@ export const FEATURES = [
   },
   {
     title: "Runs on your device",
-    body: "A 4.5M-parameter model: small enough to be quick and entirely local, Metal-accelerated on macOS. Nothing is uploaded, your artwork stays private.",
+    body: "A 4.5M-parameter model: small enough to be quick and entirely local, Metal-accelerated on macOS. Your artwork never leaves the machine — there is no server in the tracing loop.",
   },
   {
     title: "Survives real JPEGs",
@@ -133,16 +133,6 @@ export const FEATURES = [
     title: "Stacked mode",
     body: "VTracer's unique feature: shapes layered rather than cut against one another. Fewer nodes, smaller files, and a document that is actually pleasant to open and edit.",
   },
-];
-
-export const MARQUEE = [
-  "8× upscale",
-  "On-device inference",
-  "Metal accelerated",
-  "Mesh gradients",
-  "Stacked SVG",
-  "JPEG-resilient",
-  "macOS · Windows · Linux",
 ];
 
 export const PLATFORMS = [

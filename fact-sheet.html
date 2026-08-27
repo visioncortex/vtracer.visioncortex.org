@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/png" href="/icon.png" />
+    <title>VTracer 2 — Fact Sheet</title>
+    <meta
+      name="description"
+      content="VTracer 2 tracing engine"
+    />
+    <!-- Framed inside the desktop app; it should not compete with the
+         marketing page in search results. -->
+    <meta name="robots" content="noindex" />
+    <meta name="color-scheme" content="light dark" />
+    <link rel="canonical" href="https://vtracer.visioncortex.org/fact-sheet" />
+  </head>
+  <body>
+    <!-- The app pins the theme by putting #theme-dark or #theme-light on the
+         iframe's URL; :target picks it up in fact-sheet.css. Anchors rather
+         than a script, because this page is framed inside an app whose CSP
+         should not have to allow inline script for a colour scheme. Empty and
+         hidden: they exist only to be targeted. -->
+    <span id="theme-light" hidden></span>
+    <span id="theme-dark" hidden></span>
+    <div id="root"></div>
+    <script type="module" src="/src/fact-sheet.tsx"></script>
+  </body>
+</html>

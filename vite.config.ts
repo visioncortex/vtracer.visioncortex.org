@@ -13,7 +13,11 @@ export default defineConfig({
       configureServer(server) {
         server.middlewares.use((req, _res, next) => {
           const clean = req.url?.replace(/[?#].*$/, "");
-          if (clean === "/privacy-policy" || clean === "/terms-of-service") {
+          if (
+            clean === "/privacy-policy" ||
+            clean === "/terms-of-service" ||
+            clean === "/fact-sheet"
+          ) {
             req.url = `${clean}.html${req.url!.slice(clean.length)}`;
           }
           next();
@@ -31,6 +35,7 @@ export default defineConfig({
         index: resolve(import.meta.dirname, "index.html"),
         "privacy-policy": resolve(import.meta.dirname, "privacy-policy.html"),
         "terms-of-service": resolve(import.meta.dirname, "terms-of-service.html"),
+        "fact-sheet": resolve(import.meta.dirname, "fact-sheet.html"),
       },
     },
   },

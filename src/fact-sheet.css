@@ -1,0 +1,319 @@
+/* ------------------------------------------------------------------------
+   Styles for the in-app fact sheet only. Deliberately not index.css: that
+   sheet is a dark-only marketing page with a bloom, film grain and display
+   type at scale, none of which belong in a panel embedded in the app. This is
+   the same page with the selling taken out — same samples, plainer treatment.
+
+   No webfont is loaded either. This page is framed inside a desktop app that
+   may be offline, and the system stack matches its host.
+   ------------------------------------------------------------------------ */
+
+:root {
+  color-scheme: light dark;
+
+  /* Both palettes, each written once. Every rule below only ever points --bg
+     and its neighbours at one set or the other, so there is nowhere for the
+     two schemes to drift apart. */
+  --light-bg: #ffffff;
+  --light-raised: #f7f7f5;
+  --light-fg: #17171b;
+  --light-muted: #5a5a66;
+  --light-line: rgba(0, 0, 0, 0.12);
+  --light-brand: #0069c4;
+
+  --dark-bg: #0e0e10;
+  --dark-raised: #16161a;
+  --dark-fg: #f1f1ee;
+  --dark-muted: #9c9ca6;
+  --dark-line: rgba(255, 255, 255, 0.14);
+  --dark-brand: #56acff;
+
+  --sans: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --serif: ui-serif, Georgia, "Times New Roman", serif;
+  --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+
+  --bg: var(--light-bg);
+  --raised: var(--light-raised);
+  --fg: var(--light-fg);
+  --muted: var(--light-muted);
+  --line: var(--light-line);
+  --brand: var(--light-brand);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: var(--dark-bg);
+    --raised: var(--dark-raised);
+    --fg: var(--dark-fg);
+    --muted: var(--dark-muted);
+    --line: var(--dark-line);
+    --brand: var(--dark-brand);
+  }
+}
+
+/* The app pins the theme by loading the page at #theme-dark or #theme-light,
+   which the anchors in fact-sheet.html turn into a :target. Selectors only —
+   no script, so an embedding app never has to loosen script-src for the sake
+   of a colour scheme.
+
+   Both rules outrank the plain :root above them on specificity, so they win
+   in either direction whatever the OS asked for. An engine without :has()
+   drops the pair as invalid and follows the OS instead, which is exactly what
+   an unpinned page does; the OS rule above stays valid on its own so dark
+   mode never goes with it. */
+:root:has(#theme-dark:target) {
+  color-scheme: dark;
+
+  --bg: var(--dark-bg);
+  --raised: var(--dark-raised);
+  --fg: var(--dark-fg);
+  --muted: var(--dark-muted);
+  --line: var(--dark-line);
+  --brand: var(--dark-brand);
+}
+
+:root:has(#theme-light:target) {
+  color-scheme: light;
+
+  --bg: var(--light-bg);
+  --raised: var(--light-raised);
+  --fg: var(--light-fg);
+  --muted: var(--light-muted);
+  --line: var(--light-line);
+  --brand: var(--light-brand);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--sans);
+  font-size: 15px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: var(--brand);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* No measure on the page itself: it is framed in a panel the user resizes,
+   and letting it fill means the samples get the room they deserve on a wide
+   window. Prose keeps its own measure below, so the lines stay readable
+   however wide the frame gets. */
+.fs {
+  padding: clamp(28px, 5vw, 52px) clamp(20px, 5vw, 40px) 56px;
+}
+
+/* ------------------------------------------------------------------ head */
+
+.fs-head {
+  margin-bottom: clamp(24px, 4vw, 34px);
+}
+
+.fs-head h1 {
+  margin: 0;
+  font-family: var(--serif);
+  font-size: clamp(1.9rem, 4vw, 2.4rem);
+  font-weight: 400;
+  letter-spacing: -0.01em;
+}
+
+.fs-lede {
+  margin: 14px 0 0;
+  max-width: 68ch;
+  color: var(--muted);
+  font-size: 1rem;
+}
+
+/* -------------------------------------------------------------- sections */
+
+.fs-section {
+  margin-top: clamp(30px, 4vw, 44px);
+  padding-top: 20px;
+  border-top: 1px solid var(--line);
+}
+
+.fs-section h2 {
+  margin: 0 0 16px;
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.fs-section p {
+  margin: 0 0 12px;
+  max-width: 68ch;
+}
+
+.fs-section p:last-child {
+  margin-bottom: 0;
+}
+
+/* ------------------------------------------------------------- comparison */
+
+/* The marketing page lets you drag this; here it is pinned at the halfway
+   point, which is why there is no handle and nothing to focus. */
+.fs-stage {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: #fff;
+}
+
+/* The conventional light checker: it matches the brightness of the plate it
+   replaces, and keeps dark line work in the artwork readable. */
+.fs-stage.checker {
+  background-color: #ffffff;
+  background-image:
+    linear-gradient(45deg, #dadada 25%, transparent 25%),
+    linear-gradient(-45deg, #dadada 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, #dadada 75%),
+    linear-gradient(-45deg, transparent 75%, #dadada 75%);
+  background-size: 20px 20px;
+  background-position:
+    0 0,
+    0 10px,
+    10px -10px,
+    -10px 0;
+}
+
+.fs-layer {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.fs-layer img {
+  position: absolute;
+  height: auto;
+  max-width: none;
+}
+
+/* The source really is only a few hundred pixels across; show its pixels
+   rather than let the browser smooth them away. */
+.fs-layer img.raster {
+  image-rendering: pixelated;
+}
+
+.fs-divider {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 1px;
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.3);
+}
+
+.fs-tag {
+  position: absolute;
+  top: 10px;
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.55);
+  border-radius: 999px;
+  padding: 4px 10px;
+}
+
+.fs-tag.left {
+  left: 10px;
+}
+
+.fs-tag.right {
+  right: 10px;
+  background: var(--brand);
+}
+
+.fs-caption {
+  margin: 10px 0 0;
+  color: var(--muted);
+  font-size: 0.8125rem;
+}
+
+/* ----------------------------------------------------------------- copy */
+
+/* Two columns of prose where there is room; the cards carry no chrome, since
+   a border around every paragraph is exactly the marketing treatment this
+   page is meant to drop. */
+.fs-grid {
+  display: grid;
+  gap: 22px 34px;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+
+.fs-grid h3,
+.fs-cols h3 {
+  margin: 0 0 6px;
+  font-size: 0.9375rem;
+  font-weight: 600;
+}
+
+.fs-grid p,
+.fs-cols p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.875rem;
+}
+
+.fs-cols {
+  display: grid;
+  gap: 24px;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+}
+
+.fs-cols h3 {
+  margin-top: 12px;
+}
+
+.fs-list {
+  margin: 0;
+  padding-left: 20px;
+  color: var(--muted);
+}
+
+.fs-list li + li {
+  margin-top: 6px;
+}
+
+/* ---------------------------------------------------------------- footer */
+
+.fs-foot {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px 28px;
+  margin-top: clamp(30px, 4vw, 44px);
+  padding-top: 20px;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 0.875rem;
+}
+
+.fs-foot p {
+  margin: 0;
+}
+
+.fs-links {
+  display: flex;
+  gap: 22px;
+  margin-left: auto;
+}

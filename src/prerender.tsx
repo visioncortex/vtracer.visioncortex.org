@@ -1,4 +1,5 @@
-import { renderToString } from "react-dom/server";
+import { renderToStaticMarkup, renderToString } from "react-dom/server";
+import FactSheet from "./components/FactSheet";
 import PrivacyPolicy from "./components/PrivacyPolicy";
 import TermsOfService from "./components/TermsOfService";
 
@@ -10,4 +11,7 @@ import TermsOfService from "./components/TermsOfService";
 export const PAGES: Record<string, () => string> = {
   "privacy-policy": () => renderToString(<PrivacyPolicy />),
   "terms-of-service": () => renderToString(<TermsOfService />),
+  // Static markup, not renderToString: nothing hydrates this page.
+  "fact-sheet": () => renderToStaticMarkup(<FactSheet />),
 };
+
