@@ -20,10 +20,11 @@ export default function Nav() {
         <a className="brand" href="/">
           <span className="brand-name">VTracer 2</span>
         </a>
+        {/* Absolute, so the same nav works from the legal pages. */}
         <nav className="nav-links">
-          <a href="#features">Features</a>
-          <a href="#background">What&rsquo;s new</a>
-          <a href="#open-source">VTracer 1</a>
+          <a href="/#features">Features</a>
+          <a href="/#background">What&rsquo;s new</a>
+          <a href="/#open-source">VTracer 1</a>
         </nav>
         <a className="btn btn-primary btn-sm" href={download(os)}>
           Download

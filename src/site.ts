@@ -214,3 +214,37 @@ export const SNIPPETS: Snippet[] = [
     ],
   },
 ];
+
+/**
+ * The facts in the legal documents that are about the company rather than
+ * about the product, kept here so they are corrected in one place.
+ *
+ * `address` is still blank: a company registered in England has to show its
+ * registered office alongside its number, and the contact block prints it as
+ * soon as it is filled in.
+ */
+export const LEGAL: {
+  entity: string;
+  registeredIn: string;
+  companyNumber: string;
+  address: string;
+  contact: string;
+  law: string;
+  courts: string;
+  updated: string;
+} = {
+  entity: "Seafire Software Limited",
+  registeredIn: "England and Wales",
+  companyNumber: "15102818",
+  address: "",
+  contact: "support@visioncortex.org",
+  law: "England and Wales",
+  courts: "the courts of England and Wales",
+  updated: "27 August 2026",
+};
+
+/**
+ * The free trial's two limits, whichever is reached first. Stated in the Terms
+ * and in the Privacy Policy's explanation of why the app counts traces at all.
+ */
+export const TRIAL = { traces: 1000, days: 30 } as const;

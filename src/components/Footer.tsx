@@ -7,6 +7,10 @@ export default function Footer() {
         <span>
           © {new Date().getFullYear()} <a href={ORG}>Vision Cortex</a>
         </span>
+        <nav className="footer-links">
+          <a href="/privacy-policy">Privacy</a>
+          <a href="/terms-of-service">Terms</a>
+        </nav>
       </div>
     </footer>
   );
