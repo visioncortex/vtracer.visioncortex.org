@@ -9,15 +9,19 @@ export const DOWNLOAD_URL = `${REPO}/releases/latest`;
 export const MANIFEST_URL =
   "https://raw.githubusercontent.com/visioncortex/vtracer/desktop-updates/latest.json";
 
-/** The trace we benchmark against. Shown by name on the comparator. */
-export const RIVAL_NAME = "Affinity Designer";
+/**
+ * The trace we benchmark against. Canva merged Designer, Photo and Publisher
+ * into one app, so "Affinity Designer" is a retired product name — the build
+ * below is the unified app.
+ */
+export const RIVAL_NAME = "Affinity";
 
 /**
  * Stated on the page so the comparison is reproducible. Settings were tuned
  * per image rather than left at defaults, which is the first thing anyone
  * doubting a competitor comparison will ask about.
  */
-export const RIVAL_VERSION = "mid-June '26 (4557)";
+export const RIVAL_VERSION = "mid-June '26 (build 4557)";
 
 /**
  * Each side is served as what it actually is: the source stays a raster, and

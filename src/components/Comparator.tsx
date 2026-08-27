@@ -36,6 +36,21 @@ export default function Comparator() {
   return (
     <div className="cmp">
       <div className="cmp-switches">
+        {/* This picks what sits LEFT of the divider, so it sits left too —
+            directly above the tag naming whatever it selected. */}
+        <div className="seg" role="tablist" aria-label="What to compare VTracer 2 against">
+          <button
+            role="tab"
+            aria-selected={left === "original"}
+            onClick={() => setLeft("original")}
+          >
+            Original
+          </button>
+          <button role="tab" aria-selected={left === "rival"} onClick={() => setLeft("rival")}>
+            {RIVAL_NAME}
+          </button>
+        </div>
+        {/* Changes both halves at once, so it is not tied to either side. */}
         <div className="seg" role="tablist" aria-label="Sample artwork">
           {COMPARISONS.map((c, i) => (
             <button
@@ -47,18 +62,6 @@ export default function Comparator() {
               {c.label}
             </button>
           ))}
-        </div>
-        <div className="seg" role="tablist" aria-label="What to compare against">
-          <button
-            role="tab"
-            aria-selected={left === "original"}
-            onClick={() => setLeft("original")}
-          >
-            Original
-          </button>
-          <button role="tab" aria-selected={left === "rival"} onClick={() => setLeft("rival")}>
-            {RIVAL_NAME}
-          </button>
         </div>
       </div>
 
