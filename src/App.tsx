@@ -110,7 +110,7 @@ export default function App() {
         <section className="cta">
           <div className="shell">
             <h2 className="display">
-              Stop redrawing. <span className="accent">Start tracing.</span>
+              Start <span className="accent">tracing.</span>
             </h2>
             <div className="hero-cta">
               <a className="btn btn-primary" href={download(os)}>

@@ -10,7 +10,7 @@ export default function TermsOfService() {
       lede={
         <p>
           These are the terms you agree to by downloading VTracer, creating an account, or using
-          it. They are short, and they are meant to be read.
+          it. They are written in plain language, and they are meant to be read.
         </p>
       }
     >
@@ -35,12 +35,12 @@ export default function TermsOfService() {
         </p>
         <ul>
           <li>
-            <b>Local processing.</b> Tracing happens on your device, using a model bundled with the
-            App. Your source images and the SVGs the App produces are not uploaded to us.
+            <b>Local processing.</b> Tracing happens on your device, using a model stored on it.
+            Your source images and the SVGs the App produces are not uploaded to us.
           </li>
           <li>
-            <b>What does reach us.</b> Your account details, trial usage counts and licence status,
-            plus coarse product analytics. The{" "}
+            <b>What does reach us.</b> Your account details, licence activations and status
+            checks, plus coarse product analytics. The{" "}
             <a href="/privacy-policy">Privacy Policy</a> sets out all of it.
           </li>
         </ul>
@@ -55,9 +55,10 @@ export default function TermsOfService() {
         </p>
         <ul>
           <li>
-            The email address you sign in with must be valid, current and one you control. A licence
-            is granted to that account and delivered to that address; if we cannot reach you there,
-            we cannot deliver or reissue it.
+            The email address you sign in with must be valid, current and one you control. A
+            licence is granted to your account, and you collect and manage it by signing in — on
+            our website or in the App. The address is how a purchase is matched to your account,
+            and how we identify you for support and account recovery.
           </li>
           <li>
             You are responsible for what happens under your account, and for keeping the Google
@@ -83,12 +84,17 @@ export default function TermsOfService() {
         </p>
         <ul>
           <li>
-            To enforce that limit the App reports trace counts and trial status to us. Interfering
-            with, blocking or falsifying that reporting is a breach of these Terms.
+            The trial runs on a time-limited licence certificate issued to your account and device.
+            Its limits are conditions of the trial, however and whenever we enforce them, and
+            interfering with, blocking or falsifying enforcement is a breach of these Terms.
           </li>
           <li>
-            The trial is offered as-is and per account. We may change the limits for future trials,
-            and we may end or withhold a trial where we reasonably believe it is being abused.
+            One trial per person and per device. A device that has used a trial cannot start
+            another, even under a different account.
+          </li>
+          <li>
+            The trial is offered as-is. We may change the limits for future trials, and we may end
+            or withhold a trial where we reasonably believe it is being abused.
           </li>
           <li>
             When the trial ends, the VTracer 2 features switch off; the rest of the App keeps
@@ -100,43 +106,102 @@ export default function TermsOfService() {
       <section>
         <h2>Licences</h2>
         <p>
-          Paid licences are not yet available. When they are, this is how they work, and buying one
-          means accepting these Terms as they read at that time.
+          Paid licences are not yet available. When they are, this is how the Pro licence works,
+          and buying one means accepting these Terms as they read at that time.
         </p>
         <ul>
           <li>
-            <b>Perpetual.</b> A purchased licence does not expire and does not need renewing. Once
-            activated it requires no metering and no periodic check-in to keep working.
+            <b>Perpetual.</b> A Pro licence does not expire and does not need renewing. Once a
+            device is activated and the release installed, it keeps working indefinitely — with no
+            metering, and no internet connection required to keep working. The{" "}
+            <a href="/privacy-policy">Privacy Policy</a> describes the limited licensing traffic
+            the App exchanges with our service when it is reachable.
           </li>
           <li>
-            <b>Device-bound.</b> Activation issues a licence certificate bound to the device you
-            activate it on. It is a licence to use the App on that device, not a transfer of
-            ownership, and it may not be resold, sublicensed or shared.
+            <b>A model line.</b> A licence covers the model line you bought — every release in that
+            line, including model, engine and interface updates. A future model line is a new
+            product, and moving to it may be a separate purchase.
           </li>
           <li>
-            <b>Tied to your account.</b> The grant belongs to the account and email address you
-            bought it with. That is how we identify you if you need it reissued.
+            <b>Activation allocations.</b> A Pro licence includes the number of active activation
+            allocations stated at purchase — currently two, meaning up to two of your devices
+            activated at the same time. Activation requires
+            your account and an internet connection, and issues a certificate bound to that device.
+            A licence is for your own devices; it is not a pool of seats for a team.
           </li>
           <li>
-            <b>Moving it.</b> If your device is replaced, rebuilt or lost, contact us and we will
-            help you re-activate on a replacement. We may limit how often this is done, to keep a
-            single licence from covering an office.
+            <b>Moving devices.</b> Deactivate a device from inside the App, or release it from your
+            account if the device is lost or will not start, and the freed allocation can activate
+            a replacement. Releasing a device ends its licence: using that installation afterwards
+            is outside what you have licensed, it receives no updates or model downloads, and we
+            may disable it when it next contacts our service. We may apply reasonable limits where
+            releases and reactivations look like sharing rather than replacement.
           </li>
           <li>
-            <b>What a licence covers.</b> The version line you bought into. We are not obliged to
-            provide upgrades, and a future major version may be a separate purchase.
+            <b>Tied to your account.</b> A purchase is claimed to your account on our website, and
+            the email address used at checkout currently must match your account email. The licence
+            then belongs to that account. It may not be resold, sublicensed, shared or transferred
+            to another account.
+          </li>
+          <li>
+            <b>What perpetual means — and what it does not.</b> Perpetual is a promise about what
+            you already have: an activated device with its release installed keeps working,
+            offline, indefinitely. It is not a promise of perpetual services around it — signing
+            in, claiming a purchase, activating new devices and downloading releases all require
+            our service to be running. If we ever wind the service down, we will give advance
+            notice and keep downloads available through the published shutdown date, and what you
+            have installed keeps working after it.
+          </li>
+          <li>
+            <b>Refunds and reversals.</b> If your purchase is refunded, or its payment is reversed
+            or charged back, the licence ends and its activations are cancelled.
           </li>
         </ul>
       </section>
 
       <section>
+        <h2>For a person, at a desktop</h2>
+        <p>
+          The App is licensed for interactive use, by a person, on a desktop computer. That is the
+          whole of what a licence buys, so the boundary is worth spelling out. You may not:
+        </p>
+        <ul>
+          <li>
+            Automate the App — drive it with scripts, macros or UI-automation tools, call into its
+            internal interfaces or processes, or feed it work from another program.
+          </li>
+          <li>
+            Run it unattended or headless: on a server, in CI, in a container, or as a step in a
+            pipeline or batch process.
+          </li>
+          <li>
+            Run it in a virtual machine. The App may detect virtualized, containerized and headless
+            environments and refuse to run; that refusal is not a defect.
+          </li>
+          <li>
+            Offer the App&rsquo;s functionality to others as a product or service — hosting it
+            behind a website, API or bot, reselling access to it, or building a subscription or
+            per-use tracing service on top of it.
+          </li>
+        </ul>
+        <p>
+          The other side of that line, to be equally clear: using the App yourself and selling or
+          publishing what you make with it — including work you do for clients — is exactly what it
+          is for. If your workflow needs automation, servers or an API, that is a different
+          product: write to us, or build on the open-source VTracer 1 libraries, which these Terms
+          do not restrict.
+        </p>
+      </section>
+
+      <section>
         <h2>Payment</h2>
         <p>
-          Payment for licences is handled by a third-party payment processor. We do not receive or
-          store raw card details. Prices are stated at the point of purchase and exclude taxes unless
-          we say otherwise; you are responsible for any tax that applies where you are. Refunds, where
-          offered, are as stated at the point of purchase and as required by the law that applies to
-          you.
+          Purchases are handled by a merchant of record, identified at checkout, which is the
+          seller for the transaction under its own terms of sale and handles payment details
+          directly; we never receive or store raw card details. These Terms govern the licence the
+          purchase grants. Prices are stated at checkout and exclude taxes unless we say otherwise;
+          you are responsible for any tax that applies where you are. Refunds, where offered, are
+          as stated at the point of purchase and as required by the law that applies to you.
         </p>
       </section>
 
@@ -190,8 +255,13 @@ export default function TermsOfService() {
             where you live.
           </li>
           <li>
-            Circumvent, disable or tamper with licence activation, trial metering or any other
+            Circumvent, disable or tamper with licence activation, trial enforcement or any other
             technical measure in the App.
+          </li>
+          <li>
+            Extract, copy, back up or replay the App&rsquo;s licence credentials outside its own
+            activation and deactivation flows, or misrepresent the device identity they are bound
+            to.
           </li>
           <li>Share, resell or publish a licence certificate, or use one you were not granted.</li>
           <li>
@@ -276,9 +346,10 @@ export default function TermsOfService() {
         <p>
           You may stop using the Services and close your account at any time. We may suspend or
           terminate your account, your trial, or a licence if you materially breach these Terms —
-          in particular by tampering with licence enforcement or by sharing a licence. Where the
-          breach is capable of being fixed we will tell you and give you a reasonable chance to fix
-          it first.
+          in particular by tampering with licence enforcement or by sharing a licence. Where a
+          breach looks inadvertent and can be fixed, we will normally tell you and give you a
+          reasonable chance to fix it; deliberate circumvention or sharing is not in that
+          category.
         </p>
         <p>
           The App stays on your disk either way; what ends is your right to use it. Closing your
@@ -292,6 +363,16 @@ export default function TermsOfService() {
           We may modify these Terms. We will move the &ldquo;last updated&rdquo; date at the top of
           this page, and for material changes we will also notify you in the App. Continuing to use
           the Services after a change means you accept the new Terms.
+        </p>
+      </section>
+
+      <section>
+        <h2>General</h2>
+        <p>
+          If we do not enforce a part of these Terms, or do not enforce it for a time, that is not
+          a waiver of it — we may enforce it later. If a part of these Terms is found invalid or
+          unenforceable, that part is treated as trimmed to the minimum extent necessary, and the
+          rest continues in force.
         </p>
       </section>
 

@@ -1,7 +1,5 @@
 import Legal, { Contact } from "./Legal";
-import { LEGAL, TRIAL } from "../site";
-
-const TRACES = TRIAL.traces.toLocaleString("en-US");
+import { LEGAL } from "../site";
 
 export default function PrivacyPolicy() {
   return (
@@ -30,7 +28,7 @@ export default function PrivacyPolicy() {
       <section>
         <h2>Your artwork never leaves your device</h2>
         <p>
-          Tracing runs entirely on your machine, using a model that ships inside the App. We do not
+          Tracing runs entirely on your machine, using a model stored on your device. We do not
           receive, store or process your source images, your traced SVGs, your file names, or
           anything else about the contents of your disk. None of the collection described below
           involves your artwork.
@@ -46,9 +44,10 @@ export default function PrivacyPolicy() {
           When you sign in with Google, Google passes the App your email address, your name, your
           profile picture and your Google account identifier. We store these to create your account
           and to attach your trial and any licence you buy to it. We never see your Google password,
-          and we cannot read anything else in your Google account. Your email address has to be one
-          you can actually receive mail at, because it is where a licence is delivered and how we
-          re-issue one.
+          and we cannot read anything else in your Google account. Your email address matters
+          because it is how a purchase is matched to your account, and how we identify you for
+          support and account recovery — a licence itself is delivered through your account, not by
+          email.
         </p>
         <p>
           Our use of information received from Google APIs adheres to the{" "}
@@ -58,21 +57,41 @@ export default function PrivacyPolicy() {
           , including its Limited Use requirements.
         </p>
 
-        <h3>Trial and licence usage</h3>
+        <h3>Licensing</h3>
         <p>
-          The free trial ends after {TRACES} traces or {TRIAL.days} days, whichever comes first. To
-          make that limit mean anything, the App reports to us a count of completed traces and when
-          they happened, when your trial started, an identifier for the device the App is installed
-          on, the App version and your operating system. This is the minimum needed to enforce the
-          trial, and it is the only reason we collect it.
+          Activating a trial or a paid licence sends us an identifier for your device — a one-way
+          hash derived from platform identifiers, not the identifiers themselves — together with
+          the App version, your operating system, and the name you give the device so you can
+          recognise it in your account. The trial&rsquo;s start and expiry dates are fixed inside
+          the certificate this issues.
+        </p>
+        <p>
+          The App downloads its models and updates from our service, authorised by your trial or
+          licence. Those requests show us which release was fetched and the usual request metadata,
+          and — like everything here — nothing about your artwork.
+        </p>
+        <p>
+          While the App runs with a licence, it makes a brief status check when our service is
+          reachable — at launch and then about once a day — carrying the activation identifier, the
+          certificate serial and the App version, signed by the device. Like any request over the
+          internet, it shows our server an IP address and a time. These checks carry no artwork, no
+          file names and no record of what you traced, and on a paid licence a check that fails or
+          cannot reach us never stops the App.
         </p>
 
         <h3>Product analytics</h3>
         <p>
           Coarse counters about how the App is used — how many traces are run, which features and
-          parameters are reached for, and errors the App runs into. These are aggregate numbers that
-          tell us which parts of the product are worth the work. They are never joined to your
-          artwork, because we do not have your artwork.
+          parameters are reached for, and errors the App runs into. We use them in aggregate to
+          decide which parts of the product are worth the work, and we may check a trial&rsquo;s
+          own counters against the trial&rsquo;s limits. They are never joined to your artwork,
+          because we do not have your artwork.
+        </p>
+        <p>
+          You can switch analytics off in the App&rsquo;s settings. The one exception is a running
+          trial: the counters that enforce the trial&rsquo;s limits stay on for as long as the
+          trial does, because they are part of how the trial is provided. Outside a trial — the
+          free features, or an activated paid licence — the switch turns everything off.
         </p>
 
         <h3>This website</h3>
@@ -115,22 +134,24 @@ export default function PrivacyPolicy() {
       </section>
 
       <section>
-        <h2>After you buy, the metering stops</h2>
+        <h2>A paid licence is not metered</h2>
         <p>
-          A paid licence is perpetual and is activated against the device you install it on. Once it
-          is activated, the App does not need to meter your usage or check in to keep working — the
-          counting described above exists to enforce the free trial, and a paid licence has nothing
-          to count.
+          A paid licence is perpetual and activated against your devices. Nothing you trace is
+          counted against any limit, there is no renewal, and no connection is required: once
+          activated, the App keeps working indefinitely, offline included. Product analytics
+          continues as described above, but the only licensing traffic that remains is the limited
+          status check — and when it fails or cannot connect, the App simply carries on.
         </p>
       </section>
 
       <section>
         <h2>Who else sees it</h2>
         <p>
-          Service providers who process data on our behalf and under contract — hosting, our
-          analytics infrastructure, and, once paid licences are available, a payment processor. A
-          payment processor handles card details directly; we receive the fact of a completed
-          purchase and the licence record, never your card number.
+          Service providers who process data on our behalf and under contract — hosting and our
+          analytics infrastructure. And when you buy a licence, the checkout is run by our merchant
+          of record: the seller for that transaction, handling your payment details under its own
+          privacy policy rather than as our processor. We receive the fact of a completed purchase
+          and the licence record, never your card number.
         </p>
         <p>
           Beyond that we disclose personal information only where we are legally required to, or
@@ -144,11 +165,13 @@ export default function PrivacyPolicy() {
         <ul>
           <li>
             <b>Account information:</b> for as long as your account exists, and deleted within 30
-            days of you closing it.
+            days of you closing it — apart from the anti-abuse markers and purchase records below.
           </li>
           <li>
-            <b>Trial counters:</b> for the length of the trial and a short period after it, so an
-            expired trial cannot simply be restarted.
+            <b>Trial anti-abuse markers:</b> a keyed one-way hash of the device and sign-in
+            identity that used a trial is kept after the trial ends — and after the account is
+            deleted — so an expired trial cannot be restarted with a fresh account. The hash cannot
+            be turned back into the identifiers it was made from.
           </li>
           <li>
             <b>Licence records:</b> for as long as the licence is valid. A perpetual licence means
@@ -156,6 +179,9 @@ export default function PrivacyPolicy() {
           </li>
           <li>
             <b>Purchase records:</b> for the period tax and accounting law requires.
+          </li>
+          <li>
+            <b>Server logs:</b> raw request and access logs are kept for up to 30 days.
           </li>
           <li>
             <b>Analytics:</b> retained in aggregate form, which does not identify you.
@@ -174,7 +200,9 @@ export default function PrivacyPolicy() {
         </p>
         <p>
           One thing to know before you ask: your licence is tied to your account. Deleting the
-          account deletes the licence grant with it, and we cannot restore it afterwards.
+          account deletes the licence grant with it, and we cannot restore it afterwards. Deletion
+          also does not remove the trial anti-abuse hashes or the purchase records the law requires
+          us to keep, both described above.
         </p>
         <p>
           Depending on where you live you may also have the right to complain to a data protection
@@ -186,8 +214,8 @@ export default function PrivacyPolicy() {
         <h2>Transfers, security, and children</h2>
         <p>
           We and our service providers may process your information in countries other than the one
-          you live in. Where that happens we rely on the safeguards those providers offer for
-          international transfers.
+          you live in. Where that happens we rely on recognised safeguards for international
+          transfers, such as standard contractual clauses.
         </p>
         <p>
           Data in transit is encrypted, and access to account and licence records is limited to

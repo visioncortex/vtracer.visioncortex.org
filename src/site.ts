@@ -115,7 +115,7 @@ export const FEATURES = [
   },
   {
     title: "No hallucination",
-    body: "Upscaling models love to invent. Ours does not. Every detail in the output traces back to something that was genuinely in your input — that constraint is engineered in.",
+    body: "Upscaling models love to invent. Ours does not imagine objects, textures or detail into your artwork — it recovers what is there. That constraint is part of the engine's design.",
   },
   {
     title: "Runs on your device",
