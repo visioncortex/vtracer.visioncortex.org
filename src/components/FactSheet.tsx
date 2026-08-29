@@ -1,4 +1,4 @@
-import { COMPARISONS, FEATURES, ORG, SHOWCASE, SHOWCASE_ASPECT, STAGE_ASPECT } from "../site";
+import { COMPARISONS, FEATURES, ORG, SHOWCASE, SHOWCASE_ASPECT, STAGE_ASPECT, TRIAL } from "../site";
 import { frame, type Focus } from "../frame";
 
 /**
@@ -46,6 +46,48 @@ function Split({
     </div>
   );
 }
+
+const TRACES = TRIAL.traces.toLocaleString("en-US");
+
+/**
+ * Answers to what people ask before they trial or buy, kept in step with the
+ * Terms — every one of these is stated there at greater length, and the Terms
+ * are what governs if the two ever disagree.
+ */
+const FAQ: [string, React.ReactNode][] = [
+  [
+    "Do I need a credit card to try it?",
+    "No. An account and nothing else — the trial is enabled from inside the app.",
+  ],
+  [
+    "How long does the trial run?",
+    `${TRIAL.days} days from activation, or ${TRACES} traces, whichever comes first.`,
+  ],
+  [
+    "How many machines can I trial on?",
+    "At most two. You can trial on both macOS and Windows, so you can make sure they both work. But not two PCs or two Macs.",
+  ],
+  [
+    "What happens when the trial ends?",
+    "The VTracer 2 features switch off and the rest of the app keeps working. Everything you have already traced stays on your disk, untouched.",
+  ],
+  [
+    "Can I sell what I trace?",
+    "Yes, client work included — that is what the app is for. What a license does not cover is automating the app or offering its tracing to other people as a service.",
+  ],
+  [
+    "Does it need an internet connection?",
+    "Tracing does not. Activation does, once, and an activated device keeps working offline afterwards.",
+  ],
+  [
+    "Is it a subscription?",
+    "No. A license is perpetual and covers every release in its model line. Paid licenses are not on sale yet.",
+  ],
+  [
+    "And VTracer 1?",
+    "Unchanged, and staying that way: MIT-licensed, free for any use, including commercially.",
+  ],
+];
 
 function Section({ title, children }: { title: string; children: React.ReactNode }) {
   return (
@@ -135,6 +177,17 @@ export default function FactSheet() {
           request the app makes carries your images, your traces or their file names.
         </p>
       </Section>
+      <Section title="Questions">
+        <div className="fs-grid">
+          {FAQ.map(([question, answer]) => (
+            <article key={question}>
+              <h3>{question}</h3>
+              <p>{answer}</p>
+            </article>
+          ))}
+        </div>
+      </Section>
+
       {/* Framed inside the app, where following a link in place would strand
           the reader with no way back. Everything opens out. */}
       <footer className="fs-foot">

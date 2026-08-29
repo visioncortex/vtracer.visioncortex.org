@@ -74,7 +74,7 @@ export default function TermsOfService() {
         <h2>The free trial</h2>
         <p>
           The App is free to download, and VTracer 2 is enabled from inside it as a trial with no
-          card required. The trial ends after {TRACES} traces or {TRIAL.days} days from activation,
+          credit card required. The trial ends after {TRACES} traces or {TRIAL.days} days from activation,
           whichever comes first.
         </p>
         <p>
