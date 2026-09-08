@@ -1,4 +1,4 @@
-import { COMPARISONS, FEATURES, ORG, SHOWCASE, SHOWCASE_ASPECT, STAGE_ASPECT, TRIAL } from "../site";
+import { COMPARISONS, FEATURES, GENAI, ORG, SHOWCASE, SHOWCASE_ASPECT, STAGE_ASPECT, TRIAL } from "../site";
 import { frame, type Focus } from "../frame";
 
 /**
@@ -157,6 +157,41 @@ export default function FactSheet() {
               />
               <h3>{item.title}</h3>
               <p>{item.blurb}</p>
+            </article>
+          ))}
+        </div>
+      </Section>
+
+      <Section title="Prompt to vector">
+        <p>
+          The Gen AI lab harnesses image generation models and runs them on your device.
+          A guided prompt steers them toward art that traces well, so every result comes out as clean vectors.
+        </p>
+        {/* One screenshot per scheme; fact-sheet.css shows whichever matches
+            the theme, including a theme the app has pinned. */}
+        <figure className="fs-shot">
+          <img
+            className="light"
+            src={GENAI.shot.light}
+            alt={GENAI.shot.alt}
+            width={GENAI.shot.width}
+            height={GENAI.shot.height}
+            loading="lazy"
+          />
+          <img
+            className="dark"
+            src={GENAI.shot.dark}
+            alt={GENAI.shot.alt}
+            width={GENAI.shot.width}
+            height={GENAI.shot.height}
+            loading="lazy"
+          />
+        </figure>
+        <div className="fs-grid">
+          {GENAI.points.map((point) => (
+            <article key={point.title}>
+              <h3>{point.title}</h3>
+              <p>{point.body}</p>
             </article>
           ))}
         </div>

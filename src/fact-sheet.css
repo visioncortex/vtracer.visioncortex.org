@@ -38,6 +38,11 @@
   --muted: var(--light-muted);
   --line: var(--light-line);
   --brand: var(--light-brand);
+
+  /* Which of a light/dark screenshot pair is showing. Switched in the same
+     three places as the palette, so a pinned theme brings its screenshot. */
+  --if-light: block;
+  --if-dark: none;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -48,6 +53,8 @@
     --muted: var(--dark-muted);
     --line: var(--dark-line);
     --brand: var(--dark-brand);
+    --if-light: none;
+    --if-dark: block;
   }
 }
 
@@ -70,6 +77,8 @@
   --muted: var(--dark-muted);
   --line: var(--dark-line);
   --brand: var(--dark-brand);
+  --if-light: none;
+  --if-dark: block;
 }
 
 :root:has(#theme-light:target) {
@@ -81,6 +90,8 @@
   --muted: var(--light-muted);
   --line: var(--light-line);
   --brand: var(--light-brand);
+  --if-light: block;
+  --if-dark: none;
 }
 
 *,
@@ -145,14 +156,16 @@ a:hover {
   border-top: 1px solid var(--line);
 }
 
+/* A real heading, in the same serif as the title, so it reads at a glance
+   inside a panel. The tiny mono label it used to be sat too close to the
+   caption size to be found on a page this long. */
 .fs-section h2 {
   margin: 0 0 16px;
-  font-family: var(--mono);
-  font-size: 10px;
+  font-family: var(--serif);
+  font-size: 1.375rem;
   font-weight: 500;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--muted);
+  line-height: 1.25;
+  letter-spacing: -0.005em;
 }
 
 .fs-section p {
@@ -282,6 +295,26 @@ a:hover {
 
 .fs-cols h3 {
   margin-top: 12px;
+}
+
+/* The app screenshot arrives already framed, with its own chrome and shadow
+   on transparency, so this only sizes it. Both schemes are in the markup;
+   the hidden one is display: none and lazy, so it is never fetched. */
+.fs-shot {
+  margin: 0 0 22px;
+}
+
+.fs-shot img {
+  width: 100%;
+  height: auto;
+}
+
+.fs-shot .light {
+  display: var(--if-light);
+}
+
+.fs-shot .dark {
+  display: var(--if-dark);
 }
 
 .fs-list {

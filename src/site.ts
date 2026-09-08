@@ -68,7 +68,7 @@ export const SHOWCASE = [
     id: "gradients",
     title: "Gradients, not bands",
     blurb:
-      "A sky that fades stays a fade — emitted as a gradient rather than sliced into a hundred flat steps.",
+      "A sky that fades stays smooth — emitted as a gradient rather than sliced into a hundred pieces.",
     aspect: 1400 / 976,
     // Landscape art in a 4:3 stage barely covers it; the extra zoom gives the
     // vertical crop something to work with.
@@ -127,13 +127,35 @@ export const FEATURES = [
   },
   {
     title: "Gradients, natively",
-    body: "Linear, radial and true mesh gradients come out as gradients — not as a hundred stacked slivers doing an impression of one.",
+    body: "Smooth gradients come out as gradients — not as a hundred segmented pieces doing an impression of one.",
   },
   {
     title: "Stacked mode",
     body: "VTracer's unique feature: shapes layered rather than cut against one another. Fewer nodes, smaller files, and a document that is actually pleasant to open and edit.",
   },
 ];
+
+export const GENAI = {
+  /** The first model on the menu; the copy names it as the first, not the one. */
+  first: "SD-Turbo",
+  shot: {
+    light: "/gen-ai/sd-corgi-light.png",
+    dark: "/gen-ai/sd-corgi-dark.png",
+    width: 1552,
+    height: 922,
+    alt: "The Gen AI lab of the VTracer app. A prompt panel on the right reads corgi, sitting, smiling; a traced cartoon corgi sits on a transparent canvas in the middle; a column of earlier rounds with their seeds runs down the left.",
+  },
+  points: [
+    {
+      title: "Prompt to vector",
+      body: "Type a prompt, get an SVG. The app generates the image on your device and traces it in the same pipeline, so what you get is clean geometry on a transparent background, ready to drop into your design work.",
+    },
+    {
+      title: "Your model, your machine",
+      body: "Pick a model, download it from inside the app, and it lives on your disk. Supports a range of diffusion models, with more to follow. The prompt never leaves the machine. No subscription, no upload.",
+    },
+  ],
+};
 
 export const PLATFORMS = [
   { os: "macOS", meta: "Universal · Metal accelerated" },

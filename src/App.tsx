@@ -2,6 +2,7 @@ import Showcase from "./components/Showcase";
 import StarButton from "./components/StarButton";
 import Features from "./components/Features";
 import Footer from "./components/Footer";
+import GenAI from "./components/GenAI";
 import Hero from "./components/Hero";
 import Install from "./components/Install";
 import Nav from "./components/Nav";
@@ -54,10 +55,29 @@ export default function App() {
           </div>
         </section>
 
-        <section className="section" id="download">
+        <section className="section" id="gen-ai">
           <div className="shell">
             <div className="section-head">
               <span className="section-num">03</span>
+              <div>
+                <h2 className="display section-title">
+                  Prompt to <span className="accent">vector</span>
+                </h2>
+                <p className="section-note">
+                  Generative Diffusion models run inside the app, on your device.
+                  A guided prompt steers them toward art that traces well, 
+                  so every result comes out as clean vectors.
+                </p>
+              </div>
+            </div>
+            <GenAI />
+          </div>
+        </section>
+
+        <section className="section" id="download">
+          <div className="shell">
+            <div className="section-head">
+              <span className="section-num">04</span>
               <div>
                 <h2 className="display section-title">
                   Start with the <span className="accent">free</span> app
@@ -89,7 +109,7 @@ export default function App() {
         <section className="section" id="open-source">
           <div className="shell">
             <div className="section-head">
-              <span className="section-num">04</span>
+              <span className="section-num">05</span>
               <div>
                 <h2 className="display section-title">
                   VTracer 1 stays <span className="accent">open</span>. Forever.
