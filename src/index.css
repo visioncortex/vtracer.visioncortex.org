@@ -358,6 +358,72 @@ body::after {
   height: auto;
 }
 
+/* Three rounds from the lab, ten seconds each, crossfading so the section
+   shows the feature on more than one subject and more than one model. All
+   three sit in a single grid cell, so the figure keeps the height of one
+   image and the drop-shadow above still follows the window's alpha rather
+   than a taller box.
+
+   Each round fades in over the one below it, and the round underneath is
+   held opaque until it is covered. Fading two half-transparent layers into
+   each other instead would let the page show through mid-cross, which reads
+   as a flicker. A covered round drops back out unseen; only the top one
+   fades, at the wrap, to reveal the first again.
+
+   The first round never animates, which is what gives the stack its opaque
+   floor. The timing below is tuned to exactly three rounds: a fourth would
+   need its own keyframes, and until it had them it would sit on top of the
+   others permanently.
+
+   In CSS rather than on a timer in React: no re-render, and the browser
+   stops it while the tab is in the background. */
+.shot-stack {
+  display: grid;
+}
+
+.shot-stack img {
+  grid-area: 1 / 1;
+}
+
+.shot-stack img:nth-child(2) {
+  animation: shot-round-2 30s ease-in-out infinite;
+}
+
+.shot-stack img:nth-child(3) {
+  animation: shot-round-3 30s ease-in-out infinite;
+}
+
+/* In at 9s over the first round, out at 21s under the third. */
+@keyframes shot-round-2 {
+  0%,
+  30% {
+    opacity: 0;
+  }
+  33.33%,
+  70% {
+    opacity: 1;
+  }
+  76.67%,
+  100% {
+    opacity: 0;
+  }
+}
+
+/* In at 19s over the second round, out at 29s to bring the first back. */
+@keyframes shot-round-3 {
+  0%,
+  63.33% {
+    opacity: 0;
+  }
+  66.67%,
+  96.67% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
 /* ------------------------------------------------------------- comparator */
 
 .cmp {
@@ -816,6 +882,13 @@ body::after {
 @media (prefers-reduced-motion: reduce) {
   .scarcity-dot {
     animation: none;
+  }
+
+  /* Hold the first round. Dropping the animations alone would strand the
+     upper images at their default full opacity, pinning the last round. */
+  .shot-stack img + img {
+    animation: none;
+    opacity: 0;
   }
 }
 

@@ -65,7 +65,7 @@ const FAQ: [string, React.ReactNode][] = [
   ],
   [
     "How many machines can I trial on?",
-    "At most two. You can trial on both macOS and Windows, so you can make sure they both work. But not two PCs or two Macs.",
+    "At most two. You can trial on both macOS and Windows, so you can make sure they both work. But not two PCs or two Macs. Linux support is coming soon.",
   ],
   [
     "What happens when the trial ends?",
@@ -172,7 +172,7 @@ export default function FactSheet() {
         <figure className="fs-shot">
           <img
             className="light"
-            src={GENAI.shot.light}
+            src={GENAI.shot.rounds[0].light}
             alt={GENAI.shot.alt}
             width={GENAI.shot.width}
             height={GENAI.shot.height}
@@ -180,7 +180,7 @@ export default function FactSheet() {
           />
           <img
             className="dark"
-            src={GENAI.shot.dark}
+            src={GENAI.shot.rounds[0].dark}
             alt={GENAI.shot.alt}
             width={GENAI.shot.width}
             height={GENAI.shot.height}
@@ -194,6 +194,13 @@ export default function FactSheet() {
               <p>{point.body}</p>
             </article>
           ))}
+          <article>
+            <h3>Bring your own model</h3>
+            <p>
+              VTracer can also talk to an sd-server you host yourself for generating graphics.
+              It can be on the same machine, or on another machine you own.
+            </p>
+          </article>
         </div>
       </Section>
 

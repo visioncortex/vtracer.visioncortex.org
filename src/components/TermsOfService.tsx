@@ -263,6 +263,11 @@ export default function TermsOfService() {
             activation and deactivation flows, or misrepresent the device identity they are bound
             to.
           </li>
+          <li>
+            Copy, publish or redistribute the App, the VTracer 2 engine, its models, or any other
+            component the App downloads, or make any of them available to others outside our own
+            install and update flows.
+          </li>
           <li>Share, resell or publish a licence certificate, or use one you were not granted.</li>
           <li>
             Interfere with or disrupt the Services or the infrastructure behind them, or attempt to
