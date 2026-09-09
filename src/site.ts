@@ -139,11 +139,21 @@ export const GENAI = {
   /** The first model on the menu; the copy names it as the first, not the one. */
   first: "SD-Turbo",
   shot: {
-    light: "/gen-ai/sd-corgi-light.png",
-    dark: "/gen-ai/sd-corgi-dark.png",
     width: 1552,
     height: 922,
+    /* Describes the first round, which is the one every page shows still. The
+       rest are the same window with the same panels, so the landing page marks
+       them decorative rather than have a screen reader hear the UI twice. */
     alt: "The Gen AI lab of the VTracer app. A prompt panel on the right reads corgi, sitting, smiling; a traced cartoon corgi sits on a transparent canvas in the middle; a column of earlier rounds with their seeds runs down the left.",
+    /* Rounds of the same prompt shape. The landing page crossfades them, so
+       the section shows the lab working on more than one subject and on more
+       than one model; the fact sheet takes the first and stays still.
+       The crossfade timing in index.css is tuned to this many rounds. */
+    rounds: [
+      { light: "/gen-ai/sd-corgi-light.png", dark: "/gen-ai/sd-corgi-dark.png" },
+      { light: "/gen-ai/sd-shiba-light.png", dark: "/gen-ai/sd-shiba-dark.png" },
+      { light: "/gen-ai/flux-motorcycle-light.png", dark: "/gen-ai/flux-motorcycle-dark.png" },
+    ],
   },
   points: [
     {

@@ -172,7 +172,7 @@ export default function FactSheet() {
         <figure className="fs-shot">
           <img
             className="light"
-            src={GENAI.shot.light}
+            src={GENAI.shot.rounds[0].light}
             alt={GENAI.shot.alt}
             width={GENAI.shot.width}
             height={GENAI.shot.height}
@@ -180,7 +180,7 @@ export default function FactSheet() {
           />
           <img
             className="dark"
-            src={GENAI.shot.dark}
+            src={GENAI.shot.rounds[0].dark}
             alt={GENAI.shot.alt}
             width={GENAI.shot.width}
             height={GENAI.shot.height}
