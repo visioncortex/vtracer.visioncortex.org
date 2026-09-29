@@ -1071,6 +1071,61 @@ body::after {
   color: var(--fg);
 }
 
+/* Cookie settings is an action, not a page, so it is a button dressed as
+   one of the links beside it. */
+.footer-link-btn {
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--muted);
+  font: inherit;
+  cursor: pointer;
+  transition: color 0.18s ease;
+}
+
+.footer-link-btn:hover {
+  color: var(--fg);
+}
+
+/* ---------------------------------------------------------------- consent */
+
+.consent {
+  position: fixed;
+  z-index: 50;
+  left: 50%;
+  bottom: clamp(12px, 3vw, 24px);
+  transform: translateX(-50%);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 14px 20px;
+  width: min(640px, calc(100% - 24px));
+  padding: 16px 18px;
+  border: 1px solid var(--line-strong);
+  border-radius: 14px;
+  background: var(--surface-2);
+  box-shadow: 0 24px 60px -20px rgba(0, 0, 0, 0.8);
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: var(--muted);
+}
+
+.consent p {
+  flex: 1 1 300px;
+  margin: 0;
+}
+
+.consent a {
+  color: var(--fg);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.consent-actions {
+  display: flex;
+  gap: 10px;
+}
+
 .star-btn {
   display: inline-flex;
   align-items: stretch;

@@ -94,11 +94,19 @@ export default function PrivacyPolicy() {
           free features, or an activated paid licence — the switch turns everything off.
         </p>
 
-        <h3>This website</h3>
+        <h3 id="this-website">This website</h3>
         <p>
-          The site is static and sets no advertising or tracking cookies. Our host records ordinary
-          server logs, including IP addresses, and web fonts are loaded from Google&rsquo;s servers,
-          which means Google sees the IP address that requests them.
+          The site sets no advertising cookies. If you allow it, we use Google Analytics to count
+          visits and see which pages are read. It sets cookies, named <code>_ga</code>, and sends
+          Google your IP address, your browser and device type, and the pages you view. Nothing
+          is loaded from Google Analytics until you choose Accept, and you can change your mind at
+          any time from Cookie settings at the foot of every page, which also deletes those
+          cookies.
+        </p>
+        <p>
+          Either way, our host records ordinary server logs, including IP addresses, and web fonts
+          are loaded from Google&rsquo;s servers, which means Google sees the IP address that
+          requests them.
         </p>
       </section>
 
@@ -147,8 +155,8 @@ export default function PrivacyPolicy() {
       <section>
         <h2>Who else sees it</h2>
         <p>
-          Service providers who process data on our behalf and under contract — hosting and our
-          analytics infrastructure. And when you buy a licence, the checkout is run by our merchant
+          Service providers who process data on our behalf and under contract — hosting, our
+          analytics infrastructure, and Google Analytics for this website if you allow it. And when you buy a licence, the checkout is run by our merchant
           of record: the seller for that transaction, handling your payment details under its own
           privacy policy rather than as our processor. We receive the fact of a completed purchase
           and the licence record, never your card number.
@@ -185,6 +193,10 @@ export default function PrivacyPolicy() {
           </li>
           <li>
             <b>Analytics:</b> retained in aggregate form, which does not identify you.
+          </li>
+          <li>
+            <b>Website analytics:</b> kept by Google Analytics for up to 14 months, and only for
+            visitors who allowed it.
           </li>
         </ul>
       </section>

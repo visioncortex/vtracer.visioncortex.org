@@ -312,7 +312,7 @@ export const LEGAL: {
   contact: "support@visioncortex.org",
   law: "England and Wales",
   courts: "the courts of England and Wales",
-  updated: "27 August 2026",
+  updated: "29 September 2026",
 };
 
 /**
