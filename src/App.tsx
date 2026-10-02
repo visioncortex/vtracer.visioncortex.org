@@ -6,8 +6,9 @@ import GenAI from "./components/GenAI";
 import Hero from "./components/Hero";
 import Install from "./components/Install";
 import Nav from "./components/Nav";
+import Pencil from "./components/Pencil";
 import Platforms from "./components/Platforms";
-import { REPO } from "./site";
+import { PENCIL, REPO } from "./site";
 import { useDownloads } from "./useDownloads";
 import { useOS } from "./useOS";
 
@@ -74,10 +75,25 @@ export default function App() {
           </div>
         </section>
 
-        <section className="section" id="download">
+        <section className="section" id="pencil">
           <div className="shell">
             <div className="section-head">
               <span className="section-num">04</span>
+              <div>
+                <h2 className="display section-title">
+                  Pencil to <span className="accent">vector</span>
+                </h2>
+                <p className="section-note">{PENCIL.intro}</p>
+              </div>
+            </div>
+            <Pencil />
+          </div>
+        </section>
+
+        <section className="section" id="download">
+          <div className="shell">
+            <div className="section-head">
+              <span className="section-num">05</span>
               <div>
                 <h2 className="display section-title">
                   Start with the <span className="accent">free</span> app
@@ -109,7 +125,7 @@ export default function App() {
         <section className="section" id="open-source">
           <div className="shell">
             <div className="section-head">
-              <span className="section-num">05</span>
+              <span className="section-num">06</span>
               <div>
                 <h2 className="display section-title">
                   VTracer 1 stays <span className="accent">open</span>. Forever.
@@ -128,7 +144,7 @@ export default function App() {
         <section className="cta">
           <div className="shell">
             <h2 className="display">
-              Start <span className="accent">tracing.</span>
+              Unleash your <span className="accent">creativity.</span>
             </h2>
             <div className="hero-cta">
               <a className="btn btn-primary" href={download(os)}>

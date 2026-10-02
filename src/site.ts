@@ -167,6 +167,52 @@ export const GENAI = {
   ],
 };
 
+/**
+ * Pencil to vector. A small model thresholds a photographed sketch, dropping
+ * the paper, linearizing the lighting and filling in hatching, so the
+ * generation model starts from line work as clean as a tablet drawing. The
+ * image-to-image strength decides how far it goes: low tidies the sketch,
+ * high paints it into finished artwork.
+ */
+export const PENCIL = {
+  intro:
+    "Snap a photo of a pencil sketch and drop it in. VTracer lifts your lines off the page, leaving paper, shadows and smudges behind, then generates from them. Low strength cleans up your sketch. High strength turns it into finished color artwork.",
+  hero: {
+    src: "/pencil/pencil-demo.mp4",
+    poster: "/pencil/pencil-demo-poster.webp",
+    width: 1520,
+    height: 880,
+    label:
+      "A fox sketched in pencil in a notebook, photographed, and dropped into the VTracer Gen AI lab, where it is cleaned into line art and generated into a colored cartoon fox.",
+  },
+  points: [
+    {
+      title: "Your sketch, cleaned up",
+      body: "Never throw away a napkin sketch again. Snap a photo and drop it in. The paper and debris erased, hatching filled in, and your lines come out as clean as if you had drawn them on a digital tablet, ready for generative process.",
+      note: "Art style: Line art · Strength: 0.2",
+      image: {
+        src: "/pencil/sketch-cats.webp",
+        width: 1280,
+        height: 720,
+        alt: "Three cats sketched in pencil on grey paper, with shading and a half-erased fourth cat, beside the same three cats as clean black line art on a transparent background.",
+      },
+    },
+    {
+      title: "Clean vectors, ready to use",
+      body: "Stacked mode layers shapes instead of cutting them against one another, so each stays in one piece, easy to edit and recolor. It is as if you had scanned, cleaned up and traced it painstakingly yourself.",
+      note: "Art style: Cartoon · Strength: 0.5",
+      video: {
+        src: "/pencil/vector-layers.mp4",
+        poster: "/pencil/vector-layers-poster.webp",
+        width: 640,
+        height: 480,
+        label:
+          "A traced cartoon fox in a vector editor. Its shapes are selected and dragged apart, showing a few whole, stacked shapes with a solid dark base beneath the colored ones.",
+      },
+    },
+  ],
+};
+
 export const PLATFORMS = [
   { os: "macOS", meta: "Universal · Metal accelerated" },
   { os: "Windows", meta: "x64 · Installer" },

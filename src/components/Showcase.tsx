@@ -9,9 +9,9 @@ export default function Showcase() {
           <Wipe
             leftSrc={item.original}
             rightSrc={item.vtracer}
-            leftLabel="Before"
+            leftLabel="Source"
             rightLabel="VTracer 2"
-            leftAlt={`${item.title}, before`}
+            leftAlt={`${item.title}, source`}
             rightAlt={`${item.title}, traced by VTracer 2`}
             stageAspect={SHOWCASE_ASPECT}
             aspect={item.aspect}

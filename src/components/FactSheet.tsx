@@ -1,4 +1,4 @@
-import { COMPARISONS, FEATURES, GENAI, ORG, SHOWCASE, SHOWCASE_ASPECT, STAGE_ASPECT, TRIAL } from "../site";
+import { COMPARISONS, FEATURES, GENAI, ORG, PENCIL, SHOWCASE, SHOWCASE_ASPECT, STAGE_ASPECT, TRIAL } from "../site";
 import { frame, type Focus } from "../frame";
 
 /**
@@ -201,6 +201,82 @@ export default function FactSheet() {
               It can be on the same machine, or on another machine you own.
             </p>
           </article>
+        </div>
+      </Section>
+
+      <Section title="Pencil to vector">
+        <p>{PENCIL.intro}</p>
+        {/* The demo waits for a click here: it is half a minute long and this
+            page sits in a panel beside the reader's work, so nothing should
+            move or download until they ask. */}
+        <figure className="fs-video">
+          <video
+            src={PENCIL.hero.src}
+            poster={PENCIL.hero.poster}
+            width={PENCIL.hero.width}
+            height={PENCIL.hero.height}
+            aria-label={PENCIL.hero.label}
+            controls
+            playsInline
+            preload="none"
+          />
+        </figure>
+        <div className="fs-cols fs-pair">
+          {PENCIL.points.map((point, i) => {
+            const mark = PENCIL.points.slice(0, i + 1).filter((p) => p.note).length;
+            return (
+              <article key={point.title}>
+                <div className="fs-media">
+                  {point.image ? (
+                    <img
+                      src={point.image.src}
+                      alt={point.image.alt}
+                      width={point.image.width}
+                      height={point.image.height}
+                      loading="lazy"
+                    />
+                  ) : (
+                    point.video && (
+                      <>
+                        {/* Five seconds, and its point is the motion, so it
+                            loops like a GIF. With no script to consult the
+                            reader's motion setting, CSS swaps in the still. */}
+                        <video
+                          className="motion"
+                          src={point.video.src}
+                          width={point.video.width}
+                          height={point.video.height}
+                          aria-label={point.video.label}
+                          autoPlay
+                          muted
+                          loop
+                          playsInline
+                        />
+                        <img
+                          className="still"
+                          src={point.video.poster}
+                          alt={point.video.label}
+                          width={point.video.width}
+                          height={point.video.height}
+                          loading="lazy"
+                        />
+                      </>
+                    )
+                  )}
+                </div>
+                <h3>{point.title}</h3>
+                <p>
+                  {point.body}
+                  {point.note && <sup className="fs-mark">{mark}</sup>}
+                </p>
+                {point.note && (
+                  <p className="fs-note">
+                    <sup>{mark}</sup> {point.note}
+                  </p>
+                )}
+              </article>
+            );
+          })}
         </div>
       </Section>
 

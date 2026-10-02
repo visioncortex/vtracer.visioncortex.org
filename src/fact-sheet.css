@@ -298,8 +298,9 @@ a:hover {
 }
 
 /* The app screenshot arrives already framed, with its own chrome and shadow
-   on transparency, so this only sizes it. Both schemes are in the markup;
-   the hidden one is display: none and lazy, so it is never fetched. */
+   on transparency, so this only sizes it. Both schemes are in the markup,
+   and Chromium downloads the hidden one too: neither display: none nor
+   loading="lazy" holds it back on this page. */
 .fs-shot {
   margin: 0 0 22px;
 }
@@ -315,6 +316,77 @@ a:hover {
 
 .fs-shot .dark {
   display: var(--if-dark);
+}
+
+/* Pencil to vector. The demo is a plain recording, so unlike the Gen AI
+   screenshot it needs a border of its own. */
+.fs-video {
+  margin: 0 0 22px;
+}
+
+.fs-video video {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--raised);
+}
+
+/* Two wide media cards read better stacked than squeezed, so this pair
+   drops to one column earlier than the three-up samples above it. */
+.fs-pair {
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+/* One 16:9 stage for both cards so they sit level. The layers clip is 4:3;
+   cover trims only empty canvas above and below the fox. */
+.fs-media {
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: #fff;
+}
+
+.fs-media img,
+.fs-media video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* The looping clip gives way to its still for readers who ask for less
+   motion. Chromium downloads the still for everyone, hidden or not, which
+   at 25 KB is a fair price for a switch that needs no script. */
+.fs-media .still {
+  display: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fs-media .motion {
+    display: none;
+  }
+
+  .fs-media .still {
+    display: block;
+  }
+}
+
+.fs-mark {
+  margin-left: 1px;
+  color: var(--brand);
+  font-size: 0.7em;
+}
+
+.fs-cols .fs-note {
+  margin-top: 8px;
+  font-size: 0.8125rem;
+}
+
+.fs-note sup {
+  font-size: 0.75em;
 }
 
 .fs-list {

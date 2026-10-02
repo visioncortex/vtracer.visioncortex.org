@@ -840,6 +840,73 @@ body::after {
   line-height: 1.6;
 }
 
+/* ---------------------------------------------------------------- pencil */
+
+/* The demo is a plain recording, not a pre-framed window like the Gen AI
+   screenshots, so it takes the comparison stage's border and glow instead. */
+.pencil-hero {
+  margin: 0 auto clamp(28px, 4vw, 48px);
+  max-width: 1180px;
+}
+
+.pencil-hero video {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: var(--surface);
+  box-shadow: 0 40px 110px -40px rgba(0, 136, 247, 0.4);
+}
+
+.pencil-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(20px, 2.5vw, 34px);
+}
+
+@media (max-width: 760px) {
+  .pencil-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* One 16:9 stage for both cards, so they sit level side by side. The layers
+   clip is 4:3; cover trims only empty canvas above and below the fox. */
+.pencil-media {
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: #fff;
+}
+
+.pencil-media img,
+.pencil-media video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* A settings note under a card, set well below the body so it reads as an
+   aside rather than more of the pitch. */
+.footnote-mark {
+  margin-left: 1px;
+  color: var(--brand);
+  font-size: 0.7em;
+}
+
+.showcase-item .footnote {
+  margin-top: 10px;
+  color: var(--muted-2);
+  font-size: 0.8125rem;
+}
+
+.footnote sup {
+  font-size: 0.75em;
+}
+
 /* -------------------------------------------------------------- download */
 
 .scarcity {
