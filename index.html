@@ -3,25 +3,22 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- Language, decided before anything renders. Sends the visitor to /zh/
-         if they picked Chinese in the footer, or picked nothing and their
-         browser lists Chinese ahead of English. Only on this page: /zh/ is
-         never redirected away from, so a shared link always opens as sent.
-         The key matches rememberLang in src/site-copy.ts. -->
     <script>
+      // Language, decided before anything renders and from the browser alone:
+      // a visitor whose browser lists Chinese ahead of English goes to /zh/.
+      // Nothing is stored or read back. Acts only on / itself, so the same
+      // page copied to /en/ is a stable English address: that is where the
+      // footer's English link points, and it never redirects.
       (function () {
-        try {
-          var pick = localStorage.getItem("vt-lang");
-          if (!pick) {
-            var langs = navigator.languages || [navigator.language || ""];
-            for (var i = 0; i < langs.length; i++) {
-              if (/^zh\b/i.test(langs[i])) { pick = "zh"; break; }
-              if (/^en\b/i.test(langs[i])) { pick = "en"; break; }
-            }
+        var path = location.pathname;
+        if (path !== "/" && path !== "/index.html") return;
+        var langs = navigator.languages || [navigator.language || ""];
+        for (var i = 0; i < langs.length; i++) {
+          if (/^en\b/i.test(langs[i])) return;
+          if (/^zh\b/i.test(langs[i])) {
+            location.replace("/zh/" + location.search + location.hash);
+            return;
           }
-          if (pick === "zh") location.replace("/zh/" + location.search + location.hash);
-        } catch (e) {
-          // Storage blocked: stay on English rather than guess.
         }
       })();
     </script>
@@ -43,6 +40,7 @@
     <meta property="og:image" content="https://vtracer.visioncortex.org/og-card.png" />
     <meta name="twitter:card" content="summary_large_image" />
 
+    <link rel="canonical" href="https://vtracer.visioncortex.org/" />
     <!-- The same page in each language, for search engines. -->
     <link rel="alternate" hreflang="en" href="https://vtracer.visioncortex.org/" />
     <link rel="alternate" hreflang="zh-Hans" href="https://vtracer.visioncortex.org/zh/" />

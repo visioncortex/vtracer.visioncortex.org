@@ -20,16 +20,21 @@ import { createServer } from "vite";
 const STATIC = new Set(["fact-sheet", "zh/fact-sheet"]);
 
 /**
- * Finished pages served again at a second address. The app builds the fact
- * sheet's URL from its locale, /en/fact-sheet as much as /zh/fact-sheet, and
- * GitHub Pages cannot send a real redirect. The only redirect a static page
- * can do without script is a meta refresh, and that drops the #theme-dark or
- * #theme-light the app pins the theme with; a script redirect would keep it
- * but the app's CSP blocks scripts in the frame. So /en/ gets an identical
- * copy instead, whose canonical link still names /fact-sheet. Every URL in
- * these pages is root-relative, so a copy works from any directory.
+ * Finished pages served again at a second address, for links that must not
+ * be second-guessed. GitHub Pages cannot send a real redirect, so these are
+ * identical copies whose canonical link names the original.
+ *
+ * /en/fact-sheet: the app builds the fact sheet's URL from its locale, and a
+ * meta refresh would drop the #theme-dark or #theme-light it pins the theme
+ * with, while a script redirect is blocked by the app's CSP.
+ *
+ * /en/: the landing page's English address. / picks a language from the
+ * browser on every visit and remembers nothing, so the footer's English link
+ * points here instead; the redirect script in the copy sees /en/ and stands
+ * down. Every URL in these pages is root-relative, so a copy works from any
+ * directory.
  */
-const ALIASES = { "en/fact-sheet": "fact-sheet" };
+const ALIASES = { "en/fact-sheet": "fact-sheet", "en/index": "index" };
 
 /** Folds <link rel="stylesheet"> into a <style> block, and drops the JS. */
 async function selfContain(html) {

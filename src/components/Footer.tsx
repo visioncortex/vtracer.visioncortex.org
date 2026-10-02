@@ -1,7 +1,7 @@
 import ConsentBanner from "./ConsentBanner";
 import { OPEN_CONSENT } from "../consent";
 import { ORG } from "../site";
-import { LANGS, rememberLang, useCopy } from "../site-copy";
+import { LANGS, useCopy } from "../site-copy";
 
 export default function Footer() {
   const copy = useCopy();
@@ -24,27 +24,21 @@ export default function Footer() {
               {copy.footer.cookies}
             </button>
           </nav>
-          {/* Each language links to its landing page, and picking one is
-              remembered, so / stops redirecting by browser locale. The legal
-              pages exist in English only, so from there 简体中文 goes home. */}
+          {/* Only the languages the reader is not already in. Nothing is
+              remembered: English links to /en/, which / never redirects
+              away from. The legal pages exist in English only, so from there
+              简体中文 goes home. */}
           <nav className="footer-lang" aria-label={copy.footer.language}>
-            {LANGS.map(({ lang, name, copy: target }) =>
-              lang === copy.lang ? (
-                <span key={lang} aria-current="true">
-                  {name}
-                </span>
-              ) : (
-                <a
-                  key={lang}
-                  href={target.home}
-                  hrefLang={lang === "zh" ? "zh-Hans" : "en"}
-                  lang={lang === "zh" ? "zh-Hans" : "en"}
-                  onClick={() => rememberLang(lang)}
-                >
-                  {name}
-                </a>
-              ),
-            )}
+            {LANGS.filter(({ lang }) => lang !== copy.lang).map(({ lang, name, href }) => (
+              <a
+                key={lang}
+                href={href}
+                hrefLang={lang === "zh" ? "zh-Hans" : "en"}
+                lang={lang === "zh" ? "zh-Hans" : "en"}
+              >
+                {name}
+              </a>
+            ))}
           </nav>
         </div>
       </footer>

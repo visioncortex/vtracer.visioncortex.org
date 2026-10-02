@@ -23,6 +23,8 @@ export default defineConfig({
           } else if (clean === "/en/fact-sheet") {
             // The build writes a copy of the English page here; in dev, alias it.
             req.url = `/fact-sheet.html${req.url!.slice(clean.length)}`;
+          } else if (clean === "/en/") {
+            req.url = `/index.html${req.url!.slice(clean.length)}`;
           }
           next();
         });

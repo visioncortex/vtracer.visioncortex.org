@@ -274,25 +274,23 @@ export const zh: SiteCopy = {
   },
 };
 
-export const LANGS: { lang: Lang; name: string; copy: SiteCopy }[] = [
-  { lang: "en", name: "English", copy: en },
-  { lang: "zh", name: "简体中文", copy: zh },
+/**
+ * The footer switcher's targets. English is /en/, not /: / redirects
+ * Chinese-preferring browsers on every visit, so a link there could bounce
+ * the reader straight back.
+ */
+export const LANGS: { lang: Lang; name: string; href: string }[] = [
+  { lang: "en", name: "English", href: "/en/" },
+  { lang: "zh", name: "简体中文", href: "/zh/" },
 ];
 
 /**
- * Must match the key the inline script in index.html reads. That script runs
- * before anything else on / and sends a visitor to /zh/ when this says "zh",
- * or when nothing is saved and the browser prefers Chinese over English.
+ * The copy for the page being served. On /en/, in-page links stay under /en/
+ * so a reader who chose English is never routed back through /.
  */
-const LANG_KEY = "vt-lang";
-
-/** Called when the visitor picks a language, so / stops second-guessing it. */
-export function rememberLang(lang: Lang) {
-  try {
-    localStorage.setItem(LANG_KEY, lang);
-  } catch {
-    // Unstorable: the link still goes where they asked, just not sticky.
-  }
+export function copyFor(lang: string, path: string): SiteCopy {
+  if (lang.startsWith("zh")) return zh;
+  return path.startsWith("/en/") ? { ...en, home: "/en/" } : en;
 }
 
 export const CopyContext = createContext<SiteCopy>(en);

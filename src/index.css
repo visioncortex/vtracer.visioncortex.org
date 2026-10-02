@@ -1103,10 +1103,6 @@ body::after {
   gap: 14px;
 }
 
-.footer-lang [aria-current] {
-  color: var(--fg);
-}
-
 /* Chinese headings. Gloock's tight 0.94 leading and negative tracking would
    crush CJK glyphs, and its 15ch measure wraps a nine-character heading one
    character short, stranding the last on a line of its own. The weight is
