@@ -1,9 +1,11 @@
 import { useState } from "react";
 import { SNIPPETS } from "../site";
+import { useCopy } from "../site-copy";
 
 export default function Install() {
   const [active, setActive] = useState(SNIPPETS[0].id);
   const [copied, setCopied] = useState(false);
+  const { install } = useCopy();
 
   const snippet = SNIPPETS.find((s) => s.id === active) ?? SNIPPETS[0];
 
@@ -20,7 +22,7 @@ export default function Install() {
 
   return (
     <div className="install-layout">
-      <div className="tabs" role="tablist" aria-label="Installation target">
+      <div className="tabs" role="tablist" aria-label={install.aria}>
         {SNIPPETS.map((s) => (
           <button
             key={s.id}
@@ -38,7 +40,7 @@ export default function Install() {
         <div className="code-bar">
           <span>{snippet.file}</span>
           <button className="copy-btn" onClick={copy}>
-            {copied ? "Copied" : "Copy"}
+            {copied ? install.copied : install.copy}
           </button>
         </div>
         <pre>

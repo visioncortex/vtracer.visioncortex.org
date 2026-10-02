@@ -8,13 +8,16 @@ import Install from "./components/Install";
 import Nav from "./components/Nav";
 import Pencil from "./components/Pencil";
 import Platforms from "./components/Platforms";
-import { PENCIL, REPO } from "./site";
+import Accented from "./components/Accented";
+import { REPO } from "./site";
+import { useCopy } from "./site-copy";
 import { useDownloads } from "./useDownloads";
 import { useOS } from "./useOS";
 
 export default function App() {
   const os = useOS();
   const download = useDownloads();
+  const { sections, pencil, shotAlt, scarcity, cta } = useCopy();
 
   return (
     <>
@@ -28,12 +31,9 @@ export default function App() {
               <span className="section-num">01</span>
               <div>
                 <h2 className="display section-title">
-                  Built for <span className="accent">design</span> work
+                  <Accented parts={sections.design.title} />
                 </h2>
-                <p className="section-note">
-                  Logos, clip art, illustration, brand assets — the artwork designers actually put
-                  through a vectorizer, handled the way they need it handled.
-                </p>
+                <p className="section-note">{sections.design.note}</p>
               </div>
             </div>
             <Features />
@@ -45,11 +45,8 @@ export default function App() {
             <div className="section-head">
               <span className="section-num">02</span>
               <div>
-                <h2 className="display section-title">New in VTracer 2</h2>
-                <p className="section-note">
-                  Three things the old engine could not do. Drag any of them — the right-hand side of
-                  each is the real SVG.
-                </p>
+                <h2 className="display section-title">{sections.whatsNew.title}</h2>
+                <p className="section-note">{sections.whatsNew.note}</p>
               </div>
             </div>
             <Showcase />
@@ -62,13 +59,9 @@ export default function App() {
               <span className="section-num">03</span>
               <div>
                 <h2 className="display section-title">
-                  Prompt to <span className="accent">vector</span>
+                  <Accented parts={sections.prompt.title} />
                 </h2>
-                <p className="section-note">
-                  Generative Diffusion models run inside the app, on your device.
-                  A guided prompt steers them toward art that traces well, 
-                  so every result comes out as clean vectors.
-                </p>
+                <p className="section-note">{sections.prompt.note}</p>
               </div>
             </div>
             <GenAI />
@@ -81,9 +74,9 @@ export default function App() {
               <span className="section-num">04</span>
               <div>
                 <h2 className="display section-title">
-                  Pencil to <span className="accent">vector</span>
+                  <Accented parts={sections.pencil.title} />
                 </h2>
-                <p className="section-note">{PENCIL.intro}</p>
+                <p className="section-note">{pencil.intro}</p>
               </div>
             </div>
             <Pencil />
@@ -96,17 +89,15 @@ export default function App() {
               <span className="section-num">05</span>
               <div>
                 <h2 className="display section-title">
-                  Start with the <span className="accent">free</span> app
+                  <Accented parts={sections.download.title} />
                 </h2>
-                <p className="section-note">
-                  Download the app and start tracing. Activate VTracer 2 inside the app to start a free trial, no credit card required.
-                </p>
+                <p className="section-note">{sections.download.note}</p>
               </div>
             </div>
             <figure className="shot">
               <img
                 src="/vtracer2-app-dark.png"
-                alt="The VTracer 2 desktop app comparing a traced tiger mascot against its source, with model, clustering, compositing and curve-fitting controls in the side panel."
+                alt={shotAlt}
                 width={1552}
                 height={922}
               />
@@ -115,7 +106,7 @@ export default function App() {
             <p className="scarcity">
               <span className="scarcity-dot" aria-hidden="true" />
               <span>
-                <b>We invite professional designers and illustrators to shape our product.</b> Seats are limited — register in the app to request early access!
+                <b>{scarcity.strong}</b> {scarcity.rest}
               </span>
             </p>
             <Platforms />
@@ -128,12 +119,9 @@ export default function App() {
               <span className="section-num">06</span>
               <div>
                 <h2 className="display section-title">
-                  VTracer 1 stays <span className="accent">open</span>. Forever.
+                  <Accented parts={sections.open.title} />
                 </h2>
-                <p className="section-note">
-                  The original engine is MIT-licensed, recently revamped, and free to use in anything
-                  you build. That is not changing.
-                </p>
+                <p className="section-note">{sections.open.note}</p>
                 <StarButton />
               </div>
             </div>
@@ -144,14 +132,14 @@ export default function App() {
         <section className="cta">
           <div className="shell">
             <h2 className="display">
-              Unleash your <span className="accent">creativity.</span>
+              <Accented parts={cta.title} />
             </h2>
             <div className="hero-cta">
               <a className="btn btn-primary" href={download(os)}>
-                Download VTracer
+                {cta.download}
               </a>
               <a className="btn btn-ghost" href={REPO}>
-                VTracer 1 on GitHub
+                {cta.github}
               </a>
             </div>
           </div>

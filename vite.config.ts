@@ -16,9 +16,13 @@ export default defineConfig({
           if (
             clean === "/privacy-policy" ||
             clean === "/terms-of-service" ||
-            clean === "/fact-sheet"
+            clean === "/fact-sheet" ||
+            clean === "/zh/fact-sheet"
           ) {
             req.url = `${clean}.html${req.url!.slice(clean.length)}`;
+          } else if (clean === "/en/fact-sheet") {
+            // The build writes a copy of the English page here; in dev, alias it.
+            req.url = `/fact-sheet.html${req.url!.slice(clean.length)}`;
           }
           next();
         });
@@ -26,16 +30,19 @@ export default defineConfig({
     },
   ],
   build: {
-    // Three real HTML entries. The legal pages are root-level .html files
+    // Real HTML entries, one per page. The legal pages are root-level .html files
     // rather than directories, because GitHub Pages serves /privacy-policy
     // from privacy-policy.html directly — a 200 on the exact slashless URL
     // handed to Google's OAuth review, with no redirect in the way.
     rollupOptions: {
       input: {
         index: resolve(import.meta.dirname, "index.html"),
+        "zh/index": resolve(import.meta.dirname, "zh/index.html"),
         "privacy-policy": resolve(import.meta.dirname, "privacy-policy.html"),
         "terms-of-service": resolve(import.meta.dirname, "terms-of-service.html"),
         "fact-sheet": resolve(import.meta.dirname, "fact-sheet.html"),
+        // Language versions live under a prefix: /zh/fact-sheet.
+        "zh/fact-sheet": resolve(import.meta.dirname, "zh/fact-sheet.html"),
       },
     },
   },

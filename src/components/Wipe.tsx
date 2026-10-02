@@ -1,5 +1,6 @@
 import { useCallback, useRef, useState } from "react";
 import { frame, type Focus } from "../frame";
+import { useCopy } from "../site-copy";
 
 type Props = {
   leftSrc: string;
@@ -33,6 +34,7 @@ export default function Wipe({
   initialSplit = 48,
 }: Props) {
   const stageRef = useRef<HTMLDivElement>(null);
+  const { wipeAria } = useCopy();
   const [split, setSplit] = useState(initialSplit);
   const framing = frame(stageAspect, aspect, focus);
 
@@ -64,7 +66,7 @@ export default function Wipe({
       style={{ aspectRatio: String(stageAspect) }}
       role="slider"
       tabIndex={0}
-      aria-label={`Comparison position between ${leftLabel} and ${rightLabel}`}
+      aria-label={wipeAria(leftLabel, rightLabel)}
       aria-valuemin={0}
       aria-valuemax={100}
       aria-valuenow={Math.round(split)}

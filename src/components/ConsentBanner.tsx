@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { OPEN_CONSENT, readConsent, setConsent, startAnalytics, type Consent } from "../consent";
+import { useCopy } from "../site-copy";
 
 /**
  * Asks once, remembers the answer, and comes back from Cookie settings in the
@@ -12,6 +13,7 @@ import { OPEN_CONSENT, readConsent, setConsent, startAnalytics, type Consent } f
  */
 export default function ConsentBanner() {
   const [open, setOpen] = useState(false);
+  const { consent: t } = useCopy();
 
   useEffect(() => {
     const consent = readConsent();
@@ -32,17 +34,16 @@ export default function ConsentBanner() {
   };
 
   return (
-    <div className="consent" role="dialog" aria-label="Cookie consent" aria-live="polite">
+    <div className="consent" role="dialog" aria-label={t.aria} aria-live="polite">
       <p>
-        We use cookies to understand how our site is used and to improve it.{" "}
-        <a href="/privacy-policy#this-website">Learn more</a>
+        {t.text} <a href="/privacy-policy#this-website">{t.more}</a>
       </p>
       <div className="consent-actions">
         <button className="btn btn-ghost btn-sm" onClick={() => choose("denied")}>
-          Decline
+          {t.decline}
         </button>
         <button className="btn btn-ghost btn-sm" onClick={() => choose("granted")}>
-          Accept
+          {t.accept}
         </button>
       </div>
     </div>

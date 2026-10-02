@@ -1,12 +1,15 @@
 import { StrictMode } from "react";
 import { createRoot, hydrateRoot } from "react-dom/client";
 import FactSheet from "./components/FactSheet";
+import { en, zhHans } from "./fact-sheet-copy";
 import "./fact-sheet.css";
 
 const root = document.getElementById("root")!;
+// Each language has its own HTML shell, which declares it on <html lang>.
+const copy = document.documentElement.lang.startsWith("zh") ? zhHans : en;
 const page = (
   <StrictMode>
-    <FactSheet />
+    <FactSheet copy={copy} />
   </StrictMode>
 );
 

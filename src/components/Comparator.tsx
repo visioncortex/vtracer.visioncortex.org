@@ -1,12 +1,14 @@
 import { useEffect, useState } from "react";
 import Wipe from "./Wipe";
 import { COMPARISONS, RIVAL_NAME, RIVAL_VERSION, STAGE_ASPECT } from "../site";
+import { useCopy } from "../site-copy";
 
 type LeftSide = "original" | "rival";
 
 export default function Comparator() {
   const [pairIdx, setPairIdx] = useState(0);
   const [left, setLeft] = useState<LeftSide>("original");
+  const { cmp } = useCopy();
 
   // Warm the sides that are not on screen yet, so flipping a tab never flashes
   // an empty stage. Deferred to idle time — together these run to a few hundred
@@ -31,27 +33,28 @@ export default function Comparator() {
   const pair = COMPARISONS[pairIdx];
   const rival = pair.rival;
   const leftImage = left === "original" ? pair.original : rival;
-  const leftLabel = left === "original" ? "Original" : RIVAL_NAME;
+  const leftLabel = left === "original" ? cmp.original : RIVAL_NAME;
+  const sample = cmp.samples[pair.id] ?? pair.label;
 
   return (
     <div className="cmp">
       <div className="cmp-switches">
         {/* This picks what sits LEFT of the divider, so it sits left too —
             directly above the tag naming whatever it selected. */}
-        <div className="seg" role="tablist" aria-label="What to compare VTracer 2 against">
+        <div className="seg" role="tablist" aria-label={cmp.againstAria}>
           <button
             role="tab"
             aria-selected={left === "original"}
             onClick={() => setLeft("original")}
           >
-            Original
+            {cmp.original}
           </button>
           <button role="tab" aria-selected={left === "rival"} onClick={() => setLeft("rival")}>
             {RIVAL_NAME}
           </button>
         </div>
         {/* Changes both halves at once, so it is not tied to either side. */}
-        <div className="seg" role="tablist" aria-label="Sample artwork">
+        <div className="seg" role="tablist" aria-label={cmp.samplesAria}>
           {COMPARISONS.map((c, i) => (
             <button
               key={c.id}
@@ -59,7 +62,7 @@ export default function Comparator() {
               aria-selected={i === pairIdx}
               onClick={() => setPairIdx(i)}
             >
-              {c.label}
+              {cmp.samples[c.id] ?? c.label}
             </button>
           ))}
         </div>
@@ -71,8 +74,8 @@ export default function Comparator() {
         rightSrc={pair.vtracer.src}
         leftLabel={leftLabel}
         rightLabel="VTracer 2"
-        leftAlt={`${pair.label}, ${leftLabel}`}
-        rightAlt={`${pair.label} traced by VTracer 2`}
+        leftAlt={cmp.leftAlt(sample, leftLabel)}
+        rightAlt={cmp.rightAlt(sample)}
         stageAspect={STAGE_ASPECT}
         aspect={pair.aspect}
         focus={pair.focus}
@@ -85,18 +88,16 @@ export default function Comparator() {
           <dd>
             {left === "original"
               ? pair.original.note
-              : `${rival.paths.toLocaleString()} paths · ${rival.kb} KB`}
+              : cmp.stats(rival.paths, rival.kb)}
           </dd>
         </div>
         <div>
-          <dt>Drag to compare</dt>
-          <dd className="cmp-hint">Both traces are the real SVG files</dd>
+          <dt>{cmp.drag}</dt>
+          <dd className="cmp-hint">{cmp.real}</dd>
         </div>
         <div className="win">
           <dt>VTracer 2</dt>
-          <dd>
-            {pair.vtracer.paths.toLocaleString()} paths · {pair.vtracer.kb} KB
-          </dd>
+          <dd>{cmp.stats(pair.vtracer.paths, pair.vtracer.kb)}</dd>
         </div>
       </dl>
 
@@ -109,8 +110,11 @@ export default function Comparator() {
             {RIVAL_NAME} {RIVAL_VERSION} — {rival.settings}.{" "}
           </>
         )}
-        Compare the traces yourself: <a href={pair.vtracer.src}>VTracer 2 SVG</a>,{" "}
-        <a href={rival.src}>{RIVAL_NAME} SVG</a>.
+        {cmp.yourself}
+        <a href={pair.vtracer.src}>{cmp.svg("VTracer 2")}</a>
+        {cmp.listJoin}
+        <a href={rival.src}>{cmp.svg(RIVAL_NAME)}</a>
+        {cmp.end}
       </p>
     </div>
   );

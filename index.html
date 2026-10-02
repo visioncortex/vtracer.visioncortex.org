@@ -3,8 +3,30 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Language, decided before anything renders. Sends the visitor to /zh/
+         if they picked Chinese in the footer, or picked nothing and their
+         browser lists Chinese ahead of English. Only on this page: /zh/ is
+         never redirected away from, so a shared link always opens as sent.
+         The key matches rememberLang in src/site-copy.ts. -->
+    <script>
+      (function () {
+        try {
+          var pick = localStorage.getItem("vt-lang");
+          if (!pick) {
+            var langs = navigator.languages || [navigator.language || ""];
+            for (var i = 0; i < langs.length; i++) {
+              if (/^zh\b/i.test(langs[i])) { pick = "zh"; break; }
+              if (/^en\b/i.test(langs[i])) { pick = "en"; break; }
+            }
+          }
+          if (pick === "zh") location.replace("/zh/" + location.search + location.hash);
+        } catch (e) {
+          // Storage blocked: stay on English rather than guess.
+        }
+      })();
+    </script>
     <link rel="icon" type="image/png" href="/icon.png" />
-    <title>VTracer</title>
+    <title>VTracer 2</title>
     <meta
       name="description"
       content="The best vectorizer that runs on your device. A deep-learning based tracing engine, perfect for prompt to vector and artistic workflow."
@@ -20,6 +42,11 @@
     <meta property="og:url" content="https://vtracer.visioncortex.org/" />
     <meta property="og:image" content="https://vtracer.visioncortex.org/og-card.png" />
     <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- The same page in each language, for search engines. -->
+    <link rel="alternate" hreflang="en" href="https://vtracer.visioncortex.org/" />
+    <link rel="alternate" hreflang="zh-Hans" href="https://vtracer.visioncortex.org/zh/" />
+    <link rel="alternate" hreflang="x-default" href="https://vtracer.visioncortex.org/" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />

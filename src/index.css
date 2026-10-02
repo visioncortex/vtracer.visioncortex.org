@@ -23,6 +23,17 @@
   color-scheme: dark;
 }
 
+/* Chinese (the /zh/ page). Gloock, Inter and JetBrains Mono carry no CJK
+   glyphs, so each stack names a Chinese face to fall back to: Noto Serif SC
+   beside Gloock for the display headings (loaded by zh/index.html), and the
+   system's own Chinese sans for body text. Latin words such as "VTracer" stay
+   in Gloock and Inter. */
+:root:lang(zh) {
+  --display: "Gloock", "Noto Serif SC", "Songti SC", serif;
+  --sans: "Inter", -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB",
+    "Microsoft YaHei", "Noto Sans SC", sans-serif;
+}
+
 /* ----------------------------------------------------------------- reset */
 
 *,
@@ -1085,6 +1096,37 @@ body::after {
 
 .footer-link-btn:hover {
   color: var(--fg);
+}
+
+.footer-lang {
+  display: flex;
+  gap: 14px;
+}
+
+.footer-lang [aria-current] {
+  color: var(--fg);
+}
+
+/* Chinese headings. Gloock's tight 0.94 leading and negative tracking would
+   crush CJK glyphs, and its 15ch measure wraps a nine-character heading one
+   character short, stranding the last on a line of its own. The weight is
+   for the Chinese serif; font-synthesis keeps Gloock, which has one weight,
+   from being faux-bolded to match. */
+:lang(zh) .display {
+  line-height: 1.18;
+  letter-spacing: 0;
+  font-weight: 600;
+  font-synthesis: none;
+}
+
+:lang(zh) .hero-title,
+:lang(zh) .section-title {
+  max-width: none;
+  text-wrap: balance;
+}
+
+:lang(zh) h3 {
+  letter-spacing: 0;
 }
 
 /* ---------------------------------------------------------------- consent */

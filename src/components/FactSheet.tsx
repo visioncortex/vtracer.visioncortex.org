@@ -1,4 +1,5 @@
-import { COMPARISONS, FEATURES, GENAI, ORG, PENCIL, SHOWCASE, SHOWCASE_ASPECT, STAGE_ASPECT, TRIAL } from "../site";
+import { COMPARISONS, GENAI, ORG, PENCIL, SHOWCASE, SHOWCASE_ASPECT, STAGE_ASPECT } from "../site";
+import { checkCopy, type FactSheetCopy } from "../fact-sheet-copy";
 import { frame, type Focus } from "../frame";
 
 /**
@@ -47,48 +48,6 @@ function Split({
   );
 }
 
-const TRACES = TRIAL.traces.toLocaleString("en-US");
-
-/**
- * Answers to what people ask before they trial or buy, kept in step with the
- * Terms — every one of these is stated there at greater length, and the Terms
- * are what governs if the two ever disagree.
- */
-const FAQ: [string, React.ReactNode][] = [
-  [
-    "Do I need a credit card to try it?",
-    "No. An account and nothing else — the trial is enabled from inside the app.",
-  ],
-  [
-    "How long does the trial run?",
-    `${TRIAL.days} days from activation, or ${TRACES} traces, whichever comes first.`,
-  ],
-  [
-    "How many machines can I trial on?",
-    "At most two. You can trial on both macOS and Windows, so you can make sure they both work. But not two PCs or two Macs. Linux support is coming soon.",
-  ],
-  [
-    "What happens when the trial ends?",
-    "The VTracer 2 features switch off and the rest of the app keeps working. Everything you have already traced stays on your disk, untouched.",
-  ],
-  [
-    "Can I sell what I trace?",
-    "Yes, client work included — that is what the app is for. What a license does not cover is automating the app or offering its tracing to other people as a service.",
-  ],
-  [
-    "Does it need an internet connection?",
-    "Tracing does not. Activation does, once, and an activated device keeps working offline afterwards.",
-  ],
-  [
-    "Is it a subscription?",
-    "No. A license is perpetual and covers every release in its model line. Paid licenses are not on sale yet.",
-  ],
-  [
-    "And VTracer 1?",
-    "Unchanged, and staying that way: MIT-licensed, free for any use, including commercially.",
-  ],
-];
-
 function Section({ title, children }: { title: string; children: React.ReactNode }) {
   return (
     <section className="fs-section">
@@ -102,8 +61,14 @@ function Section({ title, children }: { title: string; children: React.ReactNode
  * The in-app fact sheet: the marketing page with the selling taken out. Same
  * facts and the same samples, but no bloom, no display type at scale, nothing
  * to drag, and nothing asking the reader to download an app they already have.
+ *
+ * Rendered once per language, each to its own static page, since a page with
+ * no script cannot choose its language at load time. Every word comes from
+ * `copy`; the FAQ there is kept in step with the Terms, which govern if the
+ * two ever disagree.
  */
-export default function FactSheet() {
+export default function FactSheet({ copy }: { copy: FactSheetCopy }) {
+  checkCopy(copy);
   const hero = COMPARISONS[0];
 
   return (
@@ -111,27 +76,27 @@ export default function FactSheet() {
       <header className="fs-head">
         <h1>VTracer 2</h1>
         <p className="fs-lede">
-          VTracer 2 is the next-gen tracing engine of VTracer.
+          {copy.lede}
         </p>
       </header>
 
       <Split
         leftSrc={hero.original.src}
         rightSrc={hero.vtracer.src}
-        leftLabel="Source"
+        leftLabel={copy.source}
         rightLabel="VTracer 2"
-        alt="An illustrated portrait, half shown as its low-resolution source and half as the SVG VTracer 2 traced from it."
+        alt={copy.heroAlt}
         stageAspect={STAGE_ASPECT}
         aspect={hero.aspect}
         focus={hero.focus}
       />
       <p className="fs-caption">
-        Left, source image. Right, the SVG emitted by VTracer 2.
+        {copy.caption}
       </p>
 
-      <Section title="What the engine does">
+      <Section title={copy.sections.engine}>
         <div className="fs-grid">
-          {FEATURES.map((feature) => (
+          {copy.features.map((feature) => (
             <article key={feature.title}>
               <h3>{feature.title}</h3>
               <p>{feature.body}</p>
@@ -140,40 +105,37 @@ export default function FactSheet() {
         </div>
       </Section>
 
-      <Section title="New in VTracer 2">
+      <Section title={copy.sections.whatsNew}>
         <div className="fs-cols">
-          {SHOWCASE.map((item) => (
+          {SHOWCASE.map((item, i) => (
             <article key={item.id}>
               <Split
                 leftSrc={item.original}
                 rightSrc={item.vtracer}
-                leftLabel="Source"
+                leftLabel={copy.source}
                 rightLabel="VTracer 2"
-                alt={`${item.title}: the source on the left, the VTracer 2 trace on the right.`}
+                alt={copy.showcaseAlt(copy.showcase[i].title)}
                 stageAspect={SHOWCASE_ASPECT}
                 aspect={item.aspect}
                 focus={item.focus}
                 transparent={"transparent" in item && item.transparent}
               />
-              <h3>{item.title}</h3>
-              <p>{item.blurb}</p>
+              <h3>{copy.showcase[i].title}</h3>
+              <p>{copy.showcase[i].blurb}</p>
             </article>
           ))}
         </div>
       </Section>
 
-      <Section title="Prompt to vector">
-        <p>
-          The Gen AI lab harnesses image generation models and runs them on your device.
-          A guided prompt steers them toward art that traces well, so every result comes out as clean vectors.
-        </p>
+      <Section title={copy.sections.prompt}>
+        <p>{copy.genai.intro}</p>
         {/* One screenshot per scheme; fact-sheet.css shows whichever matches
             the theme, including a theme the app has pinned. */}
         <figure className="fs-shot">
           <img
             className="light"
             src={GENAI.shot.rounds[0].light}
-            alt={GENAI.shot.alt}
+            alt={copy.genai.alt}
             width={GENAI.shot.width}
             height={GENAI.shot.height}
             loading="lazy"
@@ -181,31 +143,28 @@ export default function FactSheet() {
           <img
             className="dark"
             src={GENAI.shot.rounds[0].dark}
-            alt={GENAI.shot.alt}
+            alt={copy.genai.alt}
             width={GENAI.shot.width}
             height={GENAI.shot.height}
             loading="lazy"
           />
         </figure>
         <div className="fs-grid">
-          {GENAI.points.map((point) => (
+          {copy.genai.points.map((point) => (
             <article key={point.title}>
               <h3>{point.title}</h3>
               <p>{point.body}</p>
             </article>
           ))}
           <article>
-            <h3>Bring your own model</h3>
-            <p>
-              VTracer can also talk to an sd-server you host yourself for generating graphics.
-              It can be on the same machine, or on another machine you own.
-            </p>
+            <h3>{copy.genai.byo.title}</h3>
+            <p>{copy.genai.byo.body}</p>
           </article>
         </div>
       </Section>
 
-      <Section title="Pencil to vector">
-        <p>{PENCIL.intro}</p>
+      <Section title={copy.sections.pencil}>
+        <p>{copy.pencil.intro}</p>
         {/* The demo waits for a click here: it is half a minute long and this
             page sits in a panel beside the reader's work, so nothing should
             move or download until they ask. */}
@@ -215,7 +174,7 @@ export default function FactSheet() {
             poster={PENCIL.hero.poster}
             width={PENCIL.hero.width}
             height={PENCIL.hero.height}
-            aria-label={PENCIL.hero.label}
+            aria-label={copy.pencil.heroLabel}
             controls
             playsInline
             preload="none"
@@ -223,14 +182,15 @@ export default function FactSheet() {
         </figure>
         <div className="fs-cols fs-pair">
           {PENCIL.points.map((point, i) => {
-            const mark = PENCIL.points.slice(0, i + 1).filter((p) => p.note).length;
+            const text = copy.pencil.points[i];
+            const mark = copy.pencil.points.slice(0, i + 1).filter((p) => p.note).length;
             return (
-              <article key={point.title}>
+              <article key={point.image?.src ?? point.video?.src}>
                 <div className="fs-media">
                   {point.image ? (
                     <img
                       src={point.image.src}
-                      alt={point.image.alt}
+                      alt={text.media}
                       width={point.image.width}
                       height={point.image.height}
                       loading="lazy"
@@ -246,7 +206,7 @@ export default function FactSheet() {
                           src={point.video.src}
                           width={point.video.width}
                           height={point.video.height}
-                          aria-label={point.video.label}
+                          aria-label={text.media}
                           autoPlay
                           muted
                           loop
@@ -255,7 +215,7 @@ export default function FactSheet() {
                         <img
                           className="still"
                           src={point.video.poster}
-                          alt={point.video.label}
+                          alt={text.media}
                           width={point.video.width}
                           height={point.video.height}
                           loading="lazy"
@@ -264,14 +224,14 @@ export default function FactSheet() {
                     )
                   )}
                 </div>
-                <h3>{point.title}</h3>
+                <h3>{text.title}</h3>
                 <p>
-                  {point.body}
-                  {point.note && <sup className="fs-mark">{mark}</sup>}
+                  {text.body}
+                  {text.note && <sup className="fs-mark">{mark}</sup>}
                 </p>
-                {point.note && (
+                {text.note && (
                   <p className="fs-note">
-                    <sup>{mark}</sup> {point.note}
+                    <sup>{mark}</sup> {text.note}
                   </p>
                 )}
               </article>
@@ -280,24 +240,20 @@ export default function FactSheet() {
         </div>
       </Section>
 
-      <Section title="Output">
+      <Section title={copy.sections.output}>
         <ul className="fs-list">
-          <li>SVG, with adjustable curve simplification and path precision.</li>
-          <li>Linear, radial and mesh gradients.</li>
-          <li>Stacked compositing (no holes) or cutout (no seams).</li>
-          <li>Background removal, producing a transparent canvas.</li>
+          {copy.output.map((line) => (
+            <li key={line}>{line}</li>
+          ))}
         </ul>
       </Section>
 
-      <Section title="Your artwork">
-        <p>
-          Your artwork never leaves this machine. The tracing engine runs locally, no
-          request the app makes carries your images, your traces or their file names.
-        </p>
+      <Section title={copy.sections.artwork}>
+        <p>{copy.artwork}</p>
       </Section>
-      <Section title="Questions">
+      <Section title={copy.sections.questions}>
         <div className="fs-grid">
-          {FAQ.map(([question, answer]) => (
+          {copy.faq.map(([question, answer]) => (
             <article key={question}>
               <h3>{question}</h3>
               <p>{answer}</p>

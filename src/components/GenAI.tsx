@@ -1,4 +1,5 @@
 import { GENAI } from "../site";
+import { useCopy } from "../site-copy";
 
 /**
  * The Gen AI lab, shown as it is. The marketing page is dark-only, so this
@@ -9,7 +10,8 @@ import { GENAI } from "../site";
  * has finished hydrating.
  */
 export default function GenAI() {
-  const { shot, points } = GENAI;
+  const { shot } = GENAI;
+  const { genai } = useCopy();
 
   return (
     <>
@@ -20,7 +22,7 @@ export default function GenAI() {
             src={round.dark}
             /* One description covers the pair, on the first image. The rest
                show the same window and would only be read out twice. */
-            alt={i === 0 ? shot.alt : ""}
+            alt={i === 0 ? genai.alt : ""}
             aria-hidden={i === 0 ? undefined : true}
             width={shot.width}
             height={shot.height}
@@ -30,7 +32,7 @@ export default function GenAI() {
       </figure>
 
       <div className="feature-grid">
-        {points.map((point) => (
+        {genai.points.map((point) => (
           <article className="feature" key={point.title}>
             <h3>{point.title}</h3>
             <p>{point.body}</p>

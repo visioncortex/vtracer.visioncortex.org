@@ -179,7 +179,7 @@ export const PENCIL = {
     "Snap a photo of a pencil sketch and drop it in. VTracer lifts your lines off the page, leaving paper, shadows and smudges behind, then generates from them. Low strength cleans up your sketch. High strength turns it into finished color artwork.",
   hero: {
     src: "/pencil/pencil-demo.mp4",
-    poster: "/pencil/pencil-demo-poster.webp",
+    poster: "/pencil/pencil-demo-poster.png",
     width: 1520,
     height: 880,
     label:
@@ -213,10 +213,16 @@ export const PENCIL = {
   ],
 };
 
+/**
+ * `listed` decides whether a platform is offered on the page: in the hero's
+ * "also for" line and in the download section's strip. Linux is built but not
+ * listed while VTracer 2 support for it is still to come. It stays here so a
+ * visitor already on Linux is still recognised and handed the right download.
+ */
 export const PLATFORMS = [
-  { os: "macOS", meta: "Universal · Metal accelerated" },
-  { os: "Windows", meta: "x64 · Installer" },
-  { os: "Linux", meta: "x64 · AppImage" },
+  { os: "macOS", meta: "Universal · Metal accelerated", listed: true },
+  { os: "Windows", meta: "x64 · Installer", listed: true },
+  { os: "Linux", meta: "x64 · AppImage", listed: false },
 ] as const;
 
 export type OS = (typeof PLATFORMS)[number]["os"];

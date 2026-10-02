@@ -2,8 +2,8 @@
 // /privacy-policy and /terms-of-service are readable without JavaScript —
 // including by Google's OAuth reviewers. Runs after `vite build`; the client
 // entries hydrate the markup instead of rendering from scratch.
-import { readFile, writeFile } from "node:fs/promises";
-import { join } from "node:path";
+import { copyFile, mkdir, readFile, writeFile } from "node:fs/promises";
+import { dirname, join } from "node:path";
 import { createServer } from "vite";
 
 /**
@@ -17,7 +17,19 @@ import { createServer } from "vite";
  *
  * The client entry stays for dev, which serves these pages unprerendered.
  */
-const STATIC = new Set(["fact-sheet"]);
+const STATIC = new Set(["fact-sheet", "zh/fact-sheet"]);
+
+/**
+ * Finished pages served again at a second address. The app builds the fact
+ * sheet's URL from its locale, /en/fact-sheet as much as /zh/fact-sheet, and
+ * GitHub Pages cannot send a real redirect. The only redirect a static page
+ * can do without script is a meta refresh, and that drops the #theme-dark or
+ * #theme-light the app pins the theme with; a script redirect would keep it
+ * but the app's CSP blocks scripts in the frame. So /en/ gets an identical
+ * copy instead, whose canonical link still names /fact-sheet. Every URL in
+ * these pages is root-relative, so a copy works from any directory.
+ */
+const ALIASES = { "en/fact-sheet": "fact-sheet" };
 
 /** Folds <link rel="stylesheet"> into a <style> block, and drops the JS. */
 async function selfContain(html) {
@@ -57,6 +69,12 @@ try {
     }
     await writeFile(file, out);
     console.log(`prerendered ${file}${note}`);
+  }
+  for (const [alias, page] of Object.entries(ALIASES)) {
+    const target = `dist/${alias}.html`;
+    await mkdir(dirname(target), { recursive: true });
+    await copyFile(`dist/${page}.html`, target);
+    console.log(`copied dist/${page}.html to ${target}`);
   }
 } finally {
   await server.close();

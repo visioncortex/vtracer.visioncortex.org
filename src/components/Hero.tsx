@@ -2,50 +2,52 @@ import Comparator from "./Comparator";
 import { PLATFORMS } from "../site";
 import { useDownloads } from "../useDownloads";
 import { useOS } from "../useOS";
+import Accented from "./Accented";
+import { useCopy } from "../site-copy";
 
 export default function Hero() {
   const os = useOS();
   const download = useDownloads();
-  const others = PLATFORMS.filter((p) => p.os !== os);
+  const others = PLATFORMS.filter((p) => p.listed && p.os !== os);
+  const { hero } = useCopy();
 
   return (
     <section className="hero">
       <div className="shell">
         <h1 className="display hero-title">
-          The next-gen <span className="accent">VTracer</span> has arrived
+          <Accented parts={hero.title} />
         </h1>
 
         <p className="hero-sub">
-          <strong>The best vectorizer, on your device.</strong> A deep-learning engine cleans up
-          and sharpens your artwork first, then traces it — crisp edges, smooth gradients, and curves
-          you would have drawn yourself.
+          <strong>{hero.subStrong}</strong> {hero.sub}
         </p>
 
         <div className="hero-cta">
           <a className="btn btn-primary" href={download(os)}>
-            {os ? `Download for ${os}` : "Download the app"}
+            {os ? hero.downloadFor(os) : hero.downloadApp}
           </a>
           <a className="btn btn-ghost" href="#features">
-            See what it does
+            {hero.seeWhat}
           </a>
         </div>
 
         <p className="hero-meta">
-          Free to download ·{" "}
+          {hero.free} ·{" "}
           {os ? (
             <>
-              also for{" "}
+              {hero.alsoBefore}
               {others.map((p, i) => (
                 <span key={p.os}>
-                  {i > 0 && " and "}
+                  {i > 0 && hero.and}
                   <a href={download(p.os)}>{p.os}</a>
                 </span>
               ))}
+              {hero.alsoAfter}
             </>
           ) : (
-            "macOS, Windows and Linux"
+            hero.allPlatforms
           )}{" "}
-          · Tracing runs entirely on your device
+          · {hero.onDevice}
         </p>
 
         <Comparator />
