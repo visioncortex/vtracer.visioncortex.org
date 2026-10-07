@@ -2,33 +2,24 @@ import { GENAI } from "../site";
 import { useCopy } from "../site-copy";
 
 /**
- * The Gen AI lab, shown as it is. The marketing page is dark-only, so this
- * takes the dark screenshots; the fact sheet has both schemes and picks in CSS.
- *
- * The rounds crossfade in CSS rather than on a timer in here: no re-render, no
- * work when the tab is in the background, and it runs whether or not the page
- * has finished hydrating.
+ * The Gen AI lab, shown in the reader's own language: one screenshot of the
+ * app running in it. The marketing page is dark-only, so this takes the dark
+ * one; the fact sheet has both schemes and picks in CSS.
  */
 export default function GenAI() {
   const { shot } = GENAI;
-  const { genai } = useCopy();
+  const { lang, genai } = useCopy();
 
   return (
     <>
-      <figure className="shot shot-stack">
-        {shot.rounds.map((round, i) => (
-          <img
-            key={round.dark}
-            src={round.dark}
-            /* One description covers the pair, on the first image. The rest
-               show the same window and would only be read out twice. */
-            alt={i === 0 ? genai.alt : ""}
-            aria-hidden={i === 0 ? undefined : true}
-            width={shot.width}
-            height={shot.height}
-            loading="lazy"
-          />
-        ))}
+      <figure className="shot">
+        <img
+          src={shot.images[lang].dark}
+          alt={genai.alt}
+          width={shot.width}
+          height={shot.height}
+          loading="lazy"
+        />
       </figure>
 
       <div className="feature-grid">

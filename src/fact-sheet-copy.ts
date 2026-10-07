@@ -1,4 +1,4 @@
-import { FEATURES, GENAI, PENCIL, SHOWCASE, TRIAL } from "./site";
+import { FEATURES, GENAI, PENCIL, SHOWCASE, TRIAL, type Lang } from "./site";
 
 /**
  * Every word the fact sheet shows, one object per language. Media, framing and
@@ -10,10 +10,20 @@ import { FEATURES, GENAI, PENCIL, SHOWCASE, TRIAL } from "./site";
  * (vtracer-app/frontend/src/i18n/zh-Hans.js): 描摹 for trace, 授权 for
  * licence, 堆叠 and 镂空 for the compositing modes, 画风 and 强度 for the Gen
  * AI controls, and 你 throughout, with spaces around Latin text and numbers.
+ *
+ * The Japanese follows the app's ja.js for every interface term (トレース,
+ * ライセンス, 買い切り, スタック and 切り抜き, 画風, 強度, 線画, ラウンド)
+ * and, where the English is ambiguous, the reading the vetted Chinese
+ * settled on: 元画像 for both Source and
+ * Original as 原图 is, plain-language JPEG damage (ノイズ, 色の段差,
+ * ブロックノイズ) as 杂噪, 色块, 马赛克 are, and オープンソース for "open".
+ * Polite です/ます throughout.
  */
 type Text = { title: string; body: string };
 
 export type FactSheetCopy = {
+  /** Picks this language's Gen AI screenshot. */
+  lang: Lang;
   lede: string;
   /** Label on the source side of every comparison stage. */
   source: string;
@@ -46,6 +56,7 @@ export type FactSheetCopy = {
 };
 
 export const en: FactSheetCopy = {
+  lang: "en",
   lede: "VTracer 2 is the next-gen tracing engine of VTracer.",
   source: "Source",
   heroAlt:
@@ -128,6 +139,7 @@ export const en: FactSheetCopy = {
 };
 
 export const zhHans: FactSheetCopy = {
+  lang: "zh",
   lede: "VTracer 2 是 VTracer 的新一代描摹引擎。",
   source: "原图",
   heroAlt: "一幅插画人像，一半是低分辨率的原图，一半是 VTracer 2 从中描摹出的 SVG。",
@@ -185,7 +197,7 @@ export const zhHans: FactSheetCopy = {
   genai: {
     intro:
       "Gen AI 实验室调用图像生成模型，并在你的设备上运行。引导式提示词会把模型引向便于描摹的画面，因此每个结果都能成为干净的矢量图。",
-    alt: "VTracer 应用的 Gen AI 实验室。右侧的提示词面板写着 corgi, sitting, smiling；中间的透明画布上是一只描摹好的卡通柯基；左侧一列是此前的各个回合及其随机种子。",
+    alt: "VTracer 应用的 Gen AI 实验室，界面为中文。右侧的提示词面板写着 红狐、坐着、开心；中间的透明画布上是一只描摹好的卡通红狐；左侧是此前的回合及其随机种子。",
     points: [
       {
         title: "从提示词到矢量图",
@@ -263,6 +275,154 @@ export const zhHans: FactSheetCopy = {
     ],
   ],
 };
+
+export const ja: FactSheetCopy = {
+  lang: "ja",
+  lede: "VTracer 2 は、VTracer の次世代トレースエンジンです。",
+  source: "元画像",
+  heroAlt: "イラストの肖像画。半分は低解像度の元画像、半分は VTracer 2 がそこからトレースした SVG。",
+  caption: "左が元画像、右が VTracer 2 の出力した SVG。",
+  showcaseAlt: (title) => `${title}：左が元画像、右が VTracer 2 のトレース結果。`,
+  sections: {
+    engine: "エンジンにできること",
+    whatsNew: "VTracer 2 の新機能",
+    prompt: "プロンプトからベクターへ",
+    pencil: "鉛筆スケッチからベクターへ",
+    output: "出力",
+    artwork: "あなたの作品",
+    questions: "よくある質問",
+  },
+  features: [
+    {
+      title: "拡大してから、トレース",
+      body: "エンジンは曲線を 1 本フィットさせる前に、画像を最大 8 倍に再構築します。従来のトレーサーならギザギザの段差につぶしてしまうディテールが、クリーンな形状として出てきます。",
+    },
+    {
+      title: "勝手に描き足さない",
+      body: "アップスケールモデルはとかく捏造しがちです。私たちのモデルは、あなたの作品にない物体や質感やディテールを想像で加えることはなく、もともとそこにあるものだけを復元します。この制約はエンジン設計の一部です。",
+    },
+    {
+      title: "デバイス上で動く",
+      body: "450 万パラメータのモデル。速く動くほど小さく、完全にローカルで、macOS では Metal で高速化されます。作品がこのマシンを離れることはなく、トレースの工程にサーバーは一切ありません。",
+    },
+    {
+      title: "実際の JPEG にも強い",
+      body: "ノイズ、色の段差、ブロックノイズ、そして十数回も保存し直されたファイル。エンジンは圧縮の傷みを越えてトレースするように作られていて、傷みそのものを忠実になぞることはしません。",
+    },
+    {
+      title: "グラデーションをそのまま",
+      body: "なめらかなグラデーションはグラデーションとして出力されます。何百もの色の帯でそれらしく見せるのではなく。",
+    },
+    {
+      title: "スタックモード",
+      body: "VTracer ならではの機能。形状を互いに切り抜くのではなく、重ねて配置します。ノードは少なく、ファイルは小さく、開いて編集するのが本当に気持ちいいドキュメントに。",
+    },
+  ],
+  showcase: [
+    {
+      title: "色の段差ではなく、グラデーション",
+      blurb: "暮れていく空はなめらかなまま。何百もの帯に刻むのではなく、グラデーションとして出力します。",
+    },
+    {
+      title: "JPEG 圧縮？問題なし",
+      blurb: "手元には劣化のひどい JPEG しかない？VTracer 2 はノイズを取り除いてディテールを復元し、圧縮のアーティファクトは置いていきます。",
+    },
+    {
+      title: "背景は、ワンクリックで除去",
+      blurb: "クリップアートはたいてい無地の下地つきで届きます。チェックボックスひとつで、トレース結果は透明の上に置かれます。",
+    },
+  ],
+  genai: {
+    intro:
+      "Gen AI ラボは画像生成モデルを呼び出し、あなたのデバイス上で動かします。ガイド付きプロンプトがモデルをトレースしやすい絵へと導くので、どの結果もクリーンなベクターになります。",
+    alt: "日本語表示の VTracer アプリの Gen AI ラボ。右のプロンプトパネルには 柴犬、座っていること、微笑んでいる とあり、中央の透明なキャンバスにはトレースされた柴犬のイラスト、左の列にはこれまでのラウンドとそのシードが並ぶ。",
+    points: [
+      {
+        title: "プロンプトからベクターへ",
+        body: "プロンプトを入力すれば、SVG が手に入ります。アプリはデバイス上で画像を生成し、同じパイプラインでトレースまで行うので、受け取るのは透明背景の上のクリーンな形状。そのままデザインの仕事に使えます。",
+      },
+      {
+        title: "あなたのモデル、あなたのマシン",
+        body: "モデルを選び、アプリ内でダウンロードすれば、それはあなたのデバイスに置かれます。さまざまな拡散モデルに対応し、自分のモデルを持ち込むこともできます。プロンプトがあなたのマシンを離れることはありません。サブスクリプションもアップロードもなし。",
+      },
+    ],
+    byo: {
+      title: "モデルの持ち込み",
+      body: "VTracer は、自分でホストする sd-server と通信して画像を生成することもできます。同じマシン上でも、所有する別のマシン上でもかまいません。",
+    },
+  },
+  pencil: {
+    intro:
+      "鉛筆スケッチを写真に撮って、ドロップするだけ。VTracer が紙面から線だけを拾い上げ、紙や影や汚れを置き去りにして、そこから生成します。強度を低くすればスケッチのクリーンアップに、高くすれば仕上がった色付きの作品に。",
+    heroLabel:
+      "ノートに鉛筆で描いた狐を写真に撮り、VTracer の Gen AI ラボにドロップ。線画にクリーンアップされ、色付きの狐のイラストに生成される。",
+    points: [
+      {
+        title: "スケッチを、クリーンアップ",
+        body: "ナプキンの落書きを、もう捨てなくていい。写真に撮って、ドロップするだけ。紙や汚れは消え、ハッチングは塗りつぶされ、線はまるでペンタブレットで描いたかのようにクリーンになって、生成の工程にそのまま進めます。",
+        note: "画風：線画 · 強度：0.2",
+        media:
+          "灰色の紙に鉛筆で描かれた 3 匹の猫。陰影があり、半分消された 4 匹目もいる。その隣に、同じ 3 匹の猫が透明背景のクリーンな黒い線画になっている。",
+      },
+      {
+        title: "クリーンなベクター、すぐ使える",
+        body: "スタックモードは形状を互いに切り抜くのではなく重ねて置くので、どの形状もひとつながりのまま。編集も色の変更も簡単です。まるで自分でスキャンし、クリーンアップし、丹念にトレースしたかのように。",
+        note: "画風：カートゥーン · 強度：0.5",
+        media:
+          "ベクターエディタで、トレースされた狐のイラスト。形状を選択して引き離すと、少数の完全な形状が重なっていて、色付きの形状の下に濃い色の土台があるのが分かる。",
+      },
+    ],
+  },
+  output: [
+    "SVG。曲線の簡略化とパスの精度を調整できます。",
+    "線形、放射状、メッシュのグラデーション。",
+    "スタック合成（穴なし）または切り抜き合成（継ぎ目なし）。",
+    "背景の除去。透明なキャンバスになります。",
+  ],
+  artwork:
+    "あなたの作品がこのマシンを離れることはありません。トレースエンジンはローカルで動き、アプリが送るどのリクエストにも、画像やトレース結果やそのファイル名は含まれません。",
+  faq: [
+    [
+      "試すのにクレジットカードは必要ですか？",
+      "いいえ。必要なのはアカウントだけで、トライアルはアプリ内から有効にします。",
+    ],
+    [
+      "トライアル期間はどのくらいですか？",
+      `アクティベートから ${TRIAL.days} 日、または ${TRIAL.traces.toLocaleString("ja-JP")} 回のトレースのうち、早く達したほうまでです。`,
+    ],
+    [
+      "何台のマシンで試せますか？",
+      "最大 2 台です。macOS と Windows の両方で試して、どちらでも動くことを確かめられます。Linux 対応は近日中です。",
+    ],
+    [
+      "トライアルが終わるとどうなりますか？",
+      "VTracer 2 の機能はオフになりますが、アプリのそれ以外の部分はそのまま使えます。すでにトレースしたものはすべて、手つかずでディスクに残ります。",
+    ],
+    [
+      "トレースしたものを販売できますか？",
+      "はい。クライアントワークも含めて、そのためのアプリです。ライセンスが認めていないのは、アプリの自動操作や、そのトレース機能をサービスとして他人に提供することです。",
+    ],
+    [
+      "インターネット接続は必要ですか？",
+      "トレースには不要です。アクティベーションには一度だけ必要で、アクティベート済みのデバイスはその後オフラインでも使えます。",
+    ],
+    [
+      "サブスクリプションですか？",
+      "いいえ。ライセンスは買い切りで、そのモデル系列のすべてのリリースに適用されます。有料ライセンスはまだ販売していません。",
+    ],
+    [
+      "VTracer 1 はどうなりますか？",
+      "変わりません。これからもずっと MIT ライセンスで、商用を含むどんな用途にも無料です。",
+    ],
+  ],
+};
+
+/** The fact sheet copy for an HTML shell's <html lang>. */
+export function factSheetCopyFor(lang: string): FactSheetCopy {
+  if (lang.startsWith("zh")) return zhHans;
+  if (lang.startsWith("ja")) return ja;
+  return en;
+}
 
 /**
  * The lists above are matched to site.ts by position. If a feature, sample or

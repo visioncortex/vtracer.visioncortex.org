@@ -1,6 +1,6 @@
 import { createContext, useContext } from "react";
-import { en as fsEn, zhHans as fsZh } from "./fact-sheet-copy";
-import { COMPARISONS, PLATFORMS, type OS } from "./site";
+import { en as fsEn, ja as fsJa, zhHans as fsZh } from "./fact-sheet-copy";
+import { COMPARISONS, PLATFORMS, type Lang, type OS } from "./site";
 
 /**
  * Every word the landing page shows, one object per language, handed down
@@ -8,13 +8,14 @@ import { COMPARISONS, PLATFORMS, type OS } from "./site";
  * without a provider and get English.
  *
  * Wherever the landing page and the fact sheet say the same thing, the words
- * come from fact-sheet-copy.ts, so the two pages cannot drift in either
- * language. The Chinese follows the app's glossary, as the fact sheet does.
+ * come from fact-sheet-copy.ts, so the two pages cannot drift in any
+ * language. The Chinese follows the app's glossary, as the fact sheet does,
+ * and the Japanese follows the Chinese wherever the English is ambiguous.
  *
  * A heading with an accented word is a [before, accent, after] triple, since
  * the accent lands in a different place in each language.
  */
-export type Lang = "en" | "zh";
+export type { Lang };
 type Accented = [string, string, string];
 type Text = { title: string; body: string };
 
@@ -22,7 +23,9 @@ export type SiteCopy = {
   lang: Lang;
   /** This language's landing page, which every in-page link is relative to. */
   home: string;
-  nav: { features: string; whatsNew: string; download: string };
+  /** Top header links: What's new jumps to New in VTracer 2, Generative AI
+      to Prompt to vector. */
+  nav: { whatsNew: string; prompt: string; download: string };
   hero: {
     title: Accented;
     subStrong: string;
@@ -87,7 +90,11 @@ const SAMPLES = Object.fromEntries(COMPARISONS.map((c) => [c.id, c.label]));
 export const en: SiteCopy = {
   lang: "en",
   home: "/",
-  nav: { features: "Features", whatsNew: "What’s new", download: "Download" },
+  nav: {
+    whatsNew: "What\u2019s new",
+    prompt: "Generative AI",
+    download: "Download",
+  },
   hero: {
     title: ["The next-gen ", "VTracer", " has arrived"],
     subStrong: "The best vectorizer, on your device.",
@@ -180,7 +187,7 @@ export const en: SiteCopy = {
 export const zh: SiteCopy = {
   lang: "zh",
   home: "/zh/",
-  nav: { features: "特性", whatsNew: "新功能", download: "下载" },
+  nav: { whatsNew: "新功能", prompt: "生成式 AI", download: "下载" },
   hero: {
     title: ["新一代 ", "VTracer", " 来了"],
     subStrong: "最好的矢量化工具，就在你的设备上。",
@@ -274,14 +281,117 @@ export const zh: SiteCopy = {
   },
 };
 
+export const ja: SiteCopy = {
+  lang: "ja",
+  home: "/ja/",
+  nav: {
+    whatsNew: "新機能",
+    prompt: "生成 AI",
+    download: "ダウンロード",
+  },
+  hero: {
+    title: ["次世代の ", "VTracer", "、登場。"],
+    subStrong: "最高のベクター化ツールを、あなたのデバイスに。",
+    sub: "ディープラーニングのエンジンがまず作品をクリーンアップして鮮明にし、それからトレースします。シャープなエッジ、なめらかなグラデーション、そして自分の手で描いたかのような曲線に。",
+    downloadFor: (os) => `${os} 版をダウンロード`,
+    downloadApp: "アプリをダウンロード",
+    seeWhat: "できることを見る",
+    free: "無料ダウンロード",
+    alsoBefore: "",
+    alsoAfter: " 版もあります",
+    and: " と ",
+    allPlatforms: "macOS と Windows",
+    onDevice: "トレースはすべてデバイス上で行われます",
+  },
+  cmp: {
+    againstAria: "VTracer 2 の比較対象",
+    samplesAria: "サンプル作品",
+    original: "元画像",
+    samples: { illustration: "イラスト", graphic: "グラフィック" },
+    stats: (paths, kb) => `${paths.toLocaleString("ja-JP")} パス · ${kb} KB`,
+    drag: "ドラッグして比較",
+    real: "どちらのトレース結果も実際の SVG ファイルです",
+    yourself: "トレース結果を自分で見比べる：",
+    svg: (name) => `${name} の SVG`,
+    listJoin: "、",
+    end: "。",
+    leftAlt: (sample, side) => `${sample}、${side}`,
+    rightAlt: (sample) => `${sample}、VTracer 2 によるトレース`,
+  },
+  wipeAria: (left, right) => `${left}と${right}の比較位置`,
+  sections: {
+    design: {
+      title: ["", "デザイン", "の仕事のために生まれた"],
+      note: "ロゴ、クリップアート、イラスト、ブランド素材。デザイナーが本当にベクター化したい作品を、求められるとおりに扱います。",
+    },
+    whatsNew: {
+      title: "VTracer 2 の新機能",
+      note: "旧エンジンにはできなかった 3 つのこと。どれもドラッグできます。右側はすべて実際の SVG です。",
+    },
+    prompt: {
+      title: ["プロンプトから", "ベクター", "へ"],
+      note: "生成拡散モデルがアプリ内で、あなたのデバイス上で動きます。ガイド付きプロンプトがモデルをトレースしやすい絵へと導くので、どの結果もクリーンなベクターになります。",
+    },
+    pencil: { title: ["鉛筆スケッチから", "ベクター", "へ"] },
+    download: {
+      title: ["まずは", "無料", "アプリから"],
+      note: "アプリをダウンロードして、トレースを始めましょう。アプリ内で VTracer 2 をアクティベートすれば無料トライアルが始まります。クレジットカードは不要です。",
+    },
+    open: {
+      title: ["VTracer 1 は、これからもずっと", "オープンソース", "。"],
+      note: "初代エンジンは MIT ライセンスで、最近刷新されたばかり。あなたが作るどんなものにも無料で使えます。これは変わりません。",
+    },
+  },
+  features: fsJa.features,
+  showcase: fsJa.showcase,
+  source: "元画像",
+  sourceAlt: (title) => `${title}、元画像`,
+  tracedAlt: (title) => `${title}、VTracer 2 によるトレース`,
+  genai: { alt: fsJa.genai.alt, points: fsJa.genai.points },
+  pencil: fsJa.pencil,
+  shotAlt:
+    "VTracer 2 デスクトップアプリが、トレースした虎のマスコットを元画像と比較している。サイドパネルにはモデル、クラスタリング、合成、曲線フィットの設定が並ぶ。",
+  scarcity: {
+    strong: "プロのデザイナー、イラストレーターの皆さんに、製品を一緒に磨き上げていただきたいと考えています。",
+    rest: "席数には限りがあります。アプリ内で登録して、早期アクセスをリクエストしてください！",
+  },
+  platforms: {
+    yours: "お使いのプラットフォーム",
+    meta: { macOS: "Universal · Metal アクセラレーション", Windows: "x64 · インストーラー", Linux: "x64 · AppImage" },
+  },
+  star: "GitHub でスターを付ける",
+  install: { aria: "インストール方法", copy: "コピー", copied: "コピーしました" },
+  cta: {
+    title: ["", "創造力", "を解き放とう。"],
+    download: "VTracer をダウンロード",
+    github: "GitHub の VTracer 1",
+  },
+  footer: {
+    // The legal documents are English only; the label says so before the click.
+    privacy: "プライバシーポリシー（英語）",
+    terms: "利用規約（英語）",
+    cookies: "Cookie 設定",
+    language: "言語",
+  },
+  consent: {
+    aria: "Cookie の同意",
+    text: "サイトの利用状況を把握し、改善するために Cookie を使用しています。",
+    more: "詳しく見る（英語）",
+    decline: "拒否",
+    accept: "同意する",
+  },
+};
+
 /**
  * The footer switcher's targets. English is /en/, not /: / redirects
- * Chinese-preferring browsers on every visit, so a link there could bounce
- * the reader straight back.
+ * Chinese- and Japanese-preferring browsers on every visit, so a link there
+ * could bounce the reader straight back. `tag` is the BCP 47 tag for the
+ * link's hreflang and lang attributes.
  */
-export const LANGS: { lang: Lang; name: string; href: string }[] = [
-  { lang: "en", name: "English", href: "/en/" },
-  { lang: "zh", name: "简体中文", href: "/zh/" },
+export const LANGS: { lang: Lang; tag: string; name: string; href: string }[] = [
+  { lang: "en", tag: "en", name: "English", href: "/en/" },
+  { lang: "zh", tag: "zh-Hans", name: "简体中文", href: "/zh/" },
+  { lang: "ja", tag: "ja", name: "日本語", href: "/ja/" },
 ];
 
 /**
@@ -290,6 +400,7 @@ export const LANGS: { lang: Lang; name: string; href: string }[] = [
  */
 export function copyFor(lang: string, path: string): SiteCopy {
   if (lang.startsWith("zh")) return zh;
+  if (lang.startsWith("ja")) return ja;
   return path.startsWith("/en/") ? { ...en, home: "/en/" } : en;
 }
 

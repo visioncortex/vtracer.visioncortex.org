@@ -17,7 +17,8 @@ export default defineConfig({
             clean === "/privacy-policy" ||
             clean === "/terms-of-service" ||
             clean === "/fact-sheet" ||
-            clean === "/zh/fact-sheet"
+            clean === "/zh/fact-sheet" ||
+            clean === "/ja/fact-sheet"
           ) {
             req.url = `${clean}.html${req.url!.slice(clean.length)}`;
           } else if (clean === "/en/fact-sheet") {
@@ -40,11 +41,13 @@ export default defineConfig({
       input: {
         index: resolve(import.meta.dirname, "index.html"),
         "zh/index": resolve(import.meta.dirname, "zh/index.html"),
+        "ja/index": resolve(import.meta.dirname, "ja/index.html"),
         "privacy-policy": resolve(import.meta.dirname, "privacy-policy.html"),
         "terms-of-service": resolve(import.meta.dirname, "terms-of-service.html"),
         "fact-sheet": resolve(import.meta.dirname, "fact-sheet.html"),
         // Language versions live under a prefix: /zh/fact-sheet.
         "zh/fact-sheet": resolve(import.meta.dirname, "zh/fact-sheet.html"),
+        "ja/fact-sheet": resolve(import.meta.dirname, "ja/fact-sheet.html"),
       },
     },
   },

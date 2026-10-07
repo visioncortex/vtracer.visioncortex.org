@@ -135,25 +135,26 @@ export const FEATURES = [
   },
 ];
 
+/** The languages the site is translated into. */
+export type Lang = "en" | "zh" | "ja";
+
 export const GENAI = {
   /** The first model on the menu; the copy names it as the first, not the one. */
   first: "SD-Turbo",
   shot: {
     width: 1552,
     height: 922,
-    /* Describes the first round, which is the one every page shows still. The
-       rest are the same window with the same panels, so the landing page marks
-       them decorative rather than have a screen reader hear the UI twice. */
+    /* Describes the English screenshot. Each language's copy describes its
+       own, since each shows a different subject. */
     alt: "The Gen AI lab of the VTracer app. A prompt panel on the right reads corgi, sitting, smiling; a traced cartoon corgi sits on a transparent canvas in the middle; a column of earlier rounds with their seeds runs down the left.",
-    /* Rounds of the same prompt shape. The landing page crossfades them, so
-       the section shows the lab working on more than one subject and on more
-       than one model; the fact sheet takes the first and stays still.
-       The crossfade timing in index.css is tuned to this many rounds. */
-    rounds: [
-      { light: "/gen-ai/sd-corgi-light.png", dark: "/gen-ai/sd-corgi-dark.png" },
-      { light: "/gen-ai/sd-shiba-light.png", dark: "/gen-ai/sd-shiba-dark.png" },
-      { light: "/gen-ai/flux-motorcycle-light.png", dark: "/gen-ai/flux-motorcycle-dark.png" },
-    ],
+    /* One screenshot per language, of the app running in that language, so a
+       reader sees the interface they would get. The landing page shows the
+       dark one; the fact sheet picks light or dark by theme. */
+    images: {
+      en: { light: "/gen-ai/prompt-demo-en-light.png", dark: "/gen-ai/prompt-demo-en-dark.png" },
+      zh: { light: "/gen-ai/prompt-demo-zh-light.png", dark: "/gen-ai/prompt-demo-zh-dark.png" },
+      ja: { light: "/gen-ai/prompt-demo-ja-light.png", dark: "/gen-ai/prompt-demo-ja-dark.png" },
+    } satisfies Record<Lang, { light: string; dark: string }>,
   },
   points: [
     {

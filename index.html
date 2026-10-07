@@ -5,18 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script>
       // Language, decided before anything renders and from the browser alone:
-      // a visitor whose browser lists Chinese ahead of English goes to /zh/.
-      // Nothing is stored or read back. Acts only on / itself, so the same
-      // page copied to /en/ is a stable English address: that is where the
-      // footer's English link points, and it never redirects.
+      // the first of English, Chinese or Japanese in the browser's list wins,
+      // and Chinese or Japanese goes to /zh/ or /ja/. Nothing is stored or
+      // read back. Acts only on / itself, so the same page copied to /en/ is
+      // a stable English address: that is where the footer's English link
+      // points, and it never redirects.
       (function () {
         var path = location.pathname;
         if (path !== "/" && path !== "/index.html") return;
         var langs = navigator.languages || [navigator.language || ""];
         for (var i = 0; i < langs.length; i++) {
           if (/^en\b/i.test(langs[i])) return;
-          if (/^zh\b/i.test(langs[i])) {
-            location.replace("/zh/" + location.search + location.hash);
+          var m = /^(zh|ja)\b/i.exec(langs[i]);
+          if (m) {
+            location.replace("/" + m[1].toLowerCase() + "/" + location.search + location.hash);
             return;
           }
         }
@@ -44,6 +46,7 @@
     <!-- The same page in each language, for search engines. -->
     <link rel="alternate" hreflang="en" href="https://vtracer.visioncortex.org/" />
     <link rel="alternate" hreflang="zh-Hans" href="https://vtracer.visioncortex.org/zh/" />
+    <link rel="alternate" hreflang="ja" href="https://vtracer.visioncortex.org/ja/" />
     <link rel="alternate" hreflang="x-default" href="https://vtracer.visioncortex.org/" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />

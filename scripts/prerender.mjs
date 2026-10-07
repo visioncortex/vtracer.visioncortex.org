@@ -17,7 +17,7 @@ import { createServer } from "vite";
  *
  * The client entry stays for dev, which serves these pages unprerendered.
  */
-const STATIC = new Set(["fact-sheet", "zh/fact-sheet"]);
+const STATIC = new Set(["fact-sheet", "zh/fact-sheet", "ja/fact-sheet"]);
 
 /**
  * Finished pages served again at a second address, for links that must not

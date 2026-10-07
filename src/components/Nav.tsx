@@ -25,9 +25,8 @@ export default function Nav() {
         {/* Absolute, so the same nav works from the legal pages, and rooted
             at this language's landing page. */}
         <nav className="nav-links">
-          <a href={`${copy.home}#features`}>{copy.nav.features}</a>
           <a href={`${copy.home}#background`}>{copy.nav.whatsNew}</a>
-          <a href={`${copy.home}#open-source`}>VTracer 1</a>
+          <a href={`${copy.home}#gen-ai`}>{copy.nav.prompt}</a>
         </nav>
         <a className="btn btn-primary btn-sm" href={download(os)}>
           {copy.nav.download}

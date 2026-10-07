@@ -1,6 +1,6 @@
 import { renderToStaticMarkup, renderToString } from "react-dom/server";
 import FactSheet from "./components/FactSheet";
-import { en, zhHans } from "./fact-sheet-copy";
+import { en, ja, zhHans } from "./fact-sheet-copy";
 import PrivacyPolicy from "./components/PrivacyPolicy";
 import TermsOfService from "./components/TermsOfService";
 
@@ -16,5 +16,6 @@ export const PAGES: Record<string, () => string> = {
   // language, because a page with no script cannot pick one at load time.
   "fact-sheet": () => renderToStaticMarkup(<FactSheet copy={en} />),
   "zh/fact-sheet": () => renderToStaticMarkup(<FactSheet copy={zhHans} />),
+  "ja/fact-sheet": () => renderToStaticMarkup(<FactSheet copy={ja} />),
 };
 

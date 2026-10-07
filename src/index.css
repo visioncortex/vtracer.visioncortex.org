@@ -23,15 +23,21 @@
   color-scheme: dark;
 }
 
-/* Chinese (the /zh/ page). Gloock, Inter and JetBrains Mono carry no CJK
-   glyphs, so each stack names a Chinese face to fall back to: Noto Serif SC
-   beside Gloock for the display headings (loaded by zh/index.html), and the
-   system's own Chinese sans for body text. Latin words such as "VTracer" stay
-   in Gloock and Inter. */
+/* Chinese and Japanese (the /zh/ and /ja/ pages). Gloock, Inter and
+   JetBrains Mono carry no CJK glyphs, so each stack names a face of that
+   language to fall back to: a Noto Serif beside Gloock for the display
+   headings (loaded by that language's index.html), and the system's own sans
+   for body text. Latin words such as "VTracer" stay in Gloock and Inter. */
 :root:lang(zh) {
   --display: "Gloock", "Noto Serif SC", "Songti SC", serif;
   --sans: "Inter", -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB",
     "Microsoft YaHei", "Noto Sans SC", sans-serif;
+}
+
+:root:lang(ja) {
+  --display: "Gloock", "Noto Serif JP", "Hiragino Mincho ProN", "Yu Mincho", serif;
+  --sans: "Inter", -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Hiragino Kaku Gothic ProN",
+    "Yu Gothic", Meiryo, "Noto Sans JP", sans-serif;
 }
 
 /* ----------------------------------------------------------------- reset */
@@ -367,72 +373,6 @@ body::after {
   width: 100%;
   /* Without this the height attribute on the tag wins and the shot stretches. */
   height: auto;
-}
-
-/* Three rounds from the lab, ten seconds each, crossfading so the section
-   shows the feature on more than one subject and more than one model. All
-   three sit in a single grid cell, so the figure keeps the height of one
-   image and the drop-shadow above still follows the window's alpha rather
-   than a taller box.
-
-   Each round fades in over the one below it, and the round underneath is
-   held opaque until it is covered. Fading two half-transparent layers into
-   each other instead would let the page show through mid-cross, which reads
-   as a flicker. A covered round drops back out unseen; only the top one
-   fades, at the wrap, to reveal the first again.
-
-   The first round never animates, which is what gives the stack its opaque
-   floor. The timing below is tuned to exactly three rounds: a fourth would
-   need its own keyframes, and until it had them it would sit on top of the
-   others permanently.
-
-   In CSS rather than on a timer in React: no re-render, and the browser
-   stops it while the tab is in the background. */
-.shot-stack {
-  display: grid;
-}
-
-.shot-stack img {
-  grid-area: 1 / 1;
-}
-
-.shot-stack img:nth-child(2) {
-  animation: shot-round-2 30s ease-in-out infinite;
-}
-
-.shot-stack img:nth-child(3) {
-  animation: shot-round-3 30s ease-in-out infinite;
-}
-
-/* In at 9s over the first round, out at 21s under the third. */
-@keyframes shot-round-2 {
-  0%,
-  30% {
-    opacity: 0;
-  }
-  33.33%,
-  70% {
-    opacity: 1;
-  }
-  76.67%,
-  100% {
-    opacity: 0;
-  }
-}
-
-/* In at 19s over the second round, out at 29s to bring the first back. */
-@keyframes shot-round-3 {
-  0%,
-  63.33% {
-    opacity: 0;
-  }
-  66.67%,
-  96.67% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
-  }
 }
 
 /* ------------------------------------------------------------- comparator */
@@ -961,13 +901,6 @@ body::after {
   .scarcity-dot {
     animation: none;
   }
-
-  /* Hold the first round. Dropping the animations alone would strand the
-     upper images at their default full opacity, pinning the last round. */
-  .shot-stack img + img {
-    animation: none;
-    opacity: 0;
-  }
 }
 
 .platform-strip {
@@ -1098,17 +1031,47 @@ body::after {
   color: var(--fg);
 }
 
-.footer-lang {
-  display: flex;
-  gap: 14px;
+/* The language select, dressed as a small pill so it reads as part of the
+   footer rather than a form. The chevron is drawn here since appearance:
+   none removes the native one; the native menu itself is kept. */
+.footer-lang select {
+  appearance: none;
+  -webkit-appearance: none;
+  padding: 6px 30px 6px 14px;
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
+  background: transparent
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='M2.5 4.5 6 8l3.5-3.5' fill='none' stroke='%238b8b85' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E")
+    no-repeat right 11px center / 12px 12px;
+  color: var(--muted);
+  font: inherit;
+  cursor: pointer;
+  transition:
+    color 0.18s ease,
+    border-color 0.18s ease;
 }
 
-/* Chinese headings. Gloock's tight 0.94 leading and negative tracking would
+.footer-lang select:hover,
+.footer-lang select:focus-visible {
+  color: var(--fg);
+  border-color: var(--fg);
+  outline: none;
+}
+
+/* The native menu paints its own background; on the dark page it has to be
+   told so the options are not black on black in some browsers. */
+.footer-lang option {
+  color: var(--fg);
+  background: var(--surface-2);
+}
+
+/* CJK headings. Gloock's tight 0.94 leading and negative tracking would
    crush CJK glyphs, and its 15ch measure wraps a nine-character heading one
    character short, stranding the last on a line of its own. The weight is
-   for the Chinese serif; font-synthesis keeps Gloock, which has one weight,
+   for the CJK serif; font-synthesis keeps Gloock, which has one weight,
    from being faux-bolded to match. */
-:lang(zh) .display {
+:lang(zh) .display,
+:lang(ja) .display {
   line-height: 1.18;
   letter-spacing: 0;
   font-weight: 600;
@@ -1116,12 +1079,15 @@ body::after {
 }
 
 :lang(zh) .hero-title,
-:lang(zh) .section-title {
+:lang(zh) .section-title,
+:lang(ja) .hero-title,
+:lang(ja) .section-title {
   max-width: none;
   text-wrap: balance;
 }
 
-:lang(zh) h3 {
+:lang(zh) h3,
+:lang(ja) h3 {
   letter-spacing: 0;
 }
 

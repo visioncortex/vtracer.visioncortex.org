@@ -134,7 +134,7 @@ export default function FactSheet({ copy }: { copy: FactSheetCopy }) {
         <figure className="fs-shot">
           <img
             className="light"
-            src={GENAI.shot.rounds[0].light}
+            src={GENAI.shot.images[copy.lang].light}
             alt={copy.genai.alt}
             width={GENAI.shot.width}
             height={GENAI.shot.height}
@@ -142,7 +142,7 @@ export default function FactSheet({ copy }: { copy: FactSheetCopy }) {
           />
           <img
             className="dark"
-            src={GENAI.shot.rounds[0].dark}
+            src={GENAI.shot.images[copy.lang].dark}
             alt={copy.genai.alt}
             width={GENAI.shot.width}
             height={GENAI.shot.height}

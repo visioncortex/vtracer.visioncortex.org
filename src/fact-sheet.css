@@ -58,19 +58,29 @@
   }
 }
 
-/* Chinese. The system stack already falls back to a CJK face, but naming
-   them keeps Windows off a mismatched fallback, and the serif headings switch
-   to the same sans: Chinese serif faces (Song) read as print, not as an app
-   panel. The Latin letter-spacing tweaks below are reset for the same text. */
+/* Chinese and Japanese. The system stack already falls back to a CJK face,
+   but naming them keeps Windows off a mismatched fallback, and the serif
+   headings switch to the same sans: CJK serif faces (Song, Mincho) read as
+   print, not as an app panel. The Latin letter-spacing tweaks below are reset
+   for the same text. */
 :root:lang(zh) {
   --sans: system-ui, -apple-system, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei",
     "Noto Sans CJK SC", sans-serif;
   --serif: var(--sans);
 }
 
+:root:lang(ja) {
+  --sans: system-ui, -apple-system, "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Yu Gothic",
+    Meiryo, "Noto Sans CJK JP", sans-serif;
+  --serif: var(--sans);
+}
+
 :lang(zh) h1,
 :lang(zh) h2,
-:lang(zh) h3 {
+:lang(zh) h3,
+:lang(ja) h1,
+:lang(ja) h2,
+:lang(ja) h3 {
   letter-spacing: 0;
 }
 
