@@ -1,5 +1,5 @@
 import { useState } from "react";
-import type { OS } from "./site";
+import type { LinuxPackage, OS } from "./site";
 
 function detect(): OS | null {
   if (typeof navigator === "undefined") return null;
@@ -25,4 +25,26 @@ function detect(): OS | null {
 export function useOS(): OS | null {
   const [os] = useState(detect);
   return os;
+}
+
+/**
+ * Which package a Linux visitor's distribution installs, where the browser
+ * says. Usually it does not: no browser API exposes the distribution, and
+ * Chrome, Chromium, Edge and Brave all report a bare "Linux". The exception
+ * is Firefox as Ubuntu and Fedora build it, which writes the distribution
+ * into its user agent ("X11; Ubuntu; Linux x86_64"). Null means unknown, and
+ * callers send the visitor to the release page to pick a package.
+ */
+function detectLinuxPackage(): LinuxPackage | null {
+  if (typeof navigator === "undefined") return null;
+
+  const ua = navigator.userAgent || "";
+  if (/Ubuntu|Debian|Mint|Pop!?_OS|elementary|Zorin|Kali/i.test(ua)) return "deb";
+  if (/Fedora|Red ?Hat|RHEL|CentOS|Rocky|Alma|SUSE/i.test(ua)) return "rpm";
+  return null;
+}
+
+export function useLinuxPackage(): LinuxPackage | null {
+  const [pkg] = useState(detectLinuxPackage);
+  return pkg;
 }

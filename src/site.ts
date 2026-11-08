@@ -215,16 +215,24 @@ export const PENCIL = {
 };
 
 /**
- * `listed` decides whether a platform is offered on the page: in the hero's
- * "also for" line and in the download section's strip. Linux is built but not
- * listed while VTracer 2 support for it is still to come. It stays here so a
- * visitor already on Linux is still recognised and handed the right download.
+ * Platforms in the order the page lists them, in the hero's "also for" line
+ * and in the download section's strip. Linux ships two native packages, and
+ * the strip gives each its own card.
  */
 export const PLATFORMS = [
   { os: "macOS", meta: "Universal · Metal accelerated", listed: true },
   { os: "Windows", meta: "x64 · Installer", listed: true },
-  { os: "Linux", meta: "x64 · AppImage", listed: false },
+  { os: "Linux", meta: "x64 · .deb · .rpm", listed: true },
 ] as const;
+
+/**
+ * The Linux packages offered, in the order shown. When a visitor's
+ * distribution cannot be told, their download goes to the release page, where
+ * they pick the package themselves, rather than to a guess.
+ */
+export const LINUX_PACKAGES = ["deb", "rpm"] as const;
+
+export type LinuxPackage = (typeof LINUX_PACKAGES)[number];
 
 export type OS = (typeof PLATFORMS)[number]["os"];
 
