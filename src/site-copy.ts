@@ -1,6 +1,6 @@
 import { createContext, useContext } from "react";
 import { en as fsEn, ja as fsJa, zhHans as fsZh } from "./fact-sheet-copy";
-import { COMPARISONS, PLATFORMS, type Lang, type OS } from "./site";
+import { COMPARISONS, PLATFORMS, type Lang, type LinuxPackage, type OS } from "./site";
 
 /**
  * Every word the landing page shows, one object per language, handed down
@@ -31,6 +31,10 @@ export type SiteCopy = {
     subStrong: string;
     sub: string;
     downloadFor: (os: OS) => string;
+    /** The Linux button names its package, since it may be a guess. */
+    downloadLinux: (pkg: LinuxPackage) => string;
+    /** The other Linux package, offered in the line under the buttons. */
+    linuxOther: (pkg: LinuxPackage) => string;
     downloadApp: string;
     seeWhat: string;
     free: string;
@@ -74,7 +78,12 @@ export type SiteCopy = {
   pencil: FactSheetPencil;
   shotAlt: string;
   scarcity: { strong: string; rest: string };
-  platforms: { yours: string; meta: Record<OS, string> };
+  platforms: {
+    yours: string;
+    meta: Record<OS, string>;
+    /** The distributions each Linux card is for. */
+    linux: Record<LinuxPackage, string>;
+  };
   star: string;
   install: { aria: string; copy: string; copied: string };
   cta: { title: Accented; download: string; github: string };
@@ -100,13 +109,15 @@ export const en: SiteCopy = {
     subStrong: "The best vectorizer, on your device.",
     sub: "A deep-learning engine cleans up and sharpens your artwork first, then traces it — crisp edges, smooth gradients, and curves you would have drawn yourself.",
     downloadFor: (os) => `Download for ${os}`,
+    downloadLinux: (pkg) => `Download for Linux (.${pkg})`,
+    linuxOther: (pkg) => (pkg === "rpm" ? ".rpm for Fedora" : ".deb for Ubuntu"),
     downloadApp: "Download the app",
     seeWhat: "See what it does",
     free: "Free to download",
     alsoBefore: "also for ",
     alsoAfter: "",
     and: " and ",
-    allPlatforms: "macOS and Windows",
+    allPlatforms: "macOS, Windows and Linux",
     onDevice: "Tracing runs entirely on your device",
   },
   cmp: {
@@ -161,13 +172,17 @@ export const en: SiteCopy = {
     strong: "We invite professional designers and illustrators to shape our product.",
     rest: "Seats are limited — register in the app to request early access!",
   },
-  platforms: { yours: "Your platform", meta: META },
+  platforms: {
+    yours: "Your platform",
+    meta: META,
+    linux: { deb: "x64 · Ubuntu", rpm: "x64 · Fedora" },
+  },
   star: "Star on GitHub",
   install: { aria: "Installation target", copy: "Copy", copied: "Copied" },
   cta: {
     title: ["Unleash your ", "creativity.", ""],
     download: "Download VTracer",
-    github: "VTracer 1 on GitHub",
+    github: "View on GitHub",
   },
   footer: {
     privacy: "Privacy",
@@ -193,13 +208,15 @@ export const zh: SiteCopy = {
     subStrong: "最好的矢量化工具，就在你的设备上。",
     sub: "深度学习引擎先清理、锐化你的作品，再进行描摹：边缘清晰，渐变平滑，曲线就像你亲手画的一样。",
     downloadFor: (os) => `下载 ${os} 版`,
+    downloadLinux: (pkg) => `下载 Linux 版 (.${pkg})`,
+    linuxOther: (pkg) => (pkg === "rpm" ? "Fedora 用 .rpm" : "Ubuntu 用 .deb"),
     downloadApp: "下载应用",
     seeWhat: "看看它能做什么",
     free: "免费下载",
     alsoBefore: "另有 ",
     alsoAfter: " 版",
     and: " 和 ",
-    allPlatforms: "macOS 和 Windows",
+    allPlatforms: "macOS、Windows 和 Linux",
     onDevice: "描摹完全在你的设备上进行",
   },
   cmp: {
@@ -256,14 +273,15 @@ export const zh: SiteCopy = {
   },
   platforms: {
     yours: "你的平台",
-    meta: { macOS: "通用版 · Metal 加速", Windows: "x64 · 安装程序", Linux: "x64 · AppImage" },
+    meta: { macOS: "通用版 · Metal 加速", Windows: "x64 · 安装程序", Linux: "x64 · .deb · .rpm" },
+    linux: { deb: "x64 · Ubuntu", rpm: "x64 · Fedora" },
   },
   star: "在 GitHub 上点星",
   install: { aria: "安装方式", copy: "复制", copied: "已复制" },
   cta: {
     title: ["释放你的", "创造力", "。"],
     download: "下载 VTracer",
-    github: "GitHub 上的 VTracer 1",
+    github: "在 GitHub 上查看",
   },
   footer: {
     // The legal documents are English only; the label says so before the click.
@@ -294,13 +312,15 @@ export const ja: SiteCopy = {
     subStrong: "最高のベクター化ツールを、あなたのデバイスに。",
     sub: "ディープラーニングのエンジンがまず作品をクリーンアップして鮮明にし、それからトレースします。シャープなエッジ、なめらかなグラデーション、そして自分の手で描いたかのような曲線に。",
     downloadFor: (os) => `${os} 版をダウンロード`,
+    downloadLinux: (pkg) => `Linux 版をダウンロード (.${pkg})`,
+    linuxOther: (pkg) => (pkg === "rpm" ? "Fedora 向け .rpm" : "Ubuntu 向け .deb"),
     downloadApp: "アプリをダウンロード",
     seeWhat: "できることを見る",
     free: "無料ダウンロード",
     alsoBefore: "",
     alsoAfter: " 版もあります",
     and: " と ",
-    allPlatforms: "macOS と Windows",
+    allPlatforms: "macOS、Windows、Linux",
     onDevice: "トレースはすべてデバイス上で行われます",
   },
   cmp: {
@@ -357,14 +377,15 @@ export const ja: SiteCopy = {
   },
   platforms: {
     yours: "お使いのプラットフォーム",
-    meta: { macOS: "Universal · Metal アクセラレーション", Windows: "x64 · インストーラー", Linux: "x64 · AppImage" },
+    meta: { macOS: "Universal · Metal アクセラレーション", Windows: "x64 · インストーラー", Linux: "x64 · .deb · .rpm" },
+    linux: { deb: "x64 · Ubuntu", rpm: "x64 · Fedora" },
   },
   star: "GitHub でスターを付ける",
   install: { aria: "インストール方法", copy: "コピー", copied: "コピーしました" },
   cta: {
     title: ["", "創造力", "を解き放とう。"],
     download: "VTracer をダウンロード",
-    github: "GitHub の VTracer 1",
+    github: "GitHub で見る",
   },
   footer: {
     // The legal documents are English only; the label says so before the click.

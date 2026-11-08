@@ -903,9 +903,12 @@ body::after {
   }
 }
 
+/* Three cards: macOS, Windows and Linux. Three across, then one column,
+   because auto-fit would strand a lone card on a row of its own, with the
+   strip's line colour showing through the empty cell beside it. */
 .platform-strip {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 1px;
   margin: 0;
   padding: 0;
@@ -916,7 +919,15 @@ body::after {
   overflow: hidden;
 }
 
-.platform-strip a {
+@media (max-width: 720px) {
+  .platform-strip {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* A card is a link for macOS and Windows. Linux's is a plain box holding a
+   link per package, since one card cannot be two downloads. */
+.platform {
   display: flex;
   flex-direction: column;
   gap: 5px;
@@ -926,16 +937,16 @@ body::after {
   transition: background-color 0.25s ease;
 }
 
-.platform-strip a:hover {
+a.platform:hover {
   background: var(--surface-2);
 }
 
-.platform-strip a.yours {
+.platform.yours {
   background: var(--surface-2);
   box-shadow: inset 3px 0 0 var(--brand);
 }
 
-.platform-strip a.yours .platform-meta {
+.platform.yours .platform-meta {
   color: var(--brand);
 }
 
@@ -949,6 +960,40 @@ body::after {
   font-size: 10px;
   letter-spacing: 0.13em;
   text-transform: uppercase;
+  color: var(--muted-2);
+}
+
+.platform-packages {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Each package reads like the other cards' meta line, led by its extension
+   in the foreground colour so the two are told apart at a glance. The padding
+   gives each a finger-sized target. */
+.platform-package {
+  padding: 3px 0;
+  transition: color 0.2s ease;
+}
+
+.platform-package .platform-ext {
+  margin-right: 8px;
+  color: var(--fg);
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  text-transform: none;
+}
+
+.platform-package:hover,
+.platform-package:hover .platform-ext,
+.platform.yours .platform-package.mine,
+.platform.yours .platform-package.mine .platform-ext {
+  color: var(--brand);
+}
+
+/* With the distribution unknown, neither package is the visitor's for
+   certain, so both stay neutral inside the marked card. */
+.platform.yours .platform-package:not(.mine) {
   color: var(--muted-2);
 }
 

@@ -1,13 +1,17 @@
 import Comparator from "./Comparator";
 import { PLATFORMS } from "../site";
 import { useDownloads } from "../useDownloads";
-import { useOS } from "../useOS";
+import { useLinuxPackage, useOS } from "../useOS";
 import Accented from "./Accented";
 import { useCopy } from "../site-copy";
 
 export default function Hero() {
   const os = useOS();
   const download = useDownloads();
+  // Known only where the browser names the distribution. Unknown, the button
+  // goes to the release page and offers no second package.
+  const linuxPkg = useLinuxPackage();
+  const otherPkg = linuxPkg === "deb" ? "rpm" : "deb";
   const others = PLATFORMS.filter((p) => p.listed && p.os !== os);
   const { hero } = useCopy();
 
@@ -24,7 +28,11 @@ export default function Hero() {
 
         <div className="hero-cta">
           <a className="btn btn-primary" href={download(os)}>
-            {os ? hero.downloadFor(os) : hero.downloadApp}
+            {os === "Linux" && linuxPkg
+              ? hero.downloadLinux(linuxPkg)
+              : os
+                ? hero.downloadFor(os)
+                : hero.downloadApp}
           </a>
           <a className="btn btn-ghost" href="#features">
             {hero.seeWhat}
@@ -33,13 +41,20 @@ export default function Hero() {
 
         <p className="hero-meta">
           {hero.free} ·{" "}
+          {os === "Linux" && linuxPkg && (
+            <>
+              <a href={download("Linux", otherPkg)}>{hero.linuxOther(otherPkg)}</a> ·{" "}
+            </>
+          )}
           {os ? (
             <>
               {hero.alsoBefore}
               {others.map((p, i) => (
                 <span key={p.os}>
                   {i > 0 && hero.and}
-                  <a href={download(p.os)}>{p.os}</a>
+                  {/* From another OS, Linux goes to the strip that offers
+                      both packages rather than to a guessed .deb. */}
+                  <a href={p.os === "Linux" ? "#download" : download(p.os)}>{p.os}</a>
                 </span>
               ))}
               {hero.alsoAfter}

@@ -113,7 +113,7 @@ export const en: FactSheetCopy = {
     ],
     [
       "How many machines can I trial on?",
-      "At most two. You can trial on both macOS and Windows, so you can make sure they both work. Linux support is coming soon.",
+      "Up to three. You can trial on macOS, Windows and Linux, so you can make sure each one works.",
     ],
     [
       "What happens when the trial ends?",
@@ -165,7 +165,7 @@ export const zhHans: FactSheetCopy = {
     },
     {
       title: "在你的设备上运行",
-      body: "一个 450 万参数的模型：小到足以快速运行，并且完全在本地，在 macOS 上由 Metal 加速。你的作品从不离开这台机器，描摹流程中没有任何服务器。",
+      body: "一个 450 万参数的模型：小到足以快速运行，并且完全在本地，由 Metal 和 Vulkan 加速。你的作品从不离开这台机器，描摹流程中没有任何服务器。",
     },
     {
       title: "扛得住真实的 JPEG",
@@ -251,7 +251,7 @@ export const zhHans: FactSheetCopy = {
     ],
     [
       "可以在几台机器上试用？",
-      "最多两台。你可以同时在 macOS 和 Windows 上试用，确认两边都能正常工作。Linux 支持即将推出。",
+      "最多三台。你可以在 macOS、Windows 和 Linux 上都试用，确认每个平台都能正常工作。",
     ],
     [
       "试用结束后会怎样？",
@@ -303,7 +303,7 @@ export const ja: FactSheetCopy = {
     },
     {
       title: "デバイス上で動く",
-      body: "450 万パラメータのモデル。速く動くほど小さく、完全にローカルで、macOS では Metal で高速化されます。作品がこのマシンを離れることはなく、トレースの工程にサーバーは一切ありません。",
+      body: "450 万パラメータのモデル。速く動くほど小さく、完全にローカルで、Metal と Vulkan で高速化されます。作品がこのマシンを離れることはなく、トレースの工程にサーバーは一切ありません。",
     },
     {
       title: "実際の JPEG にも強い",
@@ -392,7 +392,7 @@ export const ja: FactSheetCopy = {
     ],
     [
       "何台のマシンで試せますか？",
-      "最大 2 台です。macOS と Windows の両方で試して、どちらでも動くことを確かめられます。Linux 対応は近日中です。",
+      "最大 3 台です。macOS、Windows、Linux のすべてで試して、それぞれで動くことを確かめられます。",
     ],
     [
       "トライアルが終わるとどうなりますか？",
