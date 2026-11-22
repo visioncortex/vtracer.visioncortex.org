@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 972 364" width="972" height="364">
+<rect width="972" height="364" fill="#0a0a0a"/>
+<clipPath id="mg-clip-0"><path d="M170 71.2 L232.4 154.4 C256.53 186.58 252.24 231.83 222.48 258.9 C192.73 285.97 147.27 285.97 117.52 258.9 C87.76 231.83 83.47 186.58 107.6 154.4 Z"/></clipPath>
+<linearGradient id="mg-lin" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#7fd0ff"/><stop offset="1" stop-color="#1b2a6b"/></linearGradient>
+<path d="M170 71.2 L232.4 154.4 C256.53 186.58 252.24 231.83 222.48 258.9 C192.73 285.97 147.27 285.97 117.52 258.9 C87.76 231.83 83.47 186.58 107.6 154.4 Z" fill="url(#mg-lin)"/>
+<path d="M170 71.2 L232.4 154.4 C256.53 186.58 252.24 231.83 222.48 258.9 C192.73 285.97 147.27 285.97 117.52 258.9 C87.76 231.83 83.47 186.58 107.6 154.4 Z" fill="none" stroke="#f2f2ef" stroke-opacity="0.15" stroke-width="1"/>
+<text x="170" y="336" font-family="JetBrains Mono, SFMono-Regular, Menlo, Consolas, monospace" font-size="20" font-weight="500" fill="#f2f2ef" text-anchor="middle">&lt;linearGradient&gt;</text>
+<clipPath id="mg-clip-1"><path d="M486 71.2 L548.4 154.4 C572.53 186.58 568.24 231.83 538.48 258.9 C508.73 285.97 463.27 285.97 433.52 258.9 C403.76 231.83 399.47 186.58 423.6 154.4 Z"/></clipPath>
+<radialGradient id="mg-rad" cx="0.38" cy="0.62" r="0.7"><stop offset="0" stop-color="#ffe2a8"/><stop offset="0.5" stop-color="#e0a63c"/><stop offset="1" stop-color="#5b2a86"/></radialGradient>
+<path d="M486 71.2 L548.4 154.4 C572.53 186.58 568.24 231.83 538.48 258.9 C508.73 285.97 463.27 285.97 433.52 258.9 C403.76 231.83 399.47 186.58 423.6 154.4 Z" fill="url(#mg-rad)"/>
+<path d="M486 71.2 L548.4 154.4 C572.53 186.58 568.24 231.83 538.48 258.9 C508.73 285.97 463.27 285.97 433.52 258.9 C403.76 231.83 399.47 186.58 423.6 154.4 Z" fill="none" stroke="#f2f2ef" stroke-opacity="0.15" stroke-width="1"/>
+<text x="486" y="336" font-family="JetBrains Mono, SFMono-Regular, Menlo, Consolas, monospace" font-size="20" font-weight="500" fill="#f2f2ef" text-anchor="middle">&lt;radialGradient&gt;</text>
+<clipPath id="mg-clip-2"><path d="M802 71.2 L864.4 154.4 C888.53 186.58 884.24 231.83 854.48 258.9 C824.73 285.97 779.27 285.97 749.52 258.9 C719.76 231.83 715.47 186.58 739.6 154.4 Z"/></clipPath>
+<image x="718.8" y="66" width="166.4" height="223.6" preserveAspectRatio="none" clip-path="url(#mg-clip-2)" href="data:image/webp;base64,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"/>
+<line x1="718.8" y1="66" x2="885.2" y2="66" stroke="#f2f2ef" stroke-opacity="0.5" stroke-width="1"/>
+<line x1="718.8" y1="177.8" x2="885.2" y2="177.8" stroke="#f2f2ef" stroke-opacity="0.5" stroke-width="1"/>
+<line x1="718.8" y1="289.6" x2="885.2" y2="289.6" stroke="#f2f2ef" stroke-opacity="0.5" stroke-width="1"/>
+<line x1="718.8" y1="66" x2="718.8" y2="289.6" stroke="#f2f2ef" stroke-opacity="0.5" stroke-width="1"/>
+<line x1="774.27" y1="66" x2="774.27" y2="289.6" stroke="#f2f2ef" stroke-opacity="0.5" stroke-width="1"/>
+<line x1="829.73" y1="66" x2="829.73" y2="289.6" stroke="#f2f2ef" stroke-opacity="0.5" stroke-width="1"/>
+<line x1="885.2" y1="66" x2="885.2" y2="289.6" stroke="#f2f2ef" stroke-opacity="0.5" stroke-width="1"/>
+<circle cx="718.8" cy="66" r="7" fill="#1b2a6b" stroke="#f2f2ef" stroke-width="2"/>
+<circle cx="774.27" cy="66" r="7" fill="#3d6fd9" stroke="#f2f2ef" stroke-width="2"/>
+<circle cx="829.73" cy="66" r="7" fill="#7fd0ff" stroke="#f2f2ef" stroke-width="2"/>
+<circle cx="885.2" cy="66" r="7" fill="#c9f0ff" stroke="#f2f2ef" stroke-width="2"/>
+<circle cx="718.8" cy="177.8" r="7" fill="#5b2a86" stroke="#f2f2ef" stroke-width="2"/>
+<circle cx="774.27" cy="177.8" r="7" fill="#e0a63c" stroke="#f2f2ef" stroke-width="2"/>
+<circle cx="829.73" cy="177.8" r="7" fill="#ff8a5b" stroke="#f2f2ef" stroke-width="2"/>
+<circle cx="885.2" cy="177.8" r="7" fill="#7fd0ff" stroke="#f2f2ef" stroke-width="2"/>
+<circle cx="718.8" cy="289.6" r="7" fill="#2a1b4b" stroke="#f2f2ef" stroke-width="2"/>
+<circle cx="774.27" cy="289.6" r="7" fill="#7a2d6b" stroke="#f2f2ef" stroke-width="2"/>
+<circle cx="829.73" cy="289.6" r="7" fill="#e0a63c" stroke="#f2f2ef" stroke-width="2"/>
+<circle cx="885.2" cy="289.6" r="7" fill="#3d6fd9" stroke="#f2f2ef" stroke-width="2"/>
+<text x="802" y="336" font-family="JetBrains Mono, SFMono-Regular, Menlo, Consolas, monospace" font-size="20" font-weight="500" fill="#f2f2ef" text-anchor="middle">&lt;meshgradient&gt;</text>
+</svg>

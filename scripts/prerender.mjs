@@ -2,7 +2,7 @@
 // /privacy-policy and /terms-of-service are readable without JavaScript —
 // including by Google's OAuth reviewers. Runs after `vite build`; the client
 // entries hydrate the markup instead of rendering from scratch.
-import { copyFile, mkdir, readFile, writeFile } from "node:fs/promises";
+import { copyFile, mkdir, readFile, rm, writeFile } from "node:fs/promises";
 import { dirname, join } from "node:path";
 import { createServer } from "vite";
 
@@ -35,6 +35,16 @@ const STATIC = new Set(["fact-sheet", "zh/fact-sheet", "ja/fact-sheet"]);
  * directory.
  */
 const ALIASES = { "en/fact-sheet": "fact-sheet", "en/index": "index" };
+
+/**
+ * The indexable pages outside the knowledge base, for sitemap.xml (the
+ * knowledge base lists its own). Not the fact sheet, which is noindex, nor
+ * the /en/ copies, whose canonical is the original.
+ */
+const SITE = "https://vtracer.visioncortex.org";
+const SITEMAP = ["/", "/zh/", "/ja/", "/use-cases/graphic-design", "/privacy-policy", "/terms-of-service"].map((path) => ({
+  loc: SITE + path,
+}));
 
 /** Folds <link rel="stylesheet"> into a <style> block, and drops the JS. */
 async function selfContain(html) {
@@ -81,6 +91,38 @@ try {
     await copyFile(`dist/${page}.html`, target);
     console.log(`copied dist/${page}.html to ${target}`);
   }
+
+  // The knowledge base: one page per published article in content/kb/<lang>/,
+  // each the built kb/template.html filled in. /kb/ is kb/index.html and
+  // /kb/<slug> is kb/<slug>.html, which GitHub Pages serves slashless; other
+  // languages the same under /zh/ and /ja/.
+  const kb = await server.ssrLoadModule("/src/kb/render.tsx");
+  const template = await readFile("dist/kb/template.html", "utf8");
+  await rm("dist/kb/template.html");
+  for (const path of kb.kbPaths({ drafts: false })) {
+    const file = path.endsWith("/") ? `dist${path}index.html` : `dist${path}.html`;
+    const page = kb.renderKbPage(path, { drafts: false });
+    await mkdir(dirname(file), { recursive: true });
+    await writeFile(file, kb.fillTemplate(template, page));
+    console.log(`rendered ${file}`);
+  }
+
+  const urls = [...SITEMAP, ...kb.kbSitemap({ drafts: false })];
+  await writeFile(
+    "dist/sitemap.xml",
+    [
+      '<?xml version="1.0" encoding="UTF-8"?>',
+      '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
+      ...urls.map(({ loc, lastmod }) =>
+        lastmod
+          ? `  <url><loc>${loc}</loc><lastmod>${lastmod}</lastmod></url>`
+          : `  <url><loc>${loc}</loc></url>`,
+      ),
+      "</urlset>",
+      "",
+    ].join("\n"),
+  );
+  console.log(`wrote dist/sitemap.xml (${urls.length} URLs)`);
 } finally {
   await server.close();
 }

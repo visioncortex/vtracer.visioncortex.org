@@ -1,9 +1,14 @@
 import ConsentBanner from "./ConsentBanner";
 import { OPEN_CONSENT } from "../consent";
 import { ORG } from "../site";
-import { LANGS, useCopy } from "../site-copy";
+import { LANGS, useCopy, type Lang } from "../site-copy";
 
-export default function Footer() {
+/**
+ * `langLinks` overrides where the language picker goes, for pages that exist
+ * in more than one language beyond the landing page: a knowledge base article
+ * sends each language to its own translation, or to that language's index.
+ */
+export default function Footer({ langLinks }: { langLinks?: Partial<Record<Lang, string>> }) {
   const copy = useCopy();
 
   return (
@@ -14,6 +19,7 @@ export default function Footer() {
             © {new Date().getFullYear()} <a href={ORG}>Vision Cortex</a>
           </span>
           <nav className="footer-links">
+            <a href="/kb/">{copy.footer.kb}</a>
             <a href="/privacy-policy">{copy.footer.privacy}</a>
             <a href="/terms-of-service">{copy.footer.terms}</a>
             <button
@@ -35,7 +41,7 @@ export default function Footer() {
               value={copy.lang}
               onChange={(e) => {
                 const target = LANGS.find(({ lang }) => lang === e.target.value);
-                if (target) location.assign(target.href);
+                if (target) location.assign(langLinks?.[target.lang] ?? target.href);
               }}
             >
               {LANGS.map(({ lang, tag, name }) => (

@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 942 544" width="942" height="544">
+<rect width="942" height="544" fill="#0a0a0a"/>
+<text x="154" y="148" font-family="JetBrains Mono, SFMono-Regular, Menlo, Consolas, monospace" font-size="24" font-weight="500" fill="#f2f2ef" text-anchor="end">stacked</text>
+<rect x="190" y="40" width="200" height="200" fill="#1a1a1a" stroke="#5c5c58" stroke-width="1.5"/>
+<path d="M546 68 L590.43 125.91 C608.1 148.95 605.24 181.67 583.83 201.29 C562.42 220.9 529.58 220.9 508.17 201.29 C486.76 181.67 483.9 148.95 501.57 125.91 Z" fill="#0088f7"/>
+<path d="M546 68 L590.43 125.91 C608.1 148.95 605.24 181.67 583.83 201.29 C562.42 220.9 529.58 220.9 508.17 201.29 C486.76 181.67 483.9 148.95 501.57 125.91 Z" fill="none" stroke="#e0a63c" stroke-width="3"/>
+<path d="M786.47 133.01 A16.8 8.96 110 1 1 774.97 164.59 A16.8 8.96 110 1 1 786.47 133.01 Z" fill="#f2f2ef"/>
+<path d="M786.47 133.01 A16.8 8.96 110 1 1 774.97 164.59 A16.8 8.96 110 1 1 786.47 133.01 Z" fill="none" stroke="#e0a63c" stroke-width="3"/>
+<text x="154" y="412" font-family="JetBrains Mono, SFMono-Regular, Menlo, Consolas, monospace" font-size="24" font-weight="500" fill="#f2f2ef" text-anchor="end">cutout</text>
+<path d="M190 304 h200 v200 h-200 Z M290 332 L334.43 389.91 C352.1 412.95 349.24 445.67 327.83 465.29 C306.42 484.9 273.58 484.9 252.17 465.29 C230.76 445.67 227.9 412.95 245.57 389.91 Z" fill="#1a1a1a" fill-rule="evenodd" stroke="#5c5c58" stroke-width="1.5"/>
+<path d="M290 332 L334.43 389.91 C352.1 412.95 349.24 445.67 327.83 465.29 C306.42 484.9 273.58 484.9 252.17 465.29 C230.76 445.67 227.9 412.95 245.57 389.91 Z" fill="none" stroke="#e0a63c" stroke-width="3"/>
+<path d="M546 332 L590.43 389.91 C608.1 412.95 605.24 445.67 583.83 465.29 C562.42 484.9 529.58 484.9 508.17 465.29 C486.76 445.67 483.9 412.95 501.57 389.91 Z M530.47 397.01 A16.8 8.96 110 1 1 518.97 428.59 A16.8 8.96 110 1 1 530.47 397.01 Z" fill="#0088f7" fill-rule="evenodd"/>
+<path d="M530.47 397.01 A16.8 8.96 110 1 1 518.97 428.59 A16.8 8.96 110 1 1 530.47 397.01 Z" fill="none" stroke="#e0a63c" stroke-width="3"/>
+<path d="M546 332 L590.43 389.91 C608.1 412.95 605.24 445.67 583.83 465.29 C562.42 484.9 529.58 484.9 508.17 465.29 C486.76 445.67 483.9 412.95 501.57 389.91 Z" fill="none" stroke="#e0a63c" stroke-width="3"/>
+<path d="M786.47 397.01 A16.8 8.96 110 1 1 774.97 428.59 A16.8 8.96 110 1 1 786.47 397.01 Z" fill="#f2f2ef"/>
+<path d="M786.47 397.01 A16.8 8.96 110 1 1 774.97 428.59 A16.8 8.96 110 1 1 786.47 397.01 Z" fill="none" stroke="#e0a63c" stroke-width="3"/>
+</svg>

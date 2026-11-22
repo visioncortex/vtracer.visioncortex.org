@@ -1,0 +1,511 @@
+/* ------------------------------------------------------- knowledge base */
+
+/* Nav and footer are mounted into wrappers (src/kb.tsx). display: contents
+   takes the wrapper out of layout, so the sticky nav sticks to the page
+   rather than to a wrapper exactly its own height. */
+#kb-nav,
+#kb-footer {
+  display: contents;
+}
+
+.kb-shell {
+  display: grid;
+  grid-template-columns: 240px minmax(0, 1fr);
+  grid-template-areas: "side main";
+  gap: clamp(40px, 5vw, 80px);
+  padding-top: clamp(40px, 6vw, 72px);
+  padding-bottom: clamp(64px, 9vw, 120px);
+}
+
+.kb-main {
+  grid-area: main;
+  max-width: 760px;
+  min-width: 0;
+}
+
+/* ---------------------------------------------------------------- sidebar */
+
+.kb-side {
+  grid-area: side;
+  align-self: start;
+  position: sticky;
+  top: 100px;
+  max-height: calc(100vh - 120px);
+  overflow-y: auto;
+  font-size: 0.875rem;
+}
+
+.kb-side-home {
+  display: block;
+  margin-bottom: 24px;
+  font-family: var(--display);
+  font-size: 1.25rem;
+  color: var(--fg);
+}
+
+.kb-side-group + .kb-side-group {
+  margin-top: 24px;
+}
+
+.kb-side-title {
+  margin: 0 0 8px;
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--muted-2);
+}
+
+.kb-side ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-left: 1px solid var(--line);
+}
+
+.kb-side li a {
+  display: block;
+  margin-left: -1px;
+  padding: 6px 0 6px 14px;
+  border-left: 1px solid transparent;
+  color: var(--muted);
+  line-height: 1.4;
+  transition:
+    color 0.18s ease,
+    border-color 0.18s ease;
+}
+
+.kb-side li a:hover {
+  color: var(--fg);
+}
+
+.kb-side li a[aria-current="page"] {
+  color: var(--fg);
+  border-left-color: var(--brand);
+}
+
+.kb-draft {
+  margin-left: 8px;
+  padding: 1px 6px;
+  border: 1px solid var(--gold);
+  border-radius: 4px;
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--gold);
+  text-transform: uppercase;
+  vertical-align: 1px;
+}
+
+/* Phones and small tablets: one column, article first, the contents after
+   it under a rule. The breadcrumb at the top is the way back. */
+@media (max-width: 860px) {
+  .kb-shell {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas:
+      "main"
+      "side";
+  }
+
+  .kb-side {
+    position: static;
+    max-height: none;
+    padding-top: 40px;
+    border-top: 1px solid var(--line);
+  }
+}
+
+/* ------------------------------------------------------------ page heads */
+
+.kb-head {
+  padding-bottom: 28px;
+  margin-bottom: 8px;
+  border-bottom: 1px solid var(--line);
+}
+
+.kb-title {
+  margin-top: 14px;
+  font-size: clamp(2.25rem, 5vw, 3.5rem);
+  line-height: 1.02;
+  text-wrap: balance;
+}
+
+.kb-lede {
+  margin: 20px 0 0;
+  font-size: 1.0625rem;
+  color: var(--muted);
+  max-width: 60ch;
+}
+
+.kb-crumbs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted-2);
+}
+
+.kb-crumbs a {
+  color: var(--muted);
+}
+
+.kb-crumbs a:hover {
+  color: var(--fg);
+}
+
+.kb-updated {
+  margin: 18px 0 0;
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  color: var(--muted-2);
+}
+
+/* Links to this article in other languages. */
+.kb-langs {
+  margin: 8px 0 0;
+  font-size: 0.8125rem;
+  color: var(--muted-2);
+}
+
+.kb-langs a {
+  color: var(--muted);
+  text-decoration: underline;
+  text-decoration-color: var(--line-strong);
+  text-underline-offset: 3px;
+}
+
+.kb-langs a:hover {
+  color: var(--fg);
+}
+
+/* ----------------------------------------------------------------- index */
+
+.kb-index-section {
+  padding-top: 40px;
+}
+
+.kb-index-section h2 {
+  margin: 0 0 16px;
+  font-size: 1.125rem;
+  font-weight: 600;
+  letter-spacing: -0.015em;
+}
+
+.kb-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.kb-cards a {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  height: 100%;
+  padding: 18px 20px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--surface);
+  transition:
+    border-color 0.18s ease,
+    background-color 0.18s ease;
+}
+
+.kb-cards a:hover {
+  border-color: var(--line-strong);
+  background: var(--surface-2);
+}
+
+.kb-card-title {
+  font-weight: 500;
+  line-height: 1.35;
+}
+
+.kb-card-desc {
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: var(--muted);
+}
+
+/* ----------------------------------------------------------------- prose */
+
+.kb-prose {
+  color: #c9c9c4;
+  font-size: 1.0625rem;
+  line-height: 1.75;
+}
+
+.kb-prose > :first-child {
+  margin-top: 32px;
+}
+
+.kb-prose h2,
+.kb-prose h3 {
+  color: var(--fg);
+  letter-spacing: -0.015em;
+  scroll-margin-top: 96px;
+}
+
+.kb-prose h2 {
+  margin: 52px 0 14px;
+  font-size: 1.5rem;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.kb-prose h3 {
+  margin: 36px 0 10px;
+  font-size: 1.125rem;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.kb-prose h4 {
+  margin: 28px 0 8px;
+  color: var(--fg);
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+/* Headings link to themselves; the # shows on hover, hanging in the margin. */
+.kb-anchor {
+  position: relative;
+}
+
+.kb-anchor::before {
+  content: "#";
+  position: absolute;
+  left: -1em;
+  color: var(--muted-2);
+  opacity: 0;
+  transition: opacity 0.15s ease;
+}
+
+.kb-anchor:hover::before {
+  opacity: 1;
+}
+
+.kb-prose p,
+.kb-prose ul,
+.kb-prose ol,
+.kb-prose blockquote,
+.kb-prose pre,
+.kb-prose .kb-table {
+  margin: 0 0 20px;
+}
+
+.kb-prose ul,
+.kb-prose ol {
+  padding-left: 1.3em;
+}
+
+.kb-prose li {
+  margin-bottom: 8px;
+}
+
+.kb-prose li::marker {
+  color: var(--muted-2);
+}
+
+.kb-prose strong {
+  color: var(--fg);
+  font-weight: 600;
+}
+
+.kb-prose a:not(.kb-anchor) {
+  color: var(--fg);
+  text-decoration: underline;
+  text-decoration-color: var(--brand);
+  text-underline-offset: 3px;
+  transition: color 0.18s ease;
+}
+
+.kb-prose a:not(.kb-anchor):hover {
+  color: var(--brand);
+}
+
+.kb-prose img {
+  height: auto;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+}
+
+.kb-figure {
+  margin: 32px 0;
+}
+
+.kb-figure img,
+.kb-figure video {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* A looping clip gives way to its still for readers who ask for less motion. */
+.kb-video .still {
+  display: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .kb-video .motion {
+    display: none;
+  }
+
+  .kb-video .still {
+    display: block;
+  }
+}
+
+.kb-figure figcaption {
+  margin-top: 10px;
+  font-size: 0.875rem;
+  line-height: 1.55;
+  color: var(--muted);
+}
+
+/* Something still to capture or generate. Loud on purpose; the build
+   refuses to publish an article that has one. */
+.kb-placeholder-box {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 28px;
+  border: 1px dashed var(--gold);
+  border-radius: 10px;
+  background: rgba(224, 166, 60, 0.06);
+  color: var(--fg);
+  font-size: 0.9375rem;
+  line-height: 1.55;
+}
+
+.kb-placeholder-tag {
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.kb-prose hr {
+  margin: 48px 0;
+  border: 0;
+  border-top: 1px solid var(--line);
+}
+
+.kb-prose blockquote {
+  padding: 4px 0 4px 20px;
+  border-left: 2px solid var(--brand);
+  color: var(--muted);
+}
+
+.kb-prose blockquote > :last-child {
+  margin-bottom: 0;
+}
+
+.kb-prose code {
+  padding: 2px 6px;
+  border-radius: 5px;
+  background: rgba(255, 255, 255, 0.07);
+  font-family: var(--mono);
+  font-size: 0.85em;
+  color: var(--fg);
+}
+
+.kb-prose pre {
+  overflow-x: auto;
+  padding: 18px 20px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--surface);
+  line-height: 1.6;
+}
+
+.kb-prose pre code {
+  padding: 0;
+  background: none;
+  font-size: 0.85rem;
+}
+
+.kb-table {
+  overflow-x: auto;
+}
+
+.kb-prose table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9375rem;
+}
+
+.kb-prose th,
+.kb-prose td {
+  padding: 10px 14px 10px 0;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+}
+
+.kb-prose th {
+  color: var(--fg);
+  font-weight: 600;
+}
+
+/* ----------------------------------------------------------------- pager */
+
+.kb-pager {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 56px;
+  padding-top: 28px;
+  border-top: 1px solid var(--line);
+}
+
+.kb-pager a {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 16px 18px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  font-weight: 500;
+  line-height: 1.4;
+  transition: border-color 0.18s ease;
+}
+
+.kb-pager a:hover {
+  border-color: var(--line-strong);
+}
+
+.kb-pager-next {
+  grid-column: 2;
+  text-align: right;
+}
+
+.kb-pager-label {
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted-2);
+}
+
+@media (max-width: 560px) {
+  .kb-pager {
+    grid-template-columns: 1fr;
+  }
+
+  .kb-pager-next {
+    grid-column: 1;
+  }
+}

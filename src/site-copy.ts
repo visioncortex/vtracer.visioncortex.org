@@ -64,8 +64,9 @@ export type SiteCopy = {
   sections: {
     design: { title: Accented; note: string };
     whatsNew: { title: string; note: string };
-    prompt: { title: Accented; note: string };
-    pencil: { title: Accented };
+    prompt: { title: Accented; note: string; more: string };
+    /** `more` links to the Graphic design use case, which is English only. */
+    pencil: { title: Accented; more: string };
     download: { title: Accented; note: string };
     open: { title: Accented; note: string };
   };
@@ -87,7 +88,8 @@ export type SiteCopy = {
   star: string;
   install: { aria: string; copy: string; copied: string };
   cta: { title: Accented; download: string; github: string };
-  footer: { privacy: string; terms: string; cookies: string; language: string };
+  /** `kb` labels the knowledge base link, which is English only for now. */
+  footer: { kb: string; privacy: string; terms: string; cookies: string; language: string };
   consent: { aria: string; text: string; more: string; decline: string; accept: string };
 };
 
@@ -148,8 +150,9 @@ export const en: SiteCopy = {
     prompt: {
       title: ["Prompt to ", "vector", ""],
       note: "Generative Diffusion models run inside the app, on your device. A guided prompt steers them toward art that traces well, so every result comes out as clean vectors.",
+      more: "Learn more",
     },
-    pencil: { title: ["Pencil to ", "vector", ""] },
+    pencil: { title: ["Pencil to ", "vector", ""], more: "Learn more" },
     download: {
       title: ["Start with the ", "free", " app"],
       note: "Download the app and start tracing. Activate VTracer 2 inside the app to start a free trial, no credit card required.",
@@ -185,6 +188,7 @@ export const en: SiteCopy = {
     github: "View on GitHub",
   },
   footer: {
+    kb: "Knowledge base",
     privacy: "Privacy",
     terms: "Terms",
     cookies: "Cookie settings",
@@ -247,8 +251,9 @@ export const zh: SiteCopy = {
     prompt: {
       title: ["从提示词到", "矢量图", ""],
       note: "生成式扩散模型在应用内、在你的设备上运行。引导式提示词把它们引向便于描摹的画面，因此每个结果都能成为干净的矢量图。",
+      more: "了解更多（英文）",
     },
-    pencil: { title: ["从铅笔草图到", "矢量图", ""] },
+    pencil: { title: ["从铅笔草图到", "矢量图", ""], more: "了解更多（英文）" },
     download: {
       title: ["从", "免费", "应用开始"],
       note: "下载应用，开始描摹。在应用内激活 VTracer 2 即可开始免费试用，无需信用卡。",
@@ -285,6 +290,7 @@ export const zh: SiteCopy = {
   },
   footer: {
     // The legal documents are English only; the label says so before the click.
+    kb: "知识库（英文）",
     privacy: "隐私政策（英文）",
     terms: "服务条款（英文）",
     cookies: "Cookie 设置",
@@ -351,8 +357,9 @@ export const ja: SiteCopy = {
     prompt: {
       title: ["プロンプトから", "ベクター", "へ"],
       note: "生成拡散モデルがアプリ内で、あなたのデバイス上で動きます。ガイド付きプロンプトがモデルをトレースしやすい絵へと導くので、どの結果もクリーンなベクターになります。",
+      more: "詳しく見る（英語）",
     },
-    pencil: { title: ["鉛筆スケッチから", "ベクター", "へ"] },
+    pencil: { title: ["鉛筆スケッチから", "ベクター", "へ"], more: "詳しく見る（英語）" },
     download: {
       title: ["まずは", "無料", "アプリから"],
       note: "アプリをダウンロードして、トレースを始めましょう。アプリ内で VTracer 2 をアクティベートすれば無料トライアルが始まります。クレジットカードは不要です。",
@@ -389,6 +396,7 @@ export const ja: SiteCopy = {
   },
   footer: {
     // The legal documents are English only; the label says so before the click.
+    kb: "ナレッジベース（英語）",
     privacy: "プライバシーポリシー（英語）",
     terms: "利用規約（英語）",
     cookies: "Cookie 設定",

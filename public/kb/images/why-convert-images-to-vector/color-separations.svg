@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1032 320" width="1032" height="320">
+<rect width="1032" height="320" fill="#0a0a0a"/>
+<g transform="translate(40 60)"><rect width="180" height="180" rx="8" fill="#16181d"/><g transform="scale(0.9)"><circle cx="140" cy="84" r="34" fill="#e0a63c"/><path d="M0 150 C50 100 100 100 140 130 C170 150 190 140 200 128 L200 200 L0 200 Z" fill="#0088f7"/><path d="M0 178 C60 140 120 160 200 186 L200 200 L0 200 Z" fill="#f2f2ef"/></g><rect width="180" height="180" rx="8" fill="none" stroke="#5c5c58"/></g>
+<text x="262" y="160" font-family="JetBrains Mono, SFMono-Regular, Menlo, Consolas, monospace" font-size="30" font-weight="500" fill="#8b8b85" text-anchor="middle">=</text>
+<g transform="translate(300 60)"><rect width="180" height="180" rx="8" fill="#16181d"/><g transform="scale(0.9)"><circle cx="140" cy="84" r="34" fill="#e0a63c"/></g><rect width="180" height="180" rx="8" fill="none" stroke="#5c5c58" stroke-dasharray="6 6"/></g>
+<text x="518" y="160" font-family="JetBrains Mono, SFMono-Regular, Menlo, Consolas, monospace" font-size="30" font-weight="500" fill="#8b8b85" text-anchor="middle">+</text>
+<g transform="translate(556 60)"><rect width="180" height="180" rx="8" fill="#16181d"/><g transform="scale(0.9)"><path d="M0 150 C50 100 100 100 140 130 C170 150 190 140 200 128 L200 200 L0 200 Z" fill="#0088f7"/></g><rect width="180" height="180" rx="8" fill="none" stroke="#5c5c58" stroke-dasharray="6 6"/></g>
+<text x="774" y="160" font-family="JetBrains Mono, SFMono-Regular, Menlo, Consolas, monospace" font-size="30" font-weight="500" fill="#8b8b85" text-anchor="middle">+</text>
+<g transform="translate(812 60)"><rect width="180" height="180" rx="8" fill="#16181d"/><g transform="scale(0.9)"><path d="M0 178 C60 140 120 160 200 186 L200 200 L0 200 Z" fill="#f2f2ef"/></g><rect width="180" height="180" rx="8" fill="none" stroke="#5c5c58" stroke-dasharray="6 6"/></g>
+<circle cx="390" cy="276" r="15" fill="none" stroke="#f2f2ef" stroke-width="1.5"/><text x="390" y="282" font-family="JetBrains Mono, SFMono-Regular, Menlo, Consolas, monospace" font-size="16" font-weight="500" fill="#f2f2ef" text-anchor="middle">1</text>
+<circle cx="646" cy="276" r="15" fill="none" stroke="#f2f2ef" stroke-width="1.5"/><text x="646" y="282" font-family="JetBrains Mono, SFMono-Regular, Menlo, Consolas, monospace" font-size="16" font-weight="500" fill="#f2f2ef" text-anchor="middle">2</text>
+<circle cx="902" cy="276" r="15" fill="none" stroke="#f2f2ef" stroke-width="1.5"/><text x="902" y="282" font-family="JetBrains Mono, SFMono-Regular, Menlo, Consolas, monospace" font-size="16" font-weight="500" fill="#f2f2ef" text-anchor="middle">3</text>
+</svg>

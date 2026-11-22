@@ -164,6 +164,11 @@ body::after {
   max-width: 15ch;
 }
 
+/* A link under a section's note, set where the GitHub star button sits. */
+.section-more {
+  margin-top: 22px;
+}
+
 .section-note {
   margin: 14px 0 0;
   color: var(--muted);
@@ -995,6 +1000,74 @@ a.platform:hover {
    certain, so both stay neutral inside the marked card. */
 .platform.yours .platform-package:not(.mine) {
   color: var(--muted-2);
+}
+
+/* -------------------------------------------------------------- use cases */
+
+/* Figures from the knowledge base: already drawn on a dark ground, so they
+   take only a hairline frame, like the comparison stages. */
+.uc-figure {
+  margin: 0 auto clamp(28px, 4vw, 48px);
+  max-width: 1180px;
+}
+
+.uc-figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  box-shadow: 0 40px 110px -40px rgba(0, 136, 247, 0.35);
+}
+
+/* A tall figure, such as the 3 × 3 art styles sheet, kept to a screenful. */
+.uc-figure.narrow {
+  max-width: 760px;
+}
+
+/* Four cards read as a square, not three and an orphan. */
+.feature-grid.pairs {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+@media (max-width: 760px) {
+  .feature-grid.pairs {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.uc-figure figcaption {
+  margin-top: 14px;
+  color: var(--muted-2);
+  font-size: 0.875rem;
+  text-align: center;
+}
+
+/* A full-width card: the figure across the column, its title and text below. */
+.uc-wide {
+  max-width: 1180px;
+  margin: 0 auto;
+}
+
+.uc-wide + .uc-wide {
+  margin-top: clamp(40px, 5vw, 64px);
+}
+
+.uc-wide-img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  box-shadow: 0 40px 110px -40px rgba(0, 136, 247, 0.35);
+}
+
+.uc-title {
+  max-width: 13ch;
+}
+
+.hero .eyebrow {
+  margin: 0 0 22px;
 }
 
 /* ------------------------------------------------------------------- cta */

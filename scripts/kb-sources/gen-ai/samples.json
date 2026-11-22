@@ -1,0 +1,1186 @@
+{
+ "compare": {
+  "chibi-sticker": {
+   "sd-turbo-q8": {
+    "preview": "chibi-sticker-sd-turbo-q8.webp",
+    "model": "sd-turbo-q8",
+    "prompt": "chibi sticker, full body, flat colors, bold outlines of a girl with short hair, pure white background, centered, simple composition",
+    "style": "plain",
+    "seed": 42,
+    "steps": 4,
+    "cfg": 1.0,
+    "size": [
+     512,
+     512
+    ],
+    "image": [
+     512,
+     512
+    ],
+    "strength": null,
+    "paths": 787,
+    "svg_bytes": 230793,
+    "seconds": 6
+   },
+   "sdxl-turbo-q8": {
+    "preview": "chibi-sticker-sdxl-turbo-q8.webp",
+    "model": "sdxl-turbo-q8",
+    "prompt": "chibi sticker, full body, flat colors, bold outlines of a girl with short hair, pure white background, centered, simple composition",
+    "style": "plain",
+    "seed": 42,
+    "steps": 4,
+    "cfg": 1.5,
+    "size": [
+     512,
+     512
+    ],
+    "image": [
+     512,
+     512
+    ],
+    "strength": null,
+    "paths": 600,
+    "svg_bytes": 135033,
+    "seconds": 13
+   },
+   "flux-schnell-q4": {
+    "preview": "chibi-sticker-flux-schnell-q4.webp",
+    "model": "flux-schnell-q4",
+    "prompt": "chibi sticker, full body, flat colors, bold outlines of a girl with short hair, pure white background, centered, simple composition",
+    "style": "plain",
+    "seed": 42,
+    "steps": 3,
+    "cfg": 1.0,
+    "size": [
+     512,
+     512
+    ],
+    "image": [
+     512,
+     512
+    ],
+    "strength": null,
+    "paths": 151,
+    "svg_bytes": 60162,
+    "seconds": 40
+   },
+   "flux2-klein-4b-q4": {
+    "preview": "chibi-sticker-flux2-klein-4b-q4.webp",
+    "model": "flux2-klein-4b-q4",
+    "prompt": "chibi sticker, full body, flat colors, bold outlines of a girl with short hair, pure white background, centered, simple composition",
+    "style": "plain",
+    "seed": 42,
+    "steps": 6,
+    "cfg": 1.0,
+    "size": [
+     512,
+     512
+    ],
+    "image": [
+     512,
+     512
+    ],
+    "strength": null,
+    "paths": 33,
+    "svg_bytes": 14937,
+    "seconds": 22
+   },
+   "z-image-turbo-q4": {
+    "preview": "chibi-sticker-z-image-turbo-q4.webp",
+    "model": "z-image-turbo-q4",
+    "prompt": "chibi sticker, full body, flat colors, bold outlines of a girl with short hair, pure white background, centered, simple composition",
+    "style": "plain",
+    "seed": 42,
+    "steps": 8,
+    "cfg": 1.0,
+    "size": [
+     512,
+     512
+    ],
+    "image": [
+     512,
+     512
+    ],
+    "strength": null,
+    "paths": 19,
+    "svg_bytes": 12069,
+    "seconds": 37
+   }
+  },
+  "comic-1950s": {
+   "sd-turbo-q8": {
+    "preview": "comic-1950s-sd-turbo-q8.webp",
+    "model": "sd-turbo-q8",
+    "prompt": "1950s comic book art, bold black ink outlines, flat primary colors, no halftone, no dots of a girl with short hair, pure white background, centered, simple composition",
+    "style": "plain",
+    "seed": 2027382,
+    "steps": 4,
+    "cfg": 1.0,
+    "size": [
+     512,
+     512
+    ],
+    "image": [
+     512,
+     512
+    ],
+    "strength": null,
+    "paths": 462,
+    "svg_bytes": 129375,
+    "seconds": 10
+   },
+   "sdxl-turbo-q8": {
+    "preview": "comic-1950s-sdxl-turbo-q8.webp",
+    "model": "sdxl-turbo-q8",
+    "prompt": "1950s comic book art, bold black ink outlines, flat primary colors, no halftone, no dots of a girl with short hair, pure white background, centered, simple composition",
+    "style": "plain",
+    "seed": 551494037,
+    "steps": 4,
+    "cfg": 1.5,
+    "size": [
+     512,
+     512
+    ],
+    "image": [
+     512,
+     512
+    ],
+    "strength": null,
+    "paths": 1344,
+    "svg_bytes": 382095,
+    "seconds": 35
+   },
+   "flux-schnell-q4": {
+    "preview": "comic-1950s-flux-schnell-q4.webp",
+    "model": "flux-schnell-q4",
+    "prompt": "1950s comic book art, bold black ink outlines, flat primary colors, no halftone, no dots of a girl with short hair, pure white background, centered, simple composition",
+    "style": "plain",
+    "seed": 42,
+    "steps": 3,
+    "cfg": 1.0,
+    "size": [
+     512,
+     512
+    ],
+    "image": [
+     512,
+     512
+    ],
+    "strength": null,
+    "paths": 99,
+    "svg_bytes": 41638,
+    "seconds": 39
+   },
+   "flux2-klein-4b-q4": {
+    "preview": "comic-1950s-flux2-klein-4b-q4.webp",
+    "model": "flux2-klein-4b-q4",
+    "prompt": "1950s comic book art, bold black ink outlines, flat primary colors, no halftone, no dots of a girl with short hair, pure white background, centered, simple composition",
+    "style": "plain",
+    "seed": 42,
+    "steps": 6,
+    "cfg": 1.0,
+    "size": [
+     512,
+     512
+    ],
+    "image": [
+     512,
+     512
+    ],
+    "strength": null,
+    "paths": 133,
+    "svg_bytes": 40892,
+    "seconds": 22
+   },
+   "z-image-turbo-q4": {
+    "preview": "comic-1950s-z-image-turbo-q4.webp",
+    "model": "z-image-turbo-q4",
+    "prompt": "1950s comic book art, bold black ink outlines, flat primary colors, no halftone, no dots of a girl with short hair, pure white background, centered, simple composition",
+    "style": "plain",
+    "seed": 42,
+    "steps": 8,
+    "cfg": 1.0,
+    "size": [
+     512,
+     512
+    ],
+    "image": [
+     512,
+     512
+    ],
+    "strength": null,
+    "paths": 50,
+    "svg_bytes": 20459,
+    "seconds": 37
+   }
+  },
+  "manga-ink": {
+   "sd-turbo-q8": {
+    "preview": "manga-ink-sd-turbo-q8.webp",
+    "model": "sd-turbo-q8",
+    "prompt": "manga ink drawing, black and white, high contrast, clean bold brush lines, flat black fills of a girl with short hair, pure white background, centered, simple composition",
+    "style": "plain",
+    "seed": 42,
+    "steps": 4,
+    "cfg": 1.0,
+    "size": [
+     512,
+     512
+    ],
+    "image": [
+     512,
+     512
+    ],
+    "strength": null,
+    "paths": 1323,
+    "svg_bytes": 405493,
+    "seconds": 6
+   },
+   "sdxl-turbo-q8": {
+    "preview": "manga-ink-sdxl-turbo-q8.webp",
+    "model": "sdxl-turbo-q8",
+    "prompt": "manga ink drawing, black and white, high contrast, clean bold brush lines, flat black fills of a girl with short hair, pure white background, centered, simple composition",
+    "style": "plain",
+    "seed": 551494037,
+    "steps": 4,
+    "cfg": 1.5,
+    "size": [
+     512,
+     512
+    ],
+    "image": [
+     512,
+     512
+    ],
+    "strength": null,
+    "paths": 1442,
+    "svg_bytes": 422144,
+    "seconds": 38
+   },
+   "flux-schnell-q4": {
+    "preview": "manga-ink-flux-schnell-q4.webp",
+    "model": "flux-schnell-q4",
+    "prompt": "manga ink drawing, black and white, high contrast, clean bold brush lines, flat black fills of a girl with short hair, pure white background, centered, simple composition",
+    "style": "plain",
+    "seed": 42,
+    "steps": 3,
+    "cfg": 1.0,
+    "size": [
+     512,
+     512
+    ],
+    "image": [
+     512,
+     512
+    ],
+    "strength": null,
+    "paths": 128,
+    "svg_bytes": 57500,
+    "seconds": 40
+   },
+   "flux2-klein-4b-q4": {
+    "preview": "manga-ink-flux2-klein-4b-q4.webp",
+    "model": "flux2-klein-4b-q4",
+    "prompt": "manga ink drawing, black and white, high contrast, clean bold brush lines, flat black fills of a girl with short hair, pure white background, centered, simple composition",
+    "style": "plain",
+    "seed": 42,
+    "steps": 6,
+    "cfg": 1.0,
+    "size": [
+     512,
+     512
+    ],
+    "image": [
+     512,
+     512
+    ],
+    "strength": null,
+    "paths": 55,
+    "svg_bytes": 16519,
+    "seconds": 22
+   },
+   "z-image-turbo-q4": {
+    "preview": "manga-ink-z-image-turbo-q4.webp",
+    "model": "z-image-turbo-q4",
+    "prompt": "manga ink drawing, black and white, high contrast, clean bold brush lines, flat black fills of a girl with short hair, pure white background, centered, simple composition",
+    "style": "plain",
+    "seed": 42,
+    "steps": 8,
+    "cfg": 1.0,
+    "size": [
+     512,
+     512
+    ],
+    "image": [
+     512,
+     512
+    ],
+    "strength": null,
+    "paths": 94,
+    "svg_bytes": 27363,
+    "seconds": 38
+   }
+  },
+  "anime-portrait": {
+   "sd-turbo-q8": {
+    "preview": "anime-portrait-sd-turbo-q8.webp",
+    "model": "sd-turbo-q8",
+    "prompt": "anime character portrait, flat cel shading, two tone shadows, clean thin outlines, no gradients of a girl with short hair, pure white background, centered, simple composition",
+    "style": "plain",
+    "seed": 1226992407,
+    "steps": 4,
+    "cfg": 1.0,
+    "size": [
+     512,
+     512
+    ],
+    "image": [
+     512,
+     512
+    ],
+    "strength": null,
+    "paths": 679,
+    "svg_bytes": 193953,
+    "seconds": 14
+   },
+   "sdxl-turbo-q8": {
+    "preview": "anime-portrait-sdxl-turbo-q8.webp",
+    "model": "sdxl-turbo-q8",
+    "prompt": "anime character portrait, flat cel shading, two tone shadows, clean thin outlines, no gradients of a girl with short hair, pure white background, centered, simple composition",
+    "style": "plain",
+    "seed": 551494037,
+    "steps": 4,
+    "cfg": 1.5,
+    "size": [
+     512,
+     512
+    ],
+    "image": [
+     512,
+     512
+    ],
+    "strength": null,
+    "paths": 1185,
+    "svg_bytes": 320312,
+    "seconds": 41
+   },
+   "flux-schnell-q4": {
+    "preview": "anime-portrait-flux-schnell-q4.webp",
+    "model": "flux-schnell-q4",
+    "prompt": "anime character portrait, flat cel shading, two tone shadows, clean thin outlines, no gradients of a girl with short hair, pure white background, centered, simple composition",
+    "style": "plain",
+    "seed": 42,
+    "steps": 3,
+    "cfg": 1.0,
+    "size": [
+     512,
+     512
+    ],
+    "image": [
+     512,
+     512
+    ],
+    "strength": null,
+    "paths": 226,
+    "svg_bytes": 116501,
+    "seconds": 42
+   },
+   "flux2-klein-4b-q4": {
+    "preview": "anime-portrait-flux2-klein-4b-q4.webp",
+    "model": "flux2-klein-4b-q4",
+    "prompt": "anime character portrait, flat cel shading, two tone shadows, clean thin outlines, no gradients of a girl with short hair, pure white background, centered, simple composition",
+    "style": "plain",
+    "seed": 42,
+    "steps": 6,
+    "cfg": 1.0,
+    "size": [
+     512,
+     512
+    ],
+    "image": [
+     512,
+     512
+    ],
+    "strength": null,
+    "paths": 209,
+    "svg_bytes": 74860,
+    "seconds": 23
+   },
+   "z-image-turbo-q4": {
+    "preview": "anime-portrait-z-image-turbo-q4.webp",
+    "model": "z-image-turbo-q4",
+    "prompt": "anime character portrait, flat cel shading, two tone shadows, clean thin outlines, no gradients of a girl with short hair, pure white background, centered, simple composition",
+    "style": "plain",
+    "seed": 42,
+    "steps": 8,
+    "cfg": 1.0,
+    "size": [
+     512,
+     512
+    ],
+    "image": [
+     512,
+     512
+    ],
+    "strength": null,
+    "paths": 42,
+    "svg_bytes": 31097,
+    "seconds": 38
+   }
+  },
+  "shoujo-manga": {
+   "sd-turbo-q8": {
+    "preview": "shoujo-manga-sd-turbo-q8.webp",
+    "model": "sd-turbo-q8",
+    "prompt": "shoujo manga illustration, big sparkling eyes, flowing hair, flat pastel colors, clean black ink lines of a girl with short hair, pure white background, centered, simple composition",
+    "style": "plain",
+    "seed": 551494037,
+    "steps": 4,
+    "cfg": 1.0,
+    "size": [
+     512,
+     512
+    ],
+    "image": [
+     512,
+     512
+    ],
+    "strength": null,
+    "paths": 1089,
+    "svg_bytes": 351784,
+    "seconds": 18
+   },
+   "sdxl-turbo-q8": {
+    "preview": "shoujo-manga-sdxl-turbo-q8.webp",
+    "model": "sdxl-turbo-q8",
+    "prompt": "shoujo manga illustration, big sparkling eyes, flowing hair, flat pastel colors, clean black ink lines of a girl with short hair, pure white background, centered, simple composition",
+    "style": "plain",
+    "seed": 551494037,
+    "steps": 4,
+    "cfg": 1.5,
+    "size": [
+     512,
+     512
+    ],
+    "image": [
+     512,
+     512
+    ],
+    "strength": null,
+    "paths": 1609,
+    "svg_bytes": 464438,
+    "seconds": 40
+   },
+   "flux-schnell-q4": {
+    "preview": "shoujo-manga-flux-schnell-q4.webp",
+    "model": "flux-schnell-q4",
+    "prompt": "shoujo manga illustration, big sparkling eyes, flowing hair, flat pastel colors, clean black ink lines of a girl with short hair, pure white background, centered, simple composition",
+    "style": "plain",
+    "seed": 42,
+    "steps": 3,
+    "cfg": 1.0,
+    "size": [
+     512,
+     512
+    ],
+    "image": [
+     512,
+     512
+    ],
+    "strength": null,
+    "paths": 390,
+    "svg_bytes": 149695,
+    "seconds": 41
+   },
+   "flux2-klein-4b-q4": {
+    "preview": "shoujo-manga-flux2-klein-4b-q4.webp",
+    "model": "flux2-klein-4b-q4",
+    "prompt": "shoujo manga illustration, big sparkling eyes, flowing hair, flat pastel colors, clean black ink lines of a girl with short hair, pure white background, centered, simple composition",
+    "style": "plain",
+    "seed": 42,
+    "steps": 6,
+    "cfg": 1.0,
+    "size": [
+     512,
+     512
+    ],
+    "image": [
+     512,
+     512
+    ],
+    "strength": null,
+    "paths": 135,
+    "svg_bytes": 70848,
+    "seconds": 23
+   },
+   "z-image-turbo-q4": {
+    "preview": "shoujo-manga-z-image-turbo-q4.webp",
+    "model": "z-image-turbo-q4",
+    "prompt": "shoujo manga illustration, big sparkling eyes, flowing hair, flat pastel colors, clean black ink lines of a girl with short hair, pure white background, centered, simple composition",
+    "style": "plain",
+    "seed": 42,
+    "steps": 8,
+    "cfg": 1.0,
+    "size": [
+     512,
+     512
+    ],
+    "image": [
+     512,
+     512
+    ],
+    "strength": null,
+    "paths": 215,
+    "svg_bytes": 88538,
+    "seconds": 38
+   }
+  },
+  "vintage-anime": {
+   "sd-turbo-q8": {
+    "preview": "vintage-anime-sd-turbo-q8.webp",
+    "model": "sd-turbo-q8",
+    "prompt": "vintage anime cel art, flat colors, thick outlines, muted palette of a girl with short hair, pure white background, centered, simple composition",
+    "style": "plain",
+    "seed": 42,
+    "steps": 4,
+    "cfg": 1.0,
+    "size": [
+     512,
+     512
+    ],
+    "image": [
+     512,
+     512
+    ],
+    "strength": null,
+    "paths": 114,
+    "svg_bytes": 40865,
+    "seconds": 6
+   },
+   "sdxl-turbo-q8": {
+    "preview": "vintage-anime-sdxl-turbo-q8.webp",
+    "model": "sdxl-turbo-q8",
+    "prompt": "vintage anime cel art, flat colors, thick outlines, muted palette of a girl with short hair, pure white background, centered, simple composition",
+    "style": "plain",
+    "seed": 551494037,
+    "steps": 4,
+    "cfg": 1.5,
+    "size": [
+     512,
+     512
+    ],
+    "image": [
+     512,
+     512
+    ],
+    "strength": null,
+    "paths": 750,
+    "svg_bytes": 234343,
+    "seconds": 36
+   },
+   "flux-schnell-q4": {
+    "preview": "vintage-anime-flux-schnell-q4.webp",
+    "model": "flux-schnell-q4",
+    "prompt": "vintage anime cel art, flat colors, thick outlines, muted palette of a girl with short hair, pure white background, centered, simple composition",
+    "style": "plain",
+    "seed": 42,
+    "steps": 3,
+    "cfg": 1.0,
+    "size": [
+     512,
+     512
+    ],
+    "image": [
+     512,
+     512
+    ],
+    "strength": null,
+    "paths": 260,
+    "svg_bytes": 103790,
+    "seconds": 39
+   },
+   "flux2-klein-4b-q4": {
+    "preview": "vintage-anime-flux2-klein-4b-q4.webp",
+    "model": "flux2-klein-4b-q4",
+    "prompt": "vintage anime cel art, flat colors, thick outlines, muted palette of a girl with short hair, pure white background, centered, simple composition",
+    "style": "plain",
+    "seed": 42,
+    "steps": 6,
+    "cfg": 1.0,
+    "size": [
+     512,
+     512
+    ],
+    "image": [
+     512,
+     512
+    ],
+    "strength": null,
+    "paths": 122,
+    "svg_bytes": 52116,
+    "seconds": 22
+   },
+   "z-image-turbo-q4": {
+    "preview": "vintage-anime-z-image-turbo-q4.webp",
+    "model": "z-image-turbo-q4",
+    "prompt": "vintage anime cel art, flat colors, thick outlines, muted palette of a girl with short hair, pure white background, centered, simple composition",
+    "style": "plain",
+    "seed": 42,
+    "steps": 8,
+    "cfg": 1.0,
+    "size": [
+     512,
+     512
+    ],
+    "image": [
+     512,
+     512
+    ],
+    "strength": null,
+    "paths": 91,
+    "svg_bytes": 40680,
+    "seconds": 39
+   }
+  }
+ },
+ "strength": [
+  {
+   "preview": "fox-sketch-0.6.webp",
+   "model": "z-image-turbo-q4",
+   "prompt": "A vector illustration of a single cute cartoon fox, orange and white fur, flat color fills, solid fills, clean edges, isolated on a plain white background, centered, with nothing else in the frame",
+   "style": "plain",
+   "seed": 42,
+   "steps": 8,
+   "cfg": 1.0,
+   "size": [
+    512,
+    512
+   ],
+   "image": [
+    512,
+    512
+   ],
+   "strength": 0.6,
+   "paths": 98,
+   "svg_bytes": 40208,
+   "seconds": 41
+  },
+  {
+   "preview": "fox-sketch-0.7.webp",
+   "model": "z-image-turbo-q4",
+   "prompt": "A vector illustration of a single cute cartoon fox, orange and white fur, flat color fills, solid fills, clean edges, isolated on a plain white background, centered, with nothing else in the frame",
+   "style": "plain",
+   "seed": 42,
+   "steps": 8,
+   "cfg": 1.0,
+   "size": [
+    512,
+    512
+   ],
+   "image": [
+    512,
+    512
+   ],
+   "strength": 0.7,
+   "paths": 43,
+   "svg_bytes": 19644,
+   "seconds": 57
+  },
+  {
+   "preview": "fox-sketch-0.75.webp",
+   "model": "z-image-turbo-q4",
+   "prompt": "A vector illustration of a single cute cartoon fox, orange and white fur, flat color fills, solid fills, clean edges, isolated on a plain white background, centered, with nothing else in the frame",
+   "style": "plain",
+   "seed": 42,
+   "steps": 8,
+   "cfg": 1.0,
+   "size": [
+    512,
+    512
+   ],
+   "image": [
+    512,
+    512
+   ],
+   "strength": 0.75,
+   "paths": 39,
+   "svg_bytes": 24662,
+   "seconds": 42
+  },
+  {
+   "preview": "fox-sketch-0.85.webp",
+   "model": "z-image-turbo-q4",
+   "prompt": "A vector illustration of a single cute cartoon fox, orange and white fur, flat color fills, solid fills, clean edges, isolated on a plain white background, centered, with nothing else in the frame",
+   "style": "plain",
+   "seed": 42,
+   "steps": 8,
+   "cfg": 1.0,
+   "size": [
+    512,
+    512
+   ],
+   "image": [
+    512,
+    512
+   ],
+   "strength": 0.85,
+   "paths": 39,
+   "svg_bytes": 24662,
+   "seconds": 47
+  }
+ ],
+ "codex": {
+  "styles": {
+   "inked": {
+    "preview": "codex-inked.webp",
+    "model": "vendor:codex",
+    "prompt": "a bold inked vector illustration of a single red fox sitting, flat solid fills inside heavy black ink outlines, even line weight, no gradients, no shading, no text, pure white background, centered, nothing else in the frame",
+    "style": "plain",
+    "seed": 1510442013,
+    "steps": 4,
+    "cfg": 1.0,
+    "size": [
+     512,
+     512
+    ],
+    "image": [
+     1145,
+     1374
+    ],
+    "strength": null,
+    "paths": 241,
+    "svg_bytes": 104763,
+    "seconds": 48
+   },
+   "flat-design": {
+    "preview": "codex-flat-design.webp",
+    "model": "vendor:codex",
+    "prompt": "a flat design vector illustration of a single red fox sitting, shapes defined by flat color alone, no outlines or strokes, no gradients, no shading, no text, pure white background, centered, nothing else in the frame",
+    "style": "plain",
+    "seed": 2231234609,
+    "steps": 4,
+    "cfg": 1.0,
+    "size": [
+     512,
+     512
+    ],
+    "image": [
+     1254,
+     1254
+    ],
+    "strength": null,
+    "paths": 28,
+    "svg_bytes": 20520,
+    "seconds": 50
+   },
+   "clipart": {
+    "preview": "codex-clipart.webp",
+    "model": "vendor:codex",
+    "prompt": "a clipart illustration of a single red fox sitting, simple flat shapes with bold outlines, solid fills, no gradients, no shading, no text, pure white background, centered, nothing else in the frame",
+    "style": "plain",
+    "seed": 1865276670,
+    "steps": 4,
+    "cfg": 1.0,
+    "size": [
+     512,
+     512
+    ],
+    "image": [
+     1254,
+     1254
+    ],
+    "strength": null,
+    "paths": 26,
+    "svg_bytes": 29122,
+    "seconds": 49
+   },
+   "cartoon": {
+    "preview": "codex-cartoon.webp",
+    "model": "vendor:codex",
+    "prompt": "a cartoon illustration of a single red fox sitting, flat solid colors with clean dark outlines, no gradients, no shading, no text, pure white background, centered, nothing else in the frame",
+    "style": "plain",
+    "seed": 1580541679,
+    "steps": 4,
+    "cfg": 1.0,
+    "size": [
+     512,
+     512
+    ],
+    "image": [
+     1254,
+     1254
+    ],
+    "strength": null,
+    "paths": 205,
+    "svg_bytes": 99139,
+    "seconds": 47
+   },
+   "stencil": {
+    "preview": "codex-stencil.webp",
+    "model": "vendor:codex",
+    "prompt": "a stencil of a single red fox sitting, one solid color, cut-out silhouette shapes, no outlines, no gradients, no shading, no text, pure white background, centered, nothing else in the frame",
+    "style": "plain",
+    "seed": 3911060479,
+    "steps": 4,
+    "cfg": 1.0,
+    "size": [
+     512,
+     512
+    ],
+    "image": [
+     1145,
+     1374
+    ],
+    "strength": null,
+    "paths": 10,
+    "svg_bytes": 8540,
+    "seconds": 44
+   },
+   "low-poly": {
+    "preview": "codex-low-poly.webp",
+    "model": "vendor:codex",
+    "prompt": "a low poly vector illustration of a single red fox sitting, built from flat triangular facets, each facet one solid color, no gradients, no shading, no text, pure white background, centered, nothing else in the frame",
+    "style": "plain",
+    "seed": 3747997385,
+    "steps": 4,
+    "cfg": 1.0,
+    "size": [
+     512,
+     512
+    ],
+    "image": [
+     1145,
+     1374
+    ],
+    "strength": null,
+    "paths": 343,
+    "svg_bytes": 155358,
+    "seconds": 56
+   },
+   "linocut": {
+    "preview": "codex-linocut.webp",
+    "model": "vendor:codex",
+    "prompt": "a linocut print of a single red fox sitting, bold carved shapes in two colors, thick hand-cut marks, no gradients, no shading, no text, pure white background, centered, nothing else in the frame",
+    "style": "plain",
+    "seed": 1521171228,
+    "steps": 4,
+    "cfg": 1.0,
+    "size": [
+     512,
+     512
+    ],
+    "image": [
+     1254,
+     1254
+    ],
+    "strength": null,
+    "paths": 508,
+    "svg_bytes": 225162,
+    "seconds": 56
+   },
+   "line-art": {
+    "preview": "codex-line-art.webp",
+    "model": "vendor:codex",
+    "prompt": "a line art drawing of a single red fox sitting, clean black lines on white, even stroke weight, no fills, no gradients, no shading, no text, pure white background, centered, nothing else in the frame",
+    "style": "plain",
+    "seed": 586720809,
+    "steps": 4,
+    "cfg": 1.0,
+    "size": [
+     512,
+     512
+    ],
+    "image": [
+     1254,
+     1254
+    ],
+    "strength": null,
+    "paths": 282,
+    "svg_bytes": 132720,
+    "seconds": 54
+   }
+  },
+  "round": {
+   "preview": "codex-round.webp",
+   "model": "vendor:codex",
+   "prompt": "a cartoon illustration of a single red fox, sitting, happy, flat solid colors with clean dark outlines, no gradients, no shading, no text, pure white background, centered, nothing else in the frame",
+   "style": "cartoon",
+   "seed": 806837762,
+   "steps": 1,
+   "cfg": 1.0,
+   "size": [
+    1024,
+    1024
+   ],
+   "image": [
+    1254,
+    1254
+   ],
+   "strength": null,
+   "paths": 42,
+   "svg_bytes": 49293,
+   "seconds": 151513
+  },
+  "sketch": {
+   "line-art": {
+    "preview": "codex-sketch-line-art.webp",
+    "model": "vendor:codex",
+    "prompt": "a line art drawing of a single three separate cats, clean black lines on white, even stroke weight, no fills, no gradients, no shading, no text, pure white background, centered, nothing else in the frame",
+    "style": "line-art",
+    "seed": 1931257271,
+    "steps": 1,
+    "cfg": 1.0,
+    "size": [
+     1024,
+     1024
+    ],
+    "image": [
+     1254,
+     1254
+    ],
+    "strength": 0.25,
+    "paths": 110,
+    "svg_bytes": 36632,
+    "seconds": 52
+   },
+   "plain": {
+    "preview": "codex-sketch-plain.webp",
+    "model": "vendor:codex",
+    "prompt": "a flat vector illustration of a single three separate cats, solid fills, clean hard edges, no gradients, no shading, no text, pure white background, centered, nothing else in the frame",
+    "style": "plain",
+    "seed": 2145331885,
+    "steps": 1,
+    "cfg": 1.0,
+    "size": [
+     1024,
+     1024
+    ],
+    "image": [
+     1254,
+     1254
+    ],
+    "strength": 0.25,
+    "paths": 63,
+    "svg_bytes": 41574,
+    "seconds": 64
+   }
+  }
+ },
+ "pencil_cats": {
+  "preview": "pencil-cats-line-art.webp",
+  "model": "vendor:codex",
+  "prompt": "a line art drawing of a single three separate cats, clean black lines on white, even stroke weight, no fills, no gradients, no shading, no text, pure white background, centered, nothing else in the frame",
+  "style": "line-art",
+  "seed": 57087728,
+  "steps": 1,
+  "cfg": 1.0,
+  "size": [
+   1024,
+   1024
+  ],
+  "image": [
+   1254,
+   1254
+  ],
+  "strength": 0.3,
+  "paths": 71,
+  "svg_bytes": 50764,
+  "seconds": 522
+ },
+ "gallery": {
+  "z-image-turbo-q4": [
+   {
+    "preview": "gallery-z-image-turbo-q4-0.webp",
+    "model": "z-image-turbo-q4",
+    "prompt": "chibi anime style, cute, big head, flat colors of a girl with short hair, pure white background, centered, simple composition",
+    "style": "plain",
+    "seed": 42,
+    "steps": 8,
+    "cfg": 1.0,
+    "size": [
+     512,
+     512
+    ],
+    "image": [
+     512,
+     512
+    ],
+    "strength": null,
+    "paths": 22,
+    "svg_bytes": 18138,
+    "seconds": 38,
+    "subject": ""
+   },
+   {
+    "preview": "gallery-z-image-turbo-q4-1.webp",
+    "model": "z-image-turbo-q4",
+    "prompt": "shoujo manga illustration, big sparkling eyes, flowing hair, flat pastel colors, clean black ink lines of a girl with short hair, pure white background, centered, simple composition",
+    "style": "plain",
+    "seed": 42,
+    "steps": 8,
+    "cfg": 1.0,
+    "size": [
+     512,
+     512
+    ],
+    "image": [
+     512,
+     512
+    ],
+    "strength": null,
+    "paths": 215,
+    "svg_bytes": 88538,
+    "seconds": 38,
+    "subject": ""
+   },
+   {
+    "preview": "gallery-z-image-turbo-q4-2.webp",
+    "model": "z-image-turbo-q4",
+    "prompt": "shonen manga style, dynamic ink, bold lines, black and white of a girl with short hair, pure white background, centered, simple composition",
+    "style": "plain",
+    "seed": 42,
+    "steps": 8,
+    "cfg": 1.0,
+    "size": [
+     512,
+     512
+    ],
+    "image": [
+     512,
+     512
+    ],
+    "strength": null,
+    "paths": 233,
+    "svg_bytes": 72244,
+    "seconds": 38,
+    "subject": ""
+   },
+   {
+    "preview": "gallery-z-image-turbo-q4-3.webp",
+    "model": "z-image-turbo-q4",
+    "prompt": "vintage anime cel art, flat colors, thick outlines, muted palette of a girl with short hair, pure white background, centered, simple composition",
+    "style": "plain",
+    "seed": 42,
+    "steps": 8,
+    "cfg": 1.0,
+    "size": [
+     512,
+     512
+    ],
+    "image": [
+     512,
+     512
+    ],
+    "strength": null,
+    "paths": 91,
+    "svg_bytes": 40680,
+    "seconds": 39,
+    "subject": ""
+   }
+  ],
+  "sd-turbo-q8": [
+   {
+    "preview": "gallery-sd-turbo-q8-0.webp",
+    "model": "sd-turbo-q8",
+    "prompt": "flat design vector illustration of a single sihba inu, sitting, smiling, simple shapes, pure white background, centered, nothing else in the frame",
+    "style": "plain",
+    "seed": 4090149669,
+    "steps": 4,
+    "cfg": 1.0,
+    "size": [
+     512,
+     512
+    ],
+    "image": [
+     512,
+     512
+    ],
+    "strength": null,
+    "paths": 86,
+    "svg_bytes": 57091,
+    "seconds": 7,
+    "subject": "sihba inu, sitting, smiling"
+   }
+  ],
+  "flux-schnell-q4": [
+   {
+    "preview": "gallery-flux-schnell-q4-0.webp",
+    "model": "flux-schnell-q4",
+    "prompt": "A vector illustration of a single corgi, sitting, happy, isolated on a plain white background, centered, with nothing else in the frame",
+    "style": "plain",
+    "seed": 4022589406,
+    "steps": 3,
+    "cfg": 1.0,
+    "size": [
+     512,
+     512
+    ],
+    "image": [
+     512,
+     512
+    ],
+    "strength": null,
+    "paths": 213,
+    "svg_bytes": 88945,
+    "seconds": 39,
+    "subject": "corgi, sitting, happy"
+   },
+   {
+    "preview": "gallery-flux-schnell-q4-1.webp",
+    "model": "flux-schnell-q4",
+    "prompt": "A cartoon illustration of a single guinea pig, isolated on a plain white background, centered, with nothing else in the frame",
+    "style": "cartoon",
+    "seed": 1249511146,
+    "steps": 3,
+    "cfg": 1.0,
+    "size": [
+     512,
+     512
+    ],
+    "image": [
+     512,
+     512
+    ],
+    "strength": null,
+    "paths": 150,
+    "svg_bytes": 56998,
+    "seconds": 57,
+    "subject": "guinea pig"
+   },
+   {
+    "preview": "gallery-flux-schnell-q4-2.webp",
+    "model": "flux-schnell-q4",
+    "prompt": "A vector illustration of a single vintage motorcycle, isolated on a plain white background, centered, with nothing else in the frame",
+    "style": "plain",
+    "seed": 3909719307,
+    "steps": 3,
+    "cfg": 1.0,
+    "size": [
+     512,
+     512
+    ],
+    "image": [
+     512,
+     512
+    ],
+    "strength": null,
+    "paths": 1009,
+    "svg_bytes": 298815,
+    "seconds": 37,
+    "subject": "vintage motorcycle"
+   }
+  ],
+  "flux2-klein-4b-q4": [
+   {
+    "preview": "gallery-flux2-klein-4b-q4-0.webp",
+    "paths": 74,
+    "svg_bytes": 36565
+   },
+   {
+    "preview": "gallery-flux2-klein-4b-q4-1.webp",
+    "paths": 320,
+    "svg_bytes": 172789
+   }
+  ]
+ }
+}
