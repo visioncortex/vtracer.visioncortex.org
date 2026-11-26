@@ -17,7 +17,7 @@ import { useOS } from "./useOS";
 export default function App() {
   const os = useOS();
   const download = useDownloads();
-  const { sections, pencil, shotAlt, scarcity, cta } = useCopy();
+  const { sections, pencil, shotAlt, scarcity, cta, useCase } = useCopy();
 
   return (
     <>
@@ -62,7 +62,7 @@ export default function App() {
                   <Accented parts={sections.prompt.title} />
                 </h2>
                 <p className="section-note">{sections.prompt.note}</p>
-                <a className="btn btn-ghost btn-sm section-more" href="/use-cases/graphic-design">
+                <a className="btn btn-ghost btn-sm section-more" href={useCase}>
                   {sections.prompt.more}
                 </a>
               </div>
@@ -80,7 +80,7 @@ export default function App() {
                   <Accented parts={sections.pencil.title} />
                 </h2>
                 <p className="section-note">{pencil.intro}</p>
-                <a className="btn btn-ghost btn-sm section-more" href="/use-cases/graphic-design">
+                <a className="btn btn-ghost btn-sm section-more" href={useCase}>
                   {sections.pencil.more}
                 </a>
               </div>

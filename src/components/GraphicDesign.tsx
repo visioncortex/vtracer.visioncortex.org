@@ -1,7 +1,7 @@
 import Accented from "./Accented";
 import Footer from "./Footer";
 import Nav from "./Nav";
-import { graphicDesign as copy } from "../use-case-copy";
+import { graphicDesign, graphicDesignJa, graphicDesignZh, type UseCaseCopy } from "../use-case-copy";
 import { useDownloads } from "../useDownloads";
 import { useOS } from "../useOS";
 
@@ -56,7 +56,7 @@ function Cards({ points }: { points: { title: string; body: string }[] }) {
  * landing page's way, with the knowledge base's figures. The knowledge base
  * articles go deeper; this page sells the workflow.
  */
-export default function GraphicDesign() {
+export default function GraphicDesign({ copy }: { copy: UseCaseCopy }) {
   const os = useOS();
   const download = useDownloads();
 
@@ -136,7 +136,7 @@ export default function GraphicDesign() {
           </div>
         </section>
       </main>
-      <Footer />
+      <Footer langLinks={{ en: graphicDesign.path, zh: graphicDesignZh.path, ja: graphicDesignJa.path }} />
     </>
   );
 }

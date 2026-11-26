@@ -42,7 +42,7 @@ const ALIASES = { "en/fact-sheet": "fact-sheet", "en/index": "index" };
  * the /en/ copies, whose canonical is the original.
  */
 const SITE = "https://vtracer.visioncortex.org";
-const SITEMAP = ["/", "/zh/", "/ja/", "/use-cases/graphic-design", "/privacy-policy", "/terms-of-service"].map((path) => ({
+const SITEMAP = ["/", "/zh/", "/ja/", "/use-cases/graphic-design", "/zh/use-cases/graphic-design", "/ja/use-cases/graphic-design", "/privacy-policy", "/terms-of-service"].map((path) => ({
   loc: SITE + path,
 }));
 

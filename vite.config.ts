@@ -81,6 +81,8 @@ export default defineConfig({
         "terms-of-service": resolve(import.meta.dirname, "terms-of-service.html"),
         "fact-sheet": resolve(import.meta.dirname, "fact-sheet.html"),
         "use-cases/graphic-design": resolve(import.meta.dirname, "use-cases/graphic-design.html"),
+        "zh/use-cases/graphic-design": resolve(import.meta.dirname, "zh/use-cases/graphic-design.html"),
+        "ja/use-cases/graphic-design": resolve(import.meta.dirname, "ja/use-cases/graphic-design.html"),
         // Language versions live under a prefix: /zh/fact-sheet.
         "zh/fact-sheet": resolve(import.meta.dirname, "zh/fact-sheet.html"),
         "ja/fact-sheet": resolve(import.meta.dirname, "ja/fact-sheet.html"),

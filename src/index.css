@@ -1204,6 +1204,13 @@ a.platform:hover {
   text-wrap: balance;
 }
 
+/* The accented word is a word: a CJK line may break between any two
+   characters, so without this 可编辑 can split across lines. */
+:lang(zh) .display .accent,
+:lang(ja) .display .accent {
+  white-space: nowrap;
+}
+
 :lang(zh) h3,
 :lang(ja) h3 {
   letter-spacing: 0;

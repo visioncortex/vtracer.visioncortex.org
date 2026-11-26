@@ -23,6 +23,8 @@ export type SiteCopy = {
   lang: Lang;
   /** This language's landing page, which every in-page link is relative to. */
   home: string;
+  /** The Graphic design use case in this language. */
+  useCase: string;
   /** Top header links: What's new jumps to New in VTracer 2, Generative AI
       to Prompt to vector. */
   nav: { whatsNew: string; prompt: string; download: string };
@@ -65,7 +67,7 @@ export type SiteCopy = {
     design: { title: Accented; note: string };
     whatsNew: { title: string; note: string };
     prompt: { title: Accented; note: string; more: string };
-    /** `more` links to the Graphic design use case, which is English only. */
+    /** `more` links to the Graphic design use case (`useCase`). */
     pencil: { title: Accented; more: string };
     download: { title: Accented; note: string };
     open: { title: Accented; note: string };
@@ -100,6 +102,7 @@ const SAMPLES = Object.fromEntries(COMPARISONS.map((c) => [c.id, c.label]));
 
 export const en: SiteCopy = {
   lang: "en",
+  useCase: "/use-cases/graphic-design",
   home: "/",
   nav: {
     whatsNew: "What\u2019s new",
@@ -206,6 +209,7 @@ export const en: SiteCopy = {
 export const zh: SiteCopy = {
   lang: "zh",
   home: "/zh/",
+  useCase: "/zh/use-cases/graphic-design",
   nav: { whatsNew: "新功能", prompt: "生成式 AI", download: "下载" },
   hero: {
     title: ["新一代 ", "VTracer", " 来了"],
@@ -251,9 +255,9 @@ export const zh: SiteCopy = {
     prompt: {
       title: ["从提示词到", "矢量图", ""],
       note: "生成式扩散模型在应用内、在你的设备上运行。引导式提示词把它们引向便于描摹的画面，因此每个结果都能成为干净的矢量图。",
-      more: "了解更多（英文）",
+      more: "了解更多",
     },
-    pencil: { title: ["从铅笔草图到", "矢量图", ""], more: "了解更多（英文）" },
+    pencil: { title: ["从铅笔草图到", "矢量图", ""], more: "了解更多" },
     download: {
       title: ["从", "免费", "应用开始"],
       note: "下载应用，开始描摹。在应用内激活 VTracer 2 即可开始免费试用，无需信用卡。",
@@ -308,6 +312,7 @@ export const zh: SiteCopy = {
 export const ja: SiteCopy = {
   lang: "ja",
   home: "/ja/",
+  useCase: "/ja/use-cases/graphic-design",
   nav: {
     whatsNew: "新機能",
     prompt: "生成 AI",
@@ -357,9 +362,9 @@ export const ja: SiteCopy = {
     prompt: {
       title: ["プロンプトから", "ベクター", "へ"],
       note: "生成拡散モデルがアプリ内で、あなたのデバイス上で動きます。ガイド付きプロンプトがモデルをトレースしやすい絵へと導くので、どの結果もクリーンなベクターになります。",
-      more: "詳しく見る（英語）",
+      more: "詳しく見る",
     },
-    pencil: { title: ["鉛筆スケッチから", "ベクター", "へ"], more: "詳しく見る（英語）" },
+    pencil: { title: ["鉛筆スケッチから", "ベクター", "へ"], more: "詳しく見る" },
     download: {
       title: ["まずは", "無料", "アプリから"],
       note: "アプリをダウンロードして、トレースを始めましょう。アプリ内で VTracer 2 をアクティベートすれば無料トライアルが始まります。クレジットカードは不要です。",
